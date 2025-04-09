@@ -121,6 +121,8 @@ export default function Home() {
           flexWrap: 'wrap',
           height: '100vh',
           flexDirection: 'row',
+
+          position: 'relative',
         }}
       >
         <div
@@ -176,6 +178,10 @@ export default function Home() {
             @media (max-width: 767px) {
               .responsive-container {
                 flex-direction: column !important;
+
+                position: absolute;
+top: -100px;
+
               }
               .content {
                 width: 100%;
