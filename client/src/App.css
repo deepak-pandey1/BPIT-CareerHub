@@ -1,0 +1,710 @@
+/* style css  */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+.navh:hover {
+    color: #5ba0eb;
+    font-weight: 600;
+
+}
+
+.navh {
+    text-decoration: none;
+}
+
+.sb a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.lb a {
+    text-decoration: none;
+    font-weight: 500;
+    color: silver;
+
+}
+
+.fs {
+    font-size: 19px;
+}
+
+.ih {
+    height: 65vh;
+}
+
+@media (max-width: 768px) {
+    .sticky {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ih {
+        height: 45vh;
+    }
+}
+
+
+.section-work-data {
+    background: #e7eaf6;
+    text-align: center;
+    transition: all 0.7s linear;
+    color: black;
+
+}
+
+.counter-numbers {
+    font-size: 5rem;
+}
+
+.section-work-data h4 {
+    color: black;
+    font-size: 1rem
+}
+
+.counter-numbers {
+    font-size: 3rem;
+    text-transform: capitalize;
+    color: black;
+}
+
+.container-num {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        display: block;
+    }
+.ih{
+    height: 50vh;
+}
+    .counter-numbers {
+        font-size: 4rem;
+    }
+
+    .counter-numbers {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .section-work-data h4 {
+        color: #a45d06;
+        font-size: 0.9rem;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e7eaf6;
+}
+
+.row_company {
+    width: 100%;
+    object-fit: contain;
+    max-height: 100px;
+    margin-right: 10px;
+    transition: transform 450ms;
+    mix-blend-mode: multiply;
+}
+
+
+.row_companys_slider {
+    display: flex;
+    mix-blend-mode: multiply;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.row_companys {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+}
+
+.row_company:hover {
+    transform: scale(1.05);
+
+}
+
+.row_companys::-webkit-scrollbar {
+    display: block;
+}
+
+@media screen and (max-width:768px) {
+    .row_company {
+        width: 150px;
+        object-fit: contain;
+        max-height: 50px;
+        margin-right: 10px;
+        transition: transform 450ms;
+    }
+
+}
+
+
+
+.hig {
+    padding: 20px;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+
+.h-1 {
+    display: flex;
+    color: black;
+    text-align: center;
+
+}
+
+.divhome {
+    padding: 40px;
+
+}
+@media screen and (max-width:768px){
+    .divhome {
+        padding: 12px;
+    
+    }
+}
+
+.h-1-1 {
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.h-1-2 {
+    border-bottom: 1px solid white;
+}
+
+.h1-1 {
+    border-right: 1px solid white;
+}
+
+@media screen and (max-width: 768px) {
+
+    .h-1 {
+        display: block;
+
+    }
+
+    .h-1-1 {
+        border-right: none;
+        border-bottom: 1px solid white;
+    }
+
+    .h-1-2 {
+        border-bottom: 1px solid white;
+    }
+
+    .h1-1 {
+        border-right: none;
+        border-bottom: 1px solid white;
+    }
+
+}
+
+/* contact css  */
+.contact {
+    background-color: #e7eaf6;
+}
+
+.bgc {
+    background-color: #0a63c4;
+}
+
+.contact-info {
+    color: white;
+}
+
+.addrs-info {
+    color: white;
+}
+
+.form-btn {
+    background-color: #f77a10;
+    color: white;
+    border: none;
+    font-size: large;
+    border-radius: 2px;
+    width: 120px;
+    height: 40px;
+    font-weight: 500;
+
+}
+
+.form-btn:hover {
+    background-color: #c66109;
+}
+
+.md-form {
+    margin-top: 25px;
+}
+
+.addrs-info ul {
+    list-style-type: none;
+}
+
+.icony {
+    position: absolute;
+    transform: translateX(-130%);
+
+}
+
+#contactm {
+    margin-left: 12px;
+}
+
+
+
+.contain {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+
+    .contain {
+        display: block;
+
+    }
+
+}
+
+.back {
+    background-color: #000f20;
+}
+
+
+/* login css  */
+.login-body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+.container-login{
+    position: relative;
+    max-width: 430px;
+    background-color: rgb(255, 254, 254);
+    width: 100%;
+    margin: 8px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    padding-bottom: 25px;
+}
+@media screen and (max-width:768px) {
+    .login-body{
+        
+        height: 70vh;
+    } 
+    
+}
+p .t{
+    font-size: 20px;
+}
+.container .forms{
+    padding: 30px;
+}
+.container .forms .title{
+    position: relative;
+    font-size: 27px;
+    font-size: 600;
+}
+
+.forms .input-feild{
+    position: relative;
+    height: 50px;
+    width: 100%;
+
+    margin-top: 20px;
+}
+.input-feild input{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    font-size: 1rem;
+    transition: 0.3s;
+
+}
+#title{
+   font-size: 28px;
+   padding: 5px;
+   font-weight: bold;
+   line-height: 24px;
+   text-align: center;
+   font-family: Arial, sans-serif;
+   color: rgb(17, 17, 201);
+}
+.input-feild i{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+}
+.input-feild input:hover ~i{
+   color: blue;
+}
+.input-feild input:hover{
+    border-bottom: 2px solid blue;
+}
+.forgot{
+    margin-top: 20px;
+}
+.forms a{
+    text-decoration: none;
+    color: blue;
+}
+.forms a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+#button{
+    background-color: blue;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 19px;
+}
+#button:hover{
+    background-color: rgb(7, 7, 71) ;
+}
+.login-signup{
+    margin-top: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.forgot{
+    font-family: Arial, sans-serif;
+}
+#button{
+    width: 40%;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+}
+.input-name{
+    padding-top: 10px;
+    color: rgb(131, 130, 130);
+}
+.input-feild .button input{
+    text-align: center;
+    justify-content: center;
+  padding-left: 100px;
+}
+.loginbutton{
+    
+        display: flex;
+        justify-content: center;
+    
+}
+
+/* signup css */
+.container-signup
+{
+    background:rgb(255, 254, 254);
+    width: 450px;
+    padding: 25px;
+    margin: auto ;
+    
+    border-radius: 17px;
+     
+}
+.signuph2
+{
+   font-size: 28px;
+   font-weight: bold;
+   line-height: 24px;
+   padding: 10px;
+   text-align: center;
+   font-family: Arial, sans-serif;
+   color: rgb(17, 17, 201);
+}
+.input-name 
+{
+    width: 95%;
+    position: relative;
+    margin: 15px auto;
+   
+}
+.signupbutton{
+    display: flex;
+    justify-content: center;
+}
+.term{
+text-align: center;
+padding-top: 10px;
+}
+.lock
+{
+    padding: 8px 11px;
+    
+}
+.olock{
+   padding: 11px;
+}
+.name
+{
+    width: 48%;
+    padding: 8px 0 8px 40px;
+}
+.input-name span
+{
+    margin-left: 11px;
+}
+.text-name
+{
+    width: 100%;
+    padding: 8px 0 8px 40px;
+}
+.input-name i
+{
+    position: absolute;
+    font-size: 18px;
+    color: blue;
+    border-right: 1px solid #cccccc;
+}
+.email
+{
+    padding: 8px;
+}
+.text-name, .name
+{
+    border: 1px solid #cccccc;
+    outline: none;
+}
+.signup-body{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   background-color:#111; 
+   font-size: 14px;
+   margin: 8px;
+
+}
+.button{
+    background-color: blue;
+    color: white;
+    width: 140px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* apply css */
+.apply-body{
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   background-color:#111;
+   margin: 0px;
+   margin: 8px;
+
+}
+.afc{
+    position: relative;
+    max-width: 800px;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.container .forms{
+    padding: 0px 10px 0px 10px;
+}
+.container .forms .title{
+    position: relative;
+    font-size: 27px;
+    font-size: 600;
+}
+
+.forms .input-feild{
+    position: relative;
+    height: 50px;
+    width: 100%;
+
+    
+}
+.input-feild input{
+    height: 100%;
+    width:100%;
+    position: absolute;
+    padding: 0 25px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    font-size: 1rem;
+    transition: 0.3s;
+   
+
+}
+#title{
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.input-feild i{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+}
+.input-feild input:hover ~i{
+   color: blue;
+}
+.input-feild input:hover{
+    border-bottom: 2px solid blue;
+}
+.forgot{
+    margin-top: 20px;
+}
+.forms a{
+    text-decoration: none;
+    color: blue;
+}
+.forms a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+#button{
+    background-color: blue;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 19px;
+}
+#button:hover{
+    background-color: rgb(7, 7, 71) ;
+}
+.login-signup{
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+#button{
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+}
+.input-name{
+    color: rgb(131, 130, 130);
+}
+.input-feild .button input{
+    text-align: center;
+    justify-content: center;
+    margin-left: 220px;
+}
+@media screen and (max-width: 768px){
+.container{
+    max-width: 480px;
+}
+.input-feild .button input{
+    margin-left: 80px;
+}
+.sci{
+    margin-top: 24px;
+    margin-left: 0px;
+}
+
+}
+@media  screen and (max-width:920px) {
+    .col-md-6{
+        width: 600px;
+    }
+    .col-md-3{
+        width: 300px;
+    }
+    
+}
+.col-md-3,.col-md-6{
+    padding: 10px 15px;
+}
+#course{
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    font-size: 1rem;
+    transition: 0.3s;
+    font-size: 1rem;
+    color: rgb(131, 130, 130);
+    padding-top: 24px;
+    
+}
+.input-feild .input:hover{
+    color: blue;
+ }
+ .file{
+    margin-top: 10px;
+    color: rgb(131, 130, 130);
+ }
+ .input-name{
+    margin-bottom: 20px;
+    margin-top: 5px;
+ }
+ .af{
+    display: flex;
+    justify-content: center;
+ }
+#ab{
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    margin-bottom: 26px;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    background-color: blue;
+    color: white;
+}
+.sci{
+    
+    margin-top: 24px;
+    margin-left: 35px;
+}
+.afc{
+    margin: 30px;
+}
+    
+.signupnowbtn{
+    background-color: transparent;
+    border: transparent;
+    color: blue;
+}
