@@ -21,7 +21,6 @@ export default function Header() {
 
   const getInitial = (name) => name?.charAt(0)?.toUpperCase();
 
-  // Close dropdown if click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -97,24 +96,24 @@ export default function Header() {
           {/* Mobile Menu */}
           <div className={`menu-wrapper ${isOpen ? "open" : ""} d-md-none`}>
             <ul className="nav flex-column text-center mt-2">
-              <li><Link to="/About" className="nav-link nav-custom">About</Link></li>
-              <li><Link to="/Contact" className="nav-link nav-custom">Contact</Link></li>
-              <li><Link to="/Faq" className="nav-link nav-custom">FAQs</Link></li>
-              <li><Link to="/Company" className="nav-link nav-custom">Company</Link></li>
+              <li><Link to="/About" className="nav-link nav-custom" onClick={() => setIsOpen(false)}>About</Link></li>
+              <li><Link to="/Contact" className="nav-link nav-custom" onClick={() => setIsOpen(false)}>Contact</Link></li>
+              <li><Link to="/Faq" className="nav-link nav-custom" onClick={() => setIsOpen(false)}>FAQs</Link></li>
+              <li><Link to="/Company" className="nav-link nav-custom" onClick={() => setIsOpen(false)}>Company</Link></li>
             </ul>
             <div className="text-center mt-2">
               {username ? (
                 <>
-                  <Link to="/Profile" className="btn btn-outline-dark me-2 btn-hover">Profile</Link>
-                  <button className="btn btn-danger btn-hover" onClick={handleLogout}>Logout</button>
+                  <Link to="/Profile" className="btn btn-outline-dark me-2 btn-hover" onClick={() => setIsOpen(false)}>Profile</Link>
+                  <button className="btn btn-danger btn-hover" onClick={() => { setIsOpen(false); handleLogout(); }}>Logout</button>
                 </>
               ) : (
                 <>
                   <Link to="/Login">
-                    <button type="button" className="btn btn-outline-dark me-2 btn-hover">Login</button>
+                    <button type="button" className="btn btn-outline-dark me-2 btn-hover" onClick={() => setIsOpen(false)}>Login</button>
                   </Link>
                   <Link to="/Signup">
-                    <button type="button" className="btn btn-dark btn-hover">Sign-up</button>
+                    <button type="button" className="btn btn-dark btn-hover" onClick={() => setIsOpen(false)}>Sign-up</button>
                   </Link>
                 </>
               )}
@@ -156,17 +155,20 @@ export default function Header() {
             transform: scale(1.05);
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
           }
+
           .menu-wrapper {
             max-height: 0;
             overflow: hidden;
             flex-direction: column;
-            transition: max-height 0.4s ease-in-out;
             width: 100%;
+            padding-top: 0;
+            transition: max-height 0.5s ease, padding-top 0.3s ease;
           }
           .menu-wrapper.open {
             max-height: 500px;
             padding-top: 10px;
           }
+
           .user-circle {
             background-color: #2a9d8f;
             color: white;

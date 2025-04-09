@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion } from 'framer-motion';
-import { useEffect } from "react";
-
 
 const sentence = "Placement is not just about getting a job, it's about stepping into your future.";
 
@@ -12,7 +10,7 @@ const containerVariants = {
     userSelect: 'none',
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // delay between each word
+      staggerChildren: 0.15,
     },
   },
 };
@@ -22,9 +20,49 @@ const wordVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Scroll animation for .hig images
+const imageVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8 },
+  },
+};
+
+function AnimatedImage({ src, alt }) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.img
+      ref={ref}
+      className="hig"
+      src={src}
+      alt={alt}
+      variants={imageVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+    />
+  );
+}
+
 export default function Home() {
   const words = sentence.split(" ");
-
 
   useEffect(() => {
     const counters = document.querySelectorAll(".counter-numbers");
@@ -54,13 +92,11 @@ export default function Home() {
           if (entry.isIntersecting) {
             const counter = entry.target;
             animateCounter(counter);
-            observerInstance.unobserve(counter); // Run only once
+            observerInstance.unobserve(counter);
           }
         });
       },
-      {
-        threshold: 0.6, // Trigger when 60% of element is visible
-      }
+      { threshold: 0.6 }
     );
 
     counters.forEach((counter) => {
@@ -77,80 +113,80 @@ export default function Home() {
   return (
     <div>
 
-<div
-  className="responsive-container"
-  style={{
-    display: 'flex',
-    flexWrap: 'wrap',
-    height: '100vh',
-    flexDirection: 'row', // default for desktop
-  }}
->
-  <div
-    className="px-5 content"
-    style={{
-      flex: 1,
-      backgroundColor: '#e7eaf6',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <motion.h1
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      style={{
-        fontSize: '2rem',
-        fontWeight: 'bold',
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '0.3rem',
-        textAlign: 'center',
-      }}
-    >
-      {words.map((word, index) => (
-        <motion.span key={index} variants={wordVariants}>
-          {word}
-        </motion.span>
-      ))}
-    </motion.h1>
-  </div>
+      {/* Hero Section */}
+      <div
+        className="responsive-container"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          height: '100vh',
+          flexDirection: 'row',
+        }}
+      >
+        <div
+          className="px-5 content"
+          style={{
+            flex: 1,
+            backgroundColor: '#e7eaf6',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <motion.h1
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.3rem',
+              textAlign: 'center',
+            }}
+          >
+            {words.map((word, index) => (
+              <motion.span key={index} variants={wordVariants}>
+                {word}
+              </motion.span>
+            ))}
+          </motion.h1>
+        </div>
 
-  <div
-    className="px-5 content"
-    style={{
-      flex: 1,
-      backgroundColor: '#e7eaf6',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <DotLottieReact
-      src="https://lottie.host/49862dca-2ada-4e98-bd24-754890cf191f/JdqqMWzs9q.lottie"
-      loop
-      autoplay
-    />
-  </div>
+        <div
+          className="px-5 content"
+          style={{
+            flex: 1,
+            backgroundColor: '#e7eaf6',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <DotLottieReact
+            src="https://lottie.host/49862dca-2ada-4e98-bd24-754890cf191f/JdqqMWzs9q.lottie"
+            loop
+            autoplay
+          />
+        </div>
 
-  <style>
-    {`
-      @media (max-width: 767px) {
-        .responsive-container {
-          flex-direction: column !important;
-        }
-        .content {
-          width: 100%;
-          height: 50vh;
-        }
-      }
-    `}
-  </style>
-</div>
+        <style>
+          {`
+            @media (max-width: 767px) {
+              .responsive-container {
+                flex-direction: column !important;
+              }
+              .content {
+                width: 100%;
+                height: 50vh;
+              }
+            }
+          `}
+        </style>
+      </div>
 
-
-        <div className="scroll container" >
+      <div className="scroll container" >
           <h2 style={{color: 'black', marginTop: '40px', textAlign: 'center'}}> <b> Our Leading Recruiters </b></h2>
           <div className="row_companys">
             <div className="row_companys_slider">
@@ -200,51 +236,51 @@ export default function Home() {
         </div>
 
 
-        <section className="section-work-data">
-      <div className="container container-num">
-        <div className="p-3">
-          <h2 className="counter-numbers" data-number="2000">0</h2>
-          <h4>PRESTIGIOUS RECRUITERS</h4>
+      {/* Counter Section */}
+      <section className="section-work-data">
+        <div className="container container-num">
+          <div className="p-3">
+            <h2 className="counter-numbers" data-number="2000">0</h2>
+            <h4>PRESTIGIOUS RECRUITERS</h4>
+          </div>
+          <div className="p-3">
+            <h2 className="counter-numbers" data-number="2500">0</h2>
+            <h4>RECORD PLACEMENT (BATCH 2022)</h4>
+          </div>
+          <div className="p-3">
+            <h2 className="counter-numbers" data-number="5000">0</h2>
+            <h4>ALUMNI SERVING TO CORPORATE WORLD</h4>
+          </div>
+          <div className="p-3">
+            <h2 className="counter-numbers" data-number="48">0</h2>
+            <h4>HIGHEST PACKAGE OFFERED</h4>
+          </div>
         </div>
-        <div className="p-3">
-          <h2 className="counter-numbers" data-number="2500">0</h2>
-          <h4>RECORD PLACEMENT (BATCH 2022)</h4>
+      </section>
+
+      {/* Animated Image Section */}
+      <div className="container mt-5 mb-5">
+        <div className="h-1">
+          <div className="h-1-1 divhome">
+            <h4>Highest Package (last 5 years trends)</h4>
+            <AnimatedImage src="img/hi1.jpg" alt="img" />
+          </div>
+          <div className="h-1-2 divhome">
+            <h4>Average Package (Last 5 Years Trend)</h4>
+            <AnimatedImage src="img/hh.png" alt="img" />
+          </div>
         </div>
-        <div className="p-3">
-          <h2 className="counter-numbers" data-number="5000">0</h2>
-          <h4>ALUMNI SERVING TO CORPORATE WORLD</h4>
-        </div>
-        <div className="p-3">
-          <h2 className="counter-numbers" data-number="48">0</h2>
-          <h4>HIGHEST PACKAGE OFFERED</h4>
+        <div className="h-1">
+          <div className="h1-1 divhome">
+            <h4>Students Selected (Last 5 Years Trend)</h4>
+            <AnimatedImage src="img/hi3.jpg" alt="img" />
+          </div>
+          <div className="h1-2 divhome">
+            <h4>Companies Visited (Last 5 Years Trend)</h4>
+            <AnimatedImage src="img/hi4.jpg" alt="img" />
+          </div>
         </div>
       </div>
-    </section>
-
-
-        <div className="container mt-5 mb-5">
-          <div className="h-1">
-            <div className="h-1-1 divhome">
-              <h4>Highest Package (last 5 years trends)</h4>
-              <img src="img/hi1.jpg" alt="img" className="hig" />
-            </div>
-            <div className="h-1-2 divhome">
-              <h4>Average Package (Last 5 Years Trend)</h4>
-              <img src="img/hh.png" alt="img" height={400} width={560} className="hig" />
-            </div>
-          </div>
-          <div className="h-1">
-            <div className="h1-1 divhome">
-              <h4>Students Selected (Last 5 Years Trend)</h4>
-              <img src="img/hi3.jpg" alt="img" className="hig" />
-            </div>
-            <div className="h1-2 divhome">
-              <h4>Companies Visited (Last 5 Years Trend)</h4>
-              <img src="img/hi4.jpg" alt="img" className="hig" />
-            </div>
-          </div>
-        </div>
-
-        </div>
-  )
+    </div>
+  );
 }
