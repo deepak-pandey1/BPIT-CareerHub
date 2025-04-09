@@ -13,7 +13,7 @@ function Signup() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/user/signup",
+        "https://bpit-careerhub.onrender.com/api/user/signup",
         { username, email, password },
         {
           withCredentials: true,
