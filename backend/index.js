@@ -34,7 +34,8 @@ app.use(
 app.use("/user", userRoute);
 
 // Serve frontend (React build)
-const clientBuildPath = path.join(__dirname, "../../client/build");
+const clientBuildPath = path.join(__dirname, "../client/build");
+
 app.use(express.static(clientBuildPath));
 app.get("*", (req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
