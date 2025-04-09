@@ -15,7 +15,7 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 - Attractive UI with smooth animations using Lottie and Framer Motion
 - Responsive design for mobile and desktop devices
 
-### Prerequisites
+## Prerequisites
 - Node.js and npm (Node Package Manager)
 - MongoDB for database management
 - React.js for frontend development
