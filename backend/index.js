@@ -31,7 +31,7 @@ app.use(
 );
 
 // Routes
-app.use("/user", userRoute);
+app.use("/api/user", userRoute);
 
 // Serve frontend (React build)
 const clientBuildPath = path.join(__dirname, "../client/build");
