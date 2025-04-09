@@ -88,7 +88,10 @@ To run this project locally, follow the steps below:
 - Zod (for validation)
 
 ## Deployment
-The project is deployed on a cloud platform for easy access. You can view the live site once deployed.
+The project is deployed on Render and can be accessed at:
+
+[BPIT Placement Live Site](https://bpit-careerhub.onrender.com)
+
 
 ## Credits
 This project was created to improve the placement process for BPIT students and reduce reliance on third-party platforms. The MERN stack was chosen for its scalability and efficiency in building modern web applications. Special thanks to the open-source community for providing the tools and libraries used in this project.
