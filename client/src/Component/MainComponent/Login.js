@@ -7,14 +7,14 @@ import { UserContext } from "../UserContext"; // Adjust path if needed
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUsername } = useContext(UserContext); // ✅ Use context to update username
+  const { setUsername } = useContext(UserContext);
   const navigateTo = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/user/login",
+        "/api/user/login", // ✅ Relative path for Render fullstack
         { email, password },
         {
           withCredentials: true,
@@ -22,10 +22,10 @@ function Login() {
         }
       );
 
-      // ✅ Save to localStorage & update context
+      // Save to localStorage & update context
       localStorage.setItem("jwt", data.token);
       localStorage.setItem("username", data.user.username);
-      setUsername(data.user.username); // 🔥 This updates Header instantly
+      setUsername(data.user.username);
 
       toast.success(data.message || "Logged in successfully");
       navigateTo("/");
