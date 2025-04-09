@@ -1,74 +1,19 @@
-# BPIT Placement Website
-
-## Description
-BPIT Placement Website is a web application designed for Bhagwan Parshuram Institute of Technology to streamline college placement activities. The platform provides a centralized system for students and companies to connect, replacing the need for third-party platforms. Built using the MERN stack (MongoDB, Express, React, Node.js), the application offers a modern, scalable solution with enhanced performance and user experience compared to traditional systems.
-
-## Features
-- Comprehensive user authentication system for students, companies, and administrators
-- Interactive dashboards for all user types
-- Real-time job posting and application tracking
-- Admin panel for managing placements and users
-- Responsive design optimized for all devices
-- Animated UI elements for enhanced user experience
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v16 or higher)
-- npm (v8 or higher)
-- MongoDB Atlas account or local MongoDB instance
-
-### Installation
-
-1. Clone this repository:
-
-    ```bash
-    git clone https://github.com/your-username/bpit-placement.git
-    ```
-
-2. Navigate to the project folder:
-
-    ```bash
-    cd bpit-placement
-    ```
-
-3. Install backend dependencies:
-
-    ```bash
-    cd backend
-    npm install
-    ```
-
-4. Install frontend dependencies:
-
-    ```bash
-    cd ../frontend
-    npm install
-    ```
-
-5. Set up environment variables:
-   - Create a `.env` file in the backend directory with required credentials
-   - Refer to the Environment Variables section below for details
-
-6. Run the development servers:
-   - In one terminal (backend):
-     ```bash
-     cd backend
-     npm start
-     ```
-   - In another terminal (frontend):
-     ```bash
-     cd frontend
-     npm start
-     ```
-
-7. Open your browser and navigate to `http://localhost:3000` to access the application.
-
-## Environment Variables
-Backend `.env` file should contain:
-```ini
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-EMAILJS_USER_ID=your_emailjs_id
-EMAILJS_TEMPLATE_ID=your_template_id
-EMAILJS_SERVICE_ID=your_service_id
+"dependencies": {
+  "@emailjs/browser": "^3.6.2",
+  "@lottiefiles/dotlottie-react": "^0.13.3",
+  "@testing-library/jest-dom": "^5.16.4",
+  "@testing-library/react": "^13.3.0",
+  "@testing-library/user-event": "^13.5.0",
+  "axios": "^0.27.2",
+  "bootstrap": "^5.2.0",
+  "framer-motion": "^12.6.3",
+  "lucide-react": "^0.487.0",
+  "react": "^18.2.0",
+  "react-bootstrap": "^2.4.0",
+  "react-dom": "^18.2.0",
+  "react-hot-toast": "^2.5.2",
+  "react-icons": "^5.5.0",
+  "react-router-dom": "^6.3.0",
+  "react-scripts": "^5.0.1",
+  "web-vitals": "^2.1.4"
+}
