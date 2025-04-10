@@ -32,89 +32,200 @@ function Signup() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: "100vh", background: "#e7eaf6" }}>
-      <div className="card shadow-lg p-4" style={{ maxWidth: "450px", width: "100%", borderRadius: "20px", background: "#fff", animation: "fadeIn 1s ease-in-out" }}>
-        <h2 className="text-center mb-4" style={{ fontWeight: "700", color: "#264653" }}>Create Account</h2>
+    <div className="signup-wrapper">
+      <div className="signup-card">
+        <h2 className="signup-title">Create Account</h2>
         <form onSubmit={handleRegister}>
-          {/* Username */}
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label fw-semibold">Username</label>
+          <div className="form-group">
+            <label htmlFor="username" className="form-label">Username</label>
             <input
               type="text"
-              className="form-control form-control-lg"
+              className="form-input"
               id="username"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUserName(e.target.value)}
               required
-              style={{ transition: "all 0.3s" }}
             />
           </div>
-          {/* Email */}
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label fw-semibold">Email</label>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">Email</label>
             <input
               type="email"
-              className="form-control form-control-lg"
+              className="form-input"
               id="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              style={{ transition: "all 0.3s" }}
             />
           </div>
-          {/* Password */}
-          <div className="mb-4">
-            <label htmlFor="password" className="form-label fw-semibold">Password</label>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">Password</label>
             <input
               type="password"
-              className="form-control form-control-lg"
+              className="form-input"
               id="password"
               placeholder="Create a password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              style={{ transition: "all 0.3s" }}
             />
           </div>
-
-          {/* Button */}
-          <button
-            type="submit"
-            className="btn btn-primary btn-lg w-100"
-            style={{
-              backgroundColor: "#2a9d8f",
-              border: "none",
-              transition: "all 0.3s",
-              borderRadius: "12px"
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#21867a")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#2a9d8f")}
-          >
+          <button type="submit" className="signup-btn">
             Sign Up
           </button>
-
-          {/* Login link */}
-          <p className="mt-3 text-center text-muted">
+          <p className="login-text">
             Already have an account?{" "}
-            <Link to="/login" style={{ color: "#2a9d8f", textDecoration: "none", fontWeight: "500" }}>
+            <Link to="/login" className="login-link">
               Login
             </Link>
           </p>
         </form>
       </div>
 
-      {/* Animation keyframes */}
+      {/* Styles */}
       <style>
         {`
+          .signup-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #e7eaf6;
+          }
+
+          .signup-card {
+            width: 100%;
+            max-width: 450px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 0.7s ease-in-out;
+            margin-top: -75px;
+          }
+
+          .signup-title {
+            text-align: center;
+            color: #264653;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+          }
+
+          .form-group {
+            margin-bottom: 1.2rem;
+          }
+
+          .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+          }
+
+          .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+          }
+
+          .form-input:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 6px #2a9d8f;
+          }
+
+          .signup-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #2a9d8f;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+          }
+
+          .signup-btn:hover {
+            background-color: #21867a;
+          }
+
+          .login-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.95rem;
+          }
+
+          .login-link {
+            color: #2a9d8f;
+            text-decoration: none;
+            font-weight: 500;
+          }
+
+          .login-link:hover {
+            text-decoration: underline;
+          }
+
           @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
           }
-          input:focus {
-            box-shadow: 0 0 5px #2a9d8f !important;
-            border-color: #2a9d8f !important;
+
+          /* Responsive Styles */
+          @media (max-width: 768px) {
+            .signup-card {
+              padding: 1.5rem;
+              margin-top: -200px;
+            }
+
+            .form-input {
+              padding: 10px 14px;
+              font-size: 0.95rem;
+            }
+
+            .signup-btn {
+              font-size: 1rem;
+              padding: 10px;
+            }
+
+            .signup-title {
+              font-size: 1.6rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .signup-card {
+              padding: 1.2rem;
+              border-radius: 14px;
+
+              margin-top: -130px;
+            }
+
+            .signup-title {
+              font-size: 1.4rem;
+            }
+
+            .form-input {
+              padding: 9px 12px;
+              font-size: 0.9rem;
+            }
+
+            .signup-btn {
+              font-size: 0.95rem;
+              padding: 9px;
+            }
+
+            .login-text {
+              font-size: 0.9rem;
+            }
           }
         `}
       </style>
