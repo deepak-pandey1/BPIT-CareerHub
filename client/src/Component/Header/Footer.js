@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Footer() {
+  let fecha = new Date().getFullYear();
   return (
     <div className="footer-container">
       <footer className="footer">
@@ -9,21 +10,21 @@ export default function Footer() {
           {/* <Link to="/" className="footer-home-link">
             <i className="bi bi-house-door-fill"></i> Home
           </Link> */}
-          <span className="footer-text">© 2025 Company, Inc.</span>
+          <span className="footer-text">&copy; {fecha} All Rights Reserved.</span>
         </div>
 
         {/* Right side - Social icons */}
         <div className="footer-icons">
-          <a href="#" className="footer-icon twitter" aria-label="Twitter">
+          <a href="https://deepak-pandey1.github.io/Portfolio-Deepak-Pandey/#/" target="_blank" className="footer-icon twitter" aria-label="Twitter">
             <i className="bi bi-twitter"></i>
           </a>
-          <a href="#" className="footer-icon facebook" aria-label="Facebook">
+          <a href="https://www.facebook.com/profile.php?id=100007825186951" target="_blank" className="footer-icon facebook" aria-label="Facebook">
             <i className="bi bi-facebook"></i>
           </a>
-          <a href="#" className="footer-icon linkedin" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/deepak-pandey786/" target="_blank" className="footer-icon linkedin" aria-label="LinkedIn">
             <i className="bi bi-linkedin"></i>
           </a>
-          <a href="#" className="footer-icon instagram" aria-label="Instagram">
+          <a href="https://www.instagram.com/the_deepak_pandey/" target="_blank" className="footer-icon instagram" aria-label="Instagram">
             <i className="bi bi-instagram"></i>
           </a>
         </div>
@@ -33,7 +34,7 @@ export default function Footer() {
       <style>{`
         .footer-container {
           background-color: #e7eaf6;
-          margin-top: 50px;
+          margin-top: 0px;
           width: 100%;
         }
 
@@ -108,37 +109,48 @@ export default function Footer() {
 
         /* Tablet and below */
         @media (max-width: 768px) {
-          .footer {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 30px 20px;
-            gap: 20px;
-          }
+        .footer-text {
+        margin-bottom: -10px; 
+      }
 
-          .footer-left {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-          }
+  .footer {
+    flex-direction: row; /* Keep row layout */
+    justify-content: space-between; /* Maintain left and right spacing */
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrap if space is tight */
+    padding: 20px;
+    gap: 10px;
+  }
 
-          .footer-icons {
-            justify-content: flex-start;
-            gap: 15px;
-          }
-        }
+  .footer-left,
+  .footer-icons {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
 
-        /* Small screen tweaks */
-        @media (max-width: 480px) {
-          .footer {
-            align-items: center;
-            text-align: center;
-          }
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between; /* Keep left/right layout */
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 10px;
+  }
 
-          .footer-left, .footer-icons {
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-          }
+  .footer-left,
+  .footer-icons {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+  }
+}
+
         }
       `}</style>
     </div>

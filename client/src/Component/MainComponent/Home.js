@@ -178,10 +178,8 @@ export default function Home() {
             @media (max-width: 767px) {
               .responsive-container {
                 flex-direction: column !important;
-
                 position: absolute;
-top: -100px;
-
+                top: -58px;
               }
               .content {
                 width: 100%;

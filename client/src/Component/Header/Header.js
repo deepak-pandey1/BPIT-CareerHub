@@ -14,8 +14,8 @@ export default function Header() {
   const { username, setUsername } = useContext(UserContext);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+  const mobileNavRef = useRef(null);
 
-  // Persist user state across reloads
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
@@ -23,10 +23,8 @@ export default function Header() {
     }
   }, [setUsername]);
 
-  // Toggle dropdown menu
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
-  // Logout logic
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("username");
@@ -46,69 +44,64 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // 👇 Scroll Hide/Show Nav Logic (for mobile only)
+  useEffect(() => {
+    let lastScrollTop = 0;
+
+    const handleScroll = () => {
+      if (window.innerWidth <= 768 && mobileNavRef.current) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+          // Scrolling down
+          mobileNavRef.current.style.transform = "translateY(100%)";
+        } else {
+          // Scrolling up
+          mobileNavRef.current.style.transform = "translateY(0)";
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
-      <header
-        className="py-1 px-4 sticky-top shadow-sm"
-        style={{ backgroundColor: "#e7eaf6" }}
-      >
+      <header className="py-1 px-4 sticky-top shadow-sm" style={{ backgroundColor: "#e7eaf6" }}>
         <div className="container-fluid">
           <div className="d-flex align-items-center justify-content-between flex-wrap w-100">
             {/* Logo */}
-            <Link
-              to="/"
-              className="d-flex align-items-center text-decoration-none"
-            >
+            <Link to="/" className="d-flex align-items-center text-decoration-none">
               <img width={80} height={65} src="wwww.png" alt="Logo" />
             </Link>
 
             {/* Navigation Links for larger screens */}
             <div className="d-none d-md-flex align-items-center">
-              <Link to="/About" className="nav-link nav-custom">
-                About
-              </Link>
-              <Link to="/Contact" className="nav-link nav-custom">
-                Contact
-              </Link>
-              <Link to="/Faq" className="nav-link nav-custom">
-                FAQ
-              </Link>
-              <Link to="/Company" className="nav-link nav-custom">
-                Company
-              </Link>
+              <Link to="/About" className="nav-link nav-custom">About</Link>
+              <Link to="/Contact" className="nav-link nav-custom">Contact</Link>
+              <Link to="/Faq" className="nav-link nav-custom">FAQ</Link>
+              <Link to="/Company" className="nav-link nav-custom">Company</Link>
             </div>
 
             {/* Right Side (User or Login) */}
             <div className="text-end d-flex align-items-center">
               {username ? (
                 <div className="position-relative" ref={dropdownRef}>
-                  <div
-                    className="user-circle"
-                    onClick={toggleDropdown}
-                    title={username}
-                  >
+                  <div className="user-circle" onClick={toggleDropdown} title={username}>
                     {getInitial(username)}
                   </div>
                   <div
-                    className={`dropdown-menu mt-2 ${
-                      dropdownOpen ? "show" : ""
-                    }`}
+                    className={`dropdown-menu mt-2 ${dropdownOpen ? "show" : ""}`}
                     style={{
                       opacity: dropdownOpen ? 1 : 0,
-                      transform: dropdownOpen
-                        ? "translateY(0)"
-                        : "translateY(-10px)",
+                      transform: dropdownOpen ? "translateY(0)" : "translateY(-10px)",
                       pointerEvents: dropdownOpen ? "auto" : "none",
                       transition: "all 0.3s ease",
                     }}
                   >
-                    <Link to="/profile" className="dropdown-item">
-                      Profile / Settings
-                    </Link>
-                    <button
-                      className="dropdown-item text-danger"
-                      onClick={handleLogout}
-                    >
+                    <Link to="/profile" className="dropdown-item">Profile / Settings</Link>
+                    <button className="dropdown-item text-danger" onClick={handleLogout}>
                       Logout
                     </button>
                   </div>
@@ -116,17 +109,10 @@ export default function Header() {
               ) : (
                 <>
                   <Link to="/Login">
-                    <button
-                      type="button"
-                      className="btn btn-outline-dark me-2 btn-hover"
-                    >
-                      Login
-                    </button>
+                    <button type="button" className="btn btn-outline-dark me-2 btn-hover">Login</button>
                   </Link>
                   <Link to="/Signup">
-                    <button type="button" className="btn btn-dark btn-hover">
-                      Sign-up
-                    </button>
+                    <button type="button" className="btn btn-dark btn-hover">Sign-up</button>
                   </Link>
                 </>
               )}
@@ -135,9 +121,9 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Nav with Icons (LinkedIn style icons) */}
-      <div className="d-md-none fixed-bottom text-center mt-3 mb-3 hello">
-        <ul className="nav justify-content-center">
+      {/* 📱 Mobile Nav with Scroll Hide Behavior */}
+      <div ref={mobileNavRef} className="d-md-none mobile-nav-transition">
+        <ul className="nav justify-content-center w-100">
           <li className="nav-item">
             <Link to="/About" className="nav-link nav-custom">
               <FaInfoCircle size={20} />
@@ -161,7 +147,7 @@ export default function Header() {
         </ul>
       </div>
 
-      {/* Styles */}
+      {/* ✅ UPDATED CSS BELOW */}
       <style>{`
         .nav-custom {
           color: #000;
@@ -188,6 +174,7 @@ export default function Header() {
           color: #1a1a1a;
           transform: translateY(-2px);
         }
+
         .btn-hover {
           transition: all 0.3s ease;
         }
@@ -213,6 +200,7 @@ export default function Header() {
         .user-circle:hover {
           background-color: #21867a;
         }
+
         .dropdown-menu {
           position: absolute;
           right: 0;
@@ -223,6 +211,7 @@ export default function Header() {
           min-width: 180px;
           z-index: 1000;
         }
+
         .dropdown-item {
           padding: 10px 16px;
           font-weight: 500;
@@ -235,48 +224,45 @@ export default function Header() {
           background-color: #f1f1f1;
         }
 
-        /* Mobile specific layout */
-        .container-fluid {
-          padding-left: 0;
-          padding-right: 0;
-        }
-
+        /* ✅ Mobile Nav Fixes */
         @media (max-width: 768px) {
-  .nav-custom {
-    top: 20px;
-  }
+          .mobile-nav-transition {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            background-color: #e7eaf6;
+            padding: 10px 0;
+            border-top: 1px solid black;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+          }
 
-  .container-fluid {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+          .nav-item {
+            flex: 1;
+            text-align: center;
+          }
 
-  .nav {
-    display: flex;
-    justify-content: space-around; /* evenly space icons */
-    align-items: center;
-    border-radius: 15px;
-    background-color: #e7eaf6;
-    padding: 15px 0; /* top-bottom padding */
-    padding-top: 0px; 
-    border: 1px solid black;
-    position: fixed;
-    bottom: 0;
-    width: 100%; /* ensure full width */
-    left: 0; /* make sure it's centered */
-  }
+          .nav-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 0;
+          }
 
-  .nav-item {
-    flex: 1; /* take equal space */
-    text-align: center;
-  }
+          .nav-link svg {
+            display: block;
+            margin: auto;
+          }
 
-  .user-circle {
-    margin-left: auto;
-  }
-}
-
+          .user-circle {
+            margin-left: auto;
+          }
+        }
       `}</style>
     </div>
   );
