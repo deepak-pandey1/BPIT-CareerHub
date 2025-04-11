@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { motion } from 'framer-motion';
 
 function Community() {
   const audioRef = useRef(null);
@@ -11,11 +12,9 @@ function Community() {
           console.log('Autoplay prevented:', err);
         });
       }
-      // Remove the listener after first interaction
       window.removeEventListener('click', playAudio);
     };
 
-    // Add listener to detect first user interaction
     window.addEventListener('click', playAudio);
 
     return () => {
@@ -24,26 +23,21 @@ function Community() {
   }, []);
 
   return (
-    <div>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100 p-4">
       <audio ref={audioRef} src="/ss1.mp3" />
 
-      <DotLottieReact
-      src="https://lottie.host/4718dd37-a2e2-4323-a7ee-42241d0cb7c3/EJjKwcqT9H.lottie"
-      loop
-      autoplay
-    />
-
-<DotLottieReact
-      src="https://lottie.host/3ca80eb0-262d-4543-8596-33a7481ba34f/CBlr7Ovjm9.lottie"
-      loop
-      autoplay
-    />
-
-<DotLottieReact
-      src="https://lottie.host/bc62485b-291c-4f89-856a-b32d21b52649/TPbUDqXRgG.lottie"
-      loop
-      autoplay
-    />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+        className="max-w-lg w-full shadow-xl rounded-2xl  p-6"
+      >
+        <DotLottieReact
+          src="https://lottie.host/2f8fc659-cf92-46e9-986a-298f7754f602/nfiYSGsdKK.lottie"
+          loop
+          autoplay
+        />
+      </motion.div>
     </div>
   );
 }
