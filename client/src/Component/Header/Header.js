@@ -6,7 +6,10 @@ import {
   FaPhoneAlt,
   FaQuestionCircle,
   FaBuilding,
+  FaHome,
+  FaUsers, // ✅ New icon for Community
 } from "react-icons/fa";
+import { motion } from "framer-motion"; // ✅ Import Framer Motion
 import Sidebar from "../Sidebar";
 
 export default function Header() {
@@ -48,6 +51,7 @@ export default function Header() {
             </div>
 
             <div className="center-section d-none d-md-flex">
+              <Link to="/" className="nav-link nav-custom">Home</Link>
               <Link to="/About" className="nav-link nav-custom">About</Link>
               <Link to="/Contact" className="nav-link nav-custom">Contact</Link>
               <Link to="/Faq" className="nav-link nav-custom">FAQ</Link>
@@ -55,6 +59,21 @@ export default function Header() {
             </div>
 
             <div className="right-section">
+              {username && (
+                <Link to="/Community" className="nav-link nav-custom community-icon">
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <FaUsers size={26} />
+                  </motion.div>
+                </Link>
+              )}
               {!username && (
                 <div className="auth-buttons">
                   <Link to="/Login">
@@ -73,28 +92,40 @@ export default function Header() {
       <div ref={mobileNavRef} className="d-md-none mobile-nav-transition">
         <ul className="nav justify-content-center w-100">
           <li className="nav-item">
-            <Link to="/About" className="nav-link nav-custom">
-              <FaInfoCircle size={20} />
-            </Link>
+            <Link to="/" className="nav-link nav-custom"><FaHome size={20} /></Link>
           </li>
           <li className="nav-item">
-            <Link to="/Contact" className="nav-link nav-custom">
-              <FaPhoneAlt size={20} />
-            </Link>
+            <Link to="/About" className="nav-link nav-custom"><FaInfoCircle size={20} /></Link>
           </li>
           <li className="nav-item">
-            <Link to="/Faq" className="nav-link nav-custom">
-              <FaQuestionCircle size={20} />
-            </Link>
+            <Link to="/Contact" className="nav-link nav-custom"><FaPhoneAlt size={20} /></Link>
           </li>
           <li className="nav-item">
-            <Link to="/Company" className="nav-link nav-custom">
-              <FaBuilding size={20} />
-            </Link>
+            <Link to="/Faq" className="nav-link nav-custom"><FaQuestionCircle size={20} /></Link>
           </li>
+          <li className="nav-item">
+            <Link to="/Company" className="nav-link nav-custom"><FaBuilding size={20} /></Link>
+          </li>
+          {/* {username && (
+            <li className="nav-item">
+              <Link to="/Community" className="nav-link nav-custom">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <FaUsers size={20} />
+                </motion.div>
+              </Link>
+            </li>
+          )} */}
         </ul>
       </div>
 
+      {/* CSS remains unchanged */}
       <style>{`
         .custom-header {
           background-color: #e7eaf6;
@@ -138,12 +169,12 @@ export default function Header() {
         }
 
         .auth-btn {
-        position: relative;
-        bottom: -3px;
-        // margin-top: 100;
+          position: relative;
+          bottom: -3px;
           min-width: 0px;
           padding: 7px 15px;
           font-size: 0.95rem;
+
         }
 
         .nav-custom {
@@ -153,6 +184,8 @@ export default function Header() {
           margin: 0 10px;
           position: relative;
           transition: all 0.3s ease-in-out;
+
+          
         }
 
         .nav-custom::after {
@@ -223,9 +256,8 @@ export default function Header() {
           }
 
           .auth-btn {
-                  position: relative;
-        bottom: -5px;
-
+            position: relative;
+            bottom: -5px;
             min-width: 90px;
             padding: 6px 12px;
             font-size: 0.85rem;
@@ -234,7 +266,6 @@ export default function Header() {
 
         @media (max-width: 480px) {
           .auth-btn {
-
             min-width: 80px;
             font-size: 0.8rem;
             padding: 5px 10px;

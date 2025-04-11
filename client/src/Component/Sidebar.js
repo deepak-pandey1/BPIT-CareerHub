@@ -128,6 +128,22 @@ export default function Sidebar() {
       </AnimatePresence>
 
       <style>{`
+
+      .sidebar-container {
+  position: relative;
+  height: 100px; /* or your preferred height */
+  // background-color: #eee;
+}
+
+.avatar-button {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  margin-left: -19px;
+}
+
+
+
         .overlay {
           position: fixed;
           top: 0;
@@ -180,6 +196,9 @@ export default function Sidebar() {
           justify-content: space-between;
           align-items: flex-start;
           padding: 20px 16px 0;
+          border-bottom: 1px solid #ddd;
+            padding-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* soft bottom shadow */
         }
 
         .profile-box {
@@ -245,6 +264,10 @@ export default function Sidebar() {
         .logout-section {
           padding: 16px;
           border-top: 1px solid rgba(255,255,255,0.1);
+
+          border-top: 1px solid #ddd;
+            padding-top: 30px;
+  margin-top: 8px;
         }
 
         .logout-btn {
@@ -273,6 +296,15 @@ export default function Sidebar() {
           .logout-btn {
             bottom: 50px;
           }
+
+                  .logout-section {
+          padding: 16px;
+          border-top: 1px solid rgba(255,255,255,0.1);
+
+          border-top: 1px solid #ddd;
+            padding-top: 60px;
+  margin-top: 8px;
+        }
         }
       `}</style>
     </>

@@ -11,6 +11,7 @@ import Signup from './Component/MainComponent/Signup'
 import Company from './Component/MainComponent/Company'
 import Login from './Component/MainComponent/Login'
 import Apply from './Component/MainComponent/Apply'
+import Community from './Component/MainComponent/Community'
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState } from 'react';
@@ -31,6 +32,7 @@ function App() {
                <Route path='/Profile' element = {<Profile/>} />
                <Route path='/Company' element = {<Company />} />
                <Route path='/Apply' element = {user && user._id ? <Apply setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>} />
+               <Route path='/Community' element = {<Community />} />
             
 
           </Routes>
