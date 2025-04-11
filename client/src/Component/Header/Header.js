@@ -40,49 +40,36 @@ export default function Header() {
 
   return (
     <div>
-      <header
-        className="py-1 px-4 sticky-top shadow-sm"
-        style={{ backgroundColor: "#e7eaf6", minHeight: "65px" }}
-      >
+      <header className="custom-header">
         <div className="container-fluid">
-          <div className="d-flex align-items-center justify-content-between flex-wrap w-100">
-            {/* Sidebar - Fixed width or flex: 1 */}
-            <div className="d-flex align-items-center" style={{ flex: 1 }}>
-              <Link to="/" className="text-decoration-none" style={{ minHeight: "55px" }}>
-                <Sidebar />
-              </Link>
+          <div className="header-inner">
+            <div className="left-section">
+              <Sidebar />
             </div>
 
-            {/* Nav links - Centered always */}
-            <div className="d-none d-md-flex align-items-center justify-content-center" style={{ flex: 1 }}>
+            <div className="center-section d-none d-md-flex">
               <Link to="/About" className="nav-link nav-custom">About</Link>
               <Link to="/Contact" className="nav-link nav-custom">Contact</Link>
               <Link to="/Faq" className="nav-link nav-custom">FAQ</Link>
               <Link to="/Company" className="nav-link nav-custom">Company</Link>
             </div>
 
-            {/* Right side buttons */}
-            <div className="d-flex align-items-center justify-content-end" style={{ flex: 1 }}>
-              {username ? (
-                <>
-                  {/* Keep empty space to preserve layout */}
-                </>
-              ) : (
-                <>
+            <div className="right-section">
+              {!username && (
+                <div className="auth-buttons">
                   <Link to="/Login">
-                    <button type="button" className="btn btn-outline-dark me-2 btn-hover">Login</button>
+                    <button type="button" className="btn btn-outline-dark btn-hover auth-btn">Login</button>
                   </Link>
                   <Link to="/Signup">
-                    <button type="button" className="btn btn-dark btn-hover">Sign-up</button>
+                    <button type="button" className="btn btn-dark btn-hover auth-btn">Sign-up</button>
                   </Link>
-                </>
+                </div>
               )}
             </div>
           </div>
         </div>
       </header>
 
-      {/* 📱 Mobile Bottom Nav */}
       <div ref={mobileNavRef} className="d-md-none mobile-nav-transition">
         <ul className="nav justify-content-center w-100">
           <li className="nav-item">
@@ -108,8 +95,57 @@ export default function Header() {
         </ul>
       </div>
 
-      {/* ✅ Styles */}
       <style>{`
+        .custom-header {
+          background-color: #e7eaf6;
+          min-height: 65px;
+          padding: 10px 20px;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .left-section,
+        .center-section,
+        .right-section {
+          display: flex;
+          align-items: center;
+          flex: 1;
+        }
+
+        .center-section {
+          justify-content: center;
+        }
+
+        .right-section {
+          justify-content: flex-end;
+        }
+
+        .auth-buttons {
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          flex-wrap: nowrap;
+        }
+
+        .auth-btn {
+        position: relative;
+        bottom: -3px;
+        // margin-top: 100;
+          min-width: 0px;
+          padding: 7px 15px;
+          font-size: 0.95rem;
+        }
+
         .nav-custom {
           color: #000;
           font-weight: 500;
@@ -118,6 +154,7 @@ export default function Header() {
           position: relative;
           transition: all 0.3s ease-in-out;
         }
+
         .nav-custom::after {
           content: "";
           position: absolute;
@@ -128,9 +165,11 @@ export default function Header() {
           background-color: #000;
           transition: width 0.3s ease;
         }
+
         .nav-custom:hover::after {
           width: 100%;
         }
+
         .nav-custom:hover {
           color: #1a1a1a;
           transform: translateY(-2px);
@@ -139,6 +178,7 @@ export default function Header() {
         .btn-hover {
           transition: all 0.3s ease;
         }
+
         .btn-hover:hover {
           transform: scale(1.05);
           box-shadow: 0 2px 10px rgba(0,0,0,0.15);
@@ -176,6 +216,28 @@ export default function Header() {
           .nav-link svg {
             display: block;
             margin: auto;
+          }
+
+          .auth-buttons {
+            gap: 8px;
+          }
+
+          .auth-btn {
+                  position: relative;
+        bottom: -5px;
+
+            min-width: 90px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .auth-btn {
+
+            min-width: 80px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
           }
         }
       `}</style>

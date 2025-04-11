@@ -111,7 +111,7 @@ export default function Sidebar() {
 
       <style>{`
         .avatar-button {
-          position: fixed;
+          // position: fixed;
           top: 10px;
           left: 30px;
           width: 45px;
@@ -222,6 +222,9 @@ export default function Sidebar() {
         }
 
         .logout-btn {
+        position: relative;
+        bottom: 20px;
+
           width: 100%;
           padding: 10px;
           background-color: #113f67;
@@ -240,6 +243,29 @@ export default function Sidebar() {
         .logout-btn:hover {
           background-color:rgb(0, 52, 97);
         }
+
+        @media (max-width: 768px) {
+             .logout-btn {
+        position: relative;
+        bottom: 30px;
+
+          // width: 100%;
+          // padding: 10px;
+          // background-color: #113f67;
+          // color: white;
+          // border: none;
+          // border-radius: 6px;
+          // font-size: 1rem;
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          // gap: 8px;
+          // cursor: pointer;
+          // transition: background 0.2s ease-in-out;
+        }
+        }
+
+
       `}</style>
     </>
   );
