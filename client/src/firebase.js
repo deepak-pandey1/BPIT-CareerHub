@@ -24,3 +24,12 @@ const provider = new GoogleAuthProvider();
 
 // ✅ Export for use in Login page
 export { auth, provider };
+
+
+
+
+// PORT=4001
+// MONGODB_URI=mongodb+srv://deepakpandeyofficially:yPgg7mZFJvXvdK24@cluster0.vg2w9jx.mongodb.net/placement
+
+// JWT_SECRET_KEY=81gpOxCPlBOrKhuxojvHc4nxphqSu+fpe8THkonCpCE=
+// FRONTEND_URL=https://bpit-careerhub.onrender.com

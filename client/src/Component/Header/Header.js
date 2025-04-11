@@ -1,19 +1,17 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import {
-  FaLinkedin,
   FaInfoCircle,
   FaPhoneAlt,
   FaQuestionCircle,
   FaBuilding,
 } from "react-icons/fa";
+import Sidebar from "../Sidebar";
 
 export default function Header() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { username, setUsername } = useContext(UserContext);
   const navigate = useNavigate();
-  const dropdownRef = useRef(null);
   const mobileNavRef = useRef(null);
 
   useEffect(() => {
@@ -23,89 +21,52 @@ export default function Header() {
     }
   }, [setUsername]);
 
-  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
-
-  const handleLogout = () => {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("username");
-    setUsername("");
-    navigate("/login");
-  };
-
-  const getInitial = (name) => name?.charAt(0)?.toUpperCase();
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // 👇 Scroll Hide/Show Nav Logic (for mobile only)
   useEffect(() => {
     let lastScrollTop = 0;
-
     const handleScroll = () => {
       if (window.innerWidth <= 768 && mobileNavRef.current) {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > lastScrollTop) {
-          // Scrolling down
           mobileNavRef.current.style.transform = "translateY(100%)";
         } else {
-          // Scrolling up
           mobileNavRef.current.style.transform = "translateY(0)";
         }
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div>
-      <header className="py-1 px-4 sticky-top shadow-sm" style={{ backgroundColor: "#e7eaf6" }}>
+      <header
+        className="py-1 px-4 sticky-top shadow-sm"
+        style={{ backgroundColor: "#e7eaf6", minHeight: "65px" }}
+      >
         <div className="container-fluid">
           <div className="d-flex align-items-center justify-content-between flex-wrap w-100">
-            {/* Logo */}
-            <Link to="/" className="d-flex align-items-center text-decoration-none">
-              <img width={80} height={65} src="wwww.png" alt="Logo" />
-            </Link>
+            {/* Sidebar - Fixed width or flex: 1 */}
+            <div className="d-flex align-items-center" style={{ flex: 1 }}>
+              <Link to="/" className="text-decoration-none" style={{ minHeight: "55px" }}>
+                <Sidebar />
+              </Link>
+            </div>
 
-            {/* Navigation Links for larger screens */}
-            <div className="d-none d-md-flex align-items-center">
+            {/* Nav links - Centered always */}
+            <div className="d-none d-md-flex align-items-center justify-content-center" style={{ flex: 1 }}>
               <Link to="/About" className="nav-link nav-custom">About</Link>
               <Link to="/Contact" className="nav-link nav-custom">Contact</Link>
               <Link to="/Faq" className="nav-link nav-custom">FAQ</Link>
               <Link to="/Company" className="nav-link nav-custom">Company</Link>
             </div>
 
-            {/* Right Side (User or Login) */}
-            <div className="text-end d-flex align-items-center">
+            {/* Right side buttons */}
+            <div className="d-flex align-items-center justify-content-end" style={{ flex: 1 }}>
               {username ? (
-                <div className="position-relative" ref={dropdownRef}>
-                  <div className="user-circle" onClick={toggleDropdown} title={username}>
-                    {getInitial(username)}
-                  </div>
-                  <div
-                    className={`dropdown-menu mt-2 ${dropdownOpen ? "show" : ""}`}
-                    style={{
-                      opacity: dropdownOpen ? 1 : 0,
-                      transform: dropdownOpen ? "translateY(0)" : "translateY(-10px)",
-                      pointerEvents: dropdownOpen ? "auto" : "none",
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    <Link to="/profile" className="dropdown-item">Profile / Settings</Link>
-                    <button className="dropdown-item text-danger" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </div>
-                </div>
+                <>
+                  {/* Keep empty space to preserve layout */}
+                </>
               ) : (
                 <>
                   <Link to="/Login">
@@ -121,7 +82,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* 📱 Mobile Nav with Scroll Hide Behavior */}
+      {/* 📱 Mobile Bottom Nav */}
       <div ref={mobileNavRef} className="d-md-none mobile-nav-transition">
         <ul className="nav justify-content-center w-100">
           <li className="nav-item">
@@ -147,7 +108,7 @@ export default function Header() {
         </ul>
       </div>
 
-      {/* ✅ UPDATED CSS BELOW */}
+      {/* ✅ Styles */}
       <style>{`
         .nav-custom {
           color: #000;
@@ -183,48 +144,6 @@ export default function Header() {
           box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
-        .user-circle {
-          background-color: #2a9d8f;
-          color: white;
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          cursor: pointer;
-          font-size: 1.1rem;
-          transition: all 0.3s ease;
-        }
-        .user-circle:hover {
-          background-color: #21867a;
-        }
-
-        .dropdown-menu {
-          position: absolute;
-          right: 0;
-          background: white;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          min-width: 180px;
-          z-index: 1000;
-        }
-
-        .dropdown-item {
-          padding: 10px 16px;
-          font-weight: 500;
-          text-decoration: none;
-          display: block;
-          color: #333;
-          cursor: pointer;
-        }
-        .dropdown-item:hover {
-          background-color: #f1f1f1;
-        }
-
-        /* ✅ Mobile Nav Fixes */
         @media (max-width: 768px) {
           .mobile-nav-transition {
             display: flex;
@@ -258,43 +177,8 @@ export default function Header() {
             display: block;
             margin: auto;
           }
-
-          .user-circle {
-            margin-left: auto;
-          }
         }
       `}</style>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PORT=4001
-// MONGODB_URI=mongodb+srv://deepakpandeyofficially:yPgg7mZFJvXvdK24@cluster0.vg2w9jx.mongodb.net/placement
-
-// JWT_SECRET_KEY=81gpOxCPlBOrKhuxojvHc4nxphqSu+fpe8THkonCpCE=
-// FRONTEND_URL=https://bpit-careerhub.onrender.com
