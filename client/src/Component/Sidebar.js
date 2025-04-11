@@ -18,7 +18,6 @@ export default function Sidebar() {
 
   const getInitial = (name) => name?.charAt(0)?.toUpperCase();
 
-  // Close sidebar on outside click
   useEffect(() => {
     function handleClickOutside(e) {
       if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
@@ -28,6 +27,11 @@ export default function Sidebar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => (document.body.style.overflow = "auto");
+  }, [isOpen]);
 
   const handleLogout = () => {
     localStorage.removeItem("username");
@@ -39,7 +43,19 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Avatar Button (shown when sidebar is closed) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -56,7 +72,6 @@ export default function Sidebar() {
         )}
       </AnimatePresence>
 
-      {/* Sidebar Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -77,13 +92,14 @@ export default function Sidebar() {
               </button>
             </div>
 
-            {/* <ul className="sidebar-menu">
+
+              <ul className="sidebar-menu">
               <li>
-                <Link to="/About" onClick={() => setIsOpen(false)}>
-                  <FaInfoCircle /> <span>About</span>
+                <Link to="#" onClick={() => setIsOpen(false)}>
+                  <FaInfoCircle /> <span>ATS Optimizer</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/Contact" onClick={() => setIsOpen(false)}>
                   <FaPhoneAlt /> <span>Contact</span>
                 </Link>
@@ -97,8 +113,10 @@ export default function Sidebar() {
                 <Link to="/Company" onClick={() => setIsOpen(false)}>
                   <FaBuilding /> <span>Company</span>
                 </Link>
-              </li>
-            </ul> */}
+              </li> */}
+            </ul>
+
+
 
             <div className="logout-section">
               <button className="logout-btn" onClick={handleLogout}>
@@ -110,8 +128,18 @@ export default function Sidebar() {
       </AnimatePresence>
 
       <style>{`
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: black;
+          opacity: 0.5;
+          z-index: 1099;
+        }
+
         .avatar-button {
-          // position: fixed;
           top: 10px;
           left: 30px;
           width: 45px;
@@ -141,9 +169,8 @@ export default function Sidebar() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-
           backdrop-filter: blur(20px);
-          background-color: rgba(255, 255, 255, 0.15);
+          background-color: #f1f1f1; /* brightened background */
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
@@ -157,14 +184,14 @@ export default function Sidebar() {
 
         .profile-box {
           display: flex;
-          flex-direction: column;
+          flex-direction: row; /* updated to horizontal layout */
           align-items: center;
-          gap: 8px;
+          gap: 12px;
         }
 
         .sidebar-avatar {
-          width: 60px;
-          height: 60px;
+          width: 50px;
+          height: 50px;
           border-radius: 50%;
           background-color: #2a9d8f;
           color: white;
@@ -179,7 +206,6 @@ export default function Sidebar() {
           color: #113f67;
           font-size: 1rem;
           font-weight: 600;
-          text-align: center;
           max-width: 120px;
           word-wrap: break-word;
         }
@@ -222,9 +248,8 @@ export default function Sidebar() {
         }
 
         .logout-btn {
-        position: relative;
-        bottom: 20px;
-
+          position: relative;
+          bottom: 20px;
           width: 100%;
           padding: 10px;
           background-color: #113f67;
@@ -241,31 +266,14 @@ export default function Sidebar() {
         }
 
         .logout-btn:hover {
-          background-color:rgb(0, 52, 97);
+          background-color: rgb(0, 52, 97);
         }
 
         @media (max-width: 768px) {
-             .logout-btn {
-        position: relative;
-        bottom: 30px;
-
-          // width: 100%;
-          // padding: 10px;
-          // background-color: #113f67;
-          // color: white;
-          // border: none;
-          // border-radius: 6px;
-          // font-size: 1rem;
-          // display: flex;
-          // align-items: center;
-          // justify-content: center;
-          // gap: 8px;
-          // cursor: pointer;
-          // transition: background 0.2s ease-in-out;
+          .logout-btn {
+            bottom: 50px;
+          }
         }
-        }
-
-
       `}</style>
     </>
   );
