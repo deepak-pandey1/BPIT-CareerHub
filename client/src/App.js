@@ -1,4 +1,3 @@
-// import logo from './logo.svg'
 import './App.css';
 import './style.css';
 import Header from './Component/Header/Header';
@@ -15,13 +14,36 @@ import Community from './Component/MainComponent/Community';
 import Profile from './Component/MainComponent/Profile';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Loader from './Component/Loader';
+import Ats from './Component/MainComponent/Ats';
+
+
 
 function App() {
   const [user, setLoginUser] = useState({});
+  const [showLoader, setShowLoader] = useState(true);
+  const [startFade, setStartFade] = useState(false);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setStartFade(true); // Start fading after 3s
+    }, 3000);
+
+    const timer2 = setTimeout(() => {
+      setShowLoader(false); // Remove from DOM after fade-out
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <div className="page-wrapper">
+      {showLoader && <Loader fadeOut={startFade} />}
+
       <BrowserRouter>
         <Header />
         <main className="main-content">
@@ -45,6 +67,7 @@ function App() {
               }
             />
             <Route path="/Community" element={<Community />} />
+            <Route path="/Ats" element={<Ats />} />
           </Routes>
         </main>
         <Footer />

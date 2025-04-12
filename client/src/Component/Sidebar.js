@@ -95,7 +95,7 @@ export default function Sidebar() {
 
               <ul className="sidebar-menu">
               <li>
-                <Link to="#" onClick={() => setIsOpen(false)}>
+                <Link to="/Ats" onClick={() => setIsOpen(false)}>
                   <FaInfoCircle /> <span>ATS Optimizer</span>
                 </Link>
               </li>
