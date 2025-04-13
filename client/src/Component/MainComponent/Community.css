@@ -7,7 +7,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   animation: fadeInContainer 0.5s ease-in-out;
 
-  padding-top: env(safe-area-inset-top, 20px);
 }
 
 @keyframes fadeInContainer {
@@ -200,5 +199,19 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .community-container {
+    padding-top: env(safe-area-inset-top, 20px);
+    padding-top: constant(safe-area-inset-top, 20px); /* for older iOS */
+  }
+
+  .community-container h2 {
+    position: sticky;
+    top: 0;
+    z-index: 20;
   }
 }
