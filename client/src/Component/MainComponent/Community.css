@@ -176,3 +176,27 @@
   font-size: 1.5em;
   margin-right: 10px;
 }
+
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px; /* Adjust height as needed */
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
