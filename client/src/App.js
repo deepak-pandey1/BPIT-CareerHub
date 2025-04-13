@@ -1,3 +1,4 @@
+// App.js
 import './App.css';
 import './style.css';
 import Header from './Component/Header/Header';
@@ -12,13 +13,59 @@ import Login from './Component/MainComponent/Login';
 import Apply from './Component/MainComponent/Apply';
 import Community from './Component/MainComponent/Community';
 import Profile from './Component/MainComponent/Profile';
+import Ats from './Component/MainComponent/Ats';
+import Internship from './Component/MainComponent/Internship';
+import Gamification from './Component/MainComponent/Gamification';
+import Alumni from './Component/MainComponent/Alumni';
+import Referral from './Component/MainComponent/Referral';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loader from './Component/Loader';
-import Ats from './Component/MainComponent/Ats';
 
+// 👇 This component now uses useLocation correctly
+function AppContent({ user, setLoginUser }) {
+  const location = useLocation();
 
+  return (
+    <>
+      <Header />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Faq" element={<Faq />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login setLoginUser={setLoginUser} />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Company" element={<Company />} />
+          <Route
+            path="/Apply"
+            element={
+              user && user._id ? (
+                <Apply setLoginUser={setLoginUser} />
+              ) : (
+                <Login setLoginUser={setLoginUser} />
+              )
+            }
+          />
+          <Route path="/Ats" element={<Ats />} />
+          <Route path="/Community" element={<Community />} />
+          <Route path="/Internship" element={<Internship />} />
+          <Route path="/Gamification" element={<Gamification />} />
+          <Route path="/Alumni" element={<Alumni />} />
+          <Route path="/Referral" element={<Referral />} />
+        </Routes>
+      </main>
+      {/* 👇 Conditionally render Footer */}
+      {location.pathname !== '/Community' && <Footer />}
+    </>
+  );
+}
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -26,13 +73,8 @@ function App() {
   const [startFade, setStartFade] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setStartFade(true); // Start fading after 3s
-    }, 3000);
-
-    const timer2 = setTimeout(() => {
-      setShowLoader(false); // Remove from DOM after fade-out
-    }, 4000);
+    const timer1 = setTimeout(() => setStartFade(true), 3000);
+    const timer2 = setTimeout(() => setShowLoader(false), 4000);
 
     return () => {
       clearTimeout(timer1);
@@ -43,34 +85,8 @@ function App() {
   return (
     <div className="page-wrapper">
       {showLoader && <Loader fadeOut={startFade} />}
-
       <BrowserRouter>
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/Faq" element={<Faq />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/Login" element={<Login setLoginUser={setLoginUser} />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Company" element={<Company />} />
-            <Route
-              path="/Apply"
-              element={
-                user && user._id ? (
-                  <Apply setLoginUser={setLoginUser} />
-                ) : (
-                  <Login setLoginUser={setLoginUser} />
-                )
-              }
-            />
-            <Route path="/Community" element={<Community />} />
-            <Route path="/Ats" element={<Ats />} />
-          </Routes>
-        </main>
-        <Footer />
+        <AppContent user={user} setLoginUser={setLoginUser} />
       </BrowserRouter>
     </div>
   );

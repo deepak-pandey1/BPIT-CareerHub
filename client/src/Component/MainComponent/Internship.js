@@ -24,7 +24,7 @@ function Community() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100 p-4">
-      <audio ref={audioRef} src="/ss1.mp3" />
+      <audio ref={audioRef} src="/ss2.mp3" />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -32,11 +32,11 @@ function Community() {
         transition={{ duration: 1, ease: 'easeOut' }}
         className="max-w-lg w-full shadow-xl rounded-2xl  p-6"
       >
-        <DotLottieReact
-          src="https://lottie.host/2f8fc659-cf92-46e9-986a-298f7754f602/nfiYSGsdKK.lottie"
-          loop
-          autoplay
-        />
+    <DotLottieReact
+      src="https://lottie.host/bcfadeb4-0925-4558-9717-0cfb8b620441/ciS1DDBcdl.lottie"
+      loop
+      autoplay
+    />
       </motion.div>
     </div>
   );

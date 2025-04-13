@@ -70,7 +70,7 @@ export default function Header() {
                     }}
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <FaUsers size={26} />
+                    <FaUsers size={28} />
                   </motion.div>
                 </Link>
               )}

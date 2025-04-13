@@ -6,7 +6,7 @@ import userRoute from "./routes/user.route.js"; // use relative path from index.
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-
+import messageRoute from "./routes/message.route.js";
 
 // Setup for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -32,6 +32,8 @@ app.use(
 
 // Routes
 app.use("/api/user", userRoute);
+app.use("/api/message", messageRoute);
+
 
 // Serve frontend (React build)
 const clientBuildPath = path.join(__dirname, "../client/build");

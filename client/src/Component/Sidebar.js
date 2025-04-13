@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { UserContext } from "./UserContext.js";
 import { motion, AnimatePresence } from "framer-motion";
+import {  FaLaptopCode, FaGamepad, FaUsers, FaShareAlt } from "react-icons/fa";
+
 
 export default function Sidebar() {
   const { username, setUsername } = useContext(UserContext);
@@ -93,27 +95,32 @@ export default function Sidebar() {
             </div>
 
 
-              <ul className="sidebar-menu">
+            <ul className="sidebar-menu">
               <li>
                 <Link to="/Ats" onClick={() => setIsOpen(false)}>
                   <FaInfoCircle /> <span>ATS Optimizer</span>
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/Contact" onClick={() => setIsOpen(false)}>
-                  <FaPhoneAlt /> <span>Contact</span>
+              <li>
+                <Link to="/Internship" onClick={() => setIsOpen(false)}>
+                  <FaLaptopCode /> <span>Internship Portal</span>
                 </Link>
               </li>
               <li>
-                <Link to="/Faq" onClick={() => setIsOpen(false)}>
-                  <FaQuestionCircle /> <span>FAQ</span>
+                <Link to="/Gamification" onClick={() => setIsOpen(false)}>
+                  <FaGamepad /> <span>Gamification</span>
                 </Link>
               </li>
               <li>
-                <Link to="/Company" onClick={() => setIsOpen(false)}>
-                  <FaBuilding /> <span>Company</span>
+                <Link to="/Alumni" onClick={() => setIsOpen(false)}>
+                  <FaUsers /> <span>Network with Alumni</span>
                 </Link>
-              </li> */}
+              </li>
+              <li>
+                <Link to="/Referral" onClick={() => setIsOpen(false)}>
+                  <FaShareAlt /> <span>Job Referral Hub</span>
+                </Link>
+              </li>
             </ul>
 
 
