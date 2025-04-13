@@ -19,20 +19,31 @@ import Gamification from './Component/MainComponent/Gamification';
 import Alumni from './Component/MainComponent/Alumni';
 import Referral from './Component/MainComponent/Referral';
 
-
-
-
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loader from './Component/Loader';
 
-// 👇 This component now uses useLocation correctly
+// 👇 This component now uses useLocation and screen size to hide Header conditionally
 function AppContent({ user, setLoginUser }) {
   const location = useLocation();
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isCommunityOnSmallScreen = location.pathname === '/Community' && isSmallScreen;
 
   return (
     <>
-      <Header />
+      {/* Hide Header only on Community page AND small screens */}
+      {!isCommunityOnSmallScreen && <Header />}
+
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -61,7 +72,8 @@ function AppContent({ user, setLoginUser }) {
           <Route path="/Referral" element={<Referral />} />
         </Routes>
       </main>
-      {/* 👇 Conditionally render Footer */}
+
+      {/* Hide Footer on Community page only */}
       {location.pathname !== '/Community' && <Footer />}
     </>
   );
