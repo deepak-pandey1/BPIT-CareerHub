@@ -6,6 +6,8 @@
   background: linear-gradient(to bottom right, #e0f7fa, #f0f2f5);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   animation: fadeInContainer 0.5s ease-in-out;
+
+  padding-top: env(safe-area-inset-top, 20px);
 }
 
 @keyframes fadeInContainer {
