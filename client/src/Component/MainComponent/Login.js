@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
-import { auth, provider } from "../../firebase";
+import { auth, provider, githubProvider  } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 
 function Login() {
@@ -61,6 +61,30 @@ function Login() {
     }
   };
 
+
+
+  const handleGithubSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      const user = result.user;
+  
+      localStorage.setItem("username", user.displayName || user.email);
+      localStorage.setItem("email", user.email);
+      localStorage.setItem("photoURL", user.photoURL);
+      localStorage.setItem("loggedIn", "true");
+  
+      setUsername(user.displayName || user.email);
+      toast.success(`Welcome, ${user.displayName || user.email}`);
+      navigateTo("/");
+    } catch (error) {
+      console.error("GitHub sign-in error:", error);
+      toast.error("GitHub Sign-In failed");
+    }
+  };
+  
+
+
+
   return (
     <div className="login-wrapper">
       <div className="login-card">
@@ -115,6 +139,16 @@ function Login() {
             />
             Sign in with Google
           </button>
+
+          <button type="button" onClick={handleGithubSignIn} className="google-btn animated-btn">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="GitHub"
+              className="google-icon"
+            />
+            Sign in with GitHub
+          </button>
+
 
           <p className="signup-text">
             New user?{" "}

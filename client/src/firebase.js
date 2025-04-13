@@ -2,7 +2,7 @@
 
 // ✅ Import only what's needed
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, GithubAuthProvider  } from "firebase/auth";
 
 // ✅ Your Firebase config (paste your exact one here)
 const firebaseConfig = {
@@ -21,9 +21,10 @@ const app = initializeApp(firebaseConfig);
 // ✅ Initialize Auth and Provider
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 // ✅ Export for use in Login page
-export { auth, provider };
+export { auth, provider, githubProvider  };
 
 
 
