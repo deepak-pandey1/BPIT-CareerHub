@@ -104,6 +104,11 @@
   .company-card .btn {
     border-radius: 30px;
     transition: all 0.3s ease;
+
+    background-color: white;
+    color: #113f67;
+    border-color: #113f67;
+
   }
   
   .company-card .btn:hover {

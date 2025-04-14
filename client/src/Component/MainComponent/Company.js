@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { UserContext } from '../UserContext.js';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Spinner } from 'react-bootstrap'; // Import Spinner from react-bootstrap
 import './Company.css';
 
 export default function Company() {
@@ -9,54 +11,28 @@ export default function Company() {
   const navigate = useNavigate();
   const isLoggedIn = !!username;
 
+  const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state to show spinner
+
   const handleLoginRedirect = () => {
     navigate('/login');
   };
 
-  const companies = [
-    {
-      name: "BYJU'S",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BYJU%27S_logo.svg/2560px-BYJU%27S_logo.svg.png",
-      role: "Educational Content Developer",
-      package: "₹6 LPA",
-    },
-    {
-      name: "WhiteHat Jr",
-      img: "https://upload.wikimedia.org/wikipedia/commons/6/63/WhiteHat_Jr_logo.png",
-      role: "Coding Instructor",
-      package: "₹5.5 LPA",
-    },
-    {
-      name: "Vedantu",
-      img: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vedantu_logo.png",
-      role: "Online Tutor",
-      package: "₹4.2 LPA",
-    },
-    {
-      name: "Toppr",
-      img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Toppr_logo.png",
-      role: "Academic Consultant",
-      package: "₹4.8 LPA",
-    },
-    {
-      name: "Cuemath",
-      img: "https://upload.wikimedia.org/wikipedia/commons/6/66/Cuemath_logo.png",
-      role: "Math Educator",
-      package: "₹5.2 LPA",
-    },
-    {
-      name: "Unacademy",
-      img: "https://upload.wikimedia.org/wikipedia/commons/9/91/Unacademy_logo.svg",
-      role: "Subject Matter Expert",
-      package: "₹6.5 LPA",
-    },
-    {
-      name: "Khan Academy",
-      img: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Khan_Academy_logo.svg",
-      role: "Curriculum Designer",
-      package: "₹7 LPA",
-    },
-  ];
+  // Fetch companies from the API
+  const fetchCompanies = async () => {
+    try {
+      const res = await axios.get('https://bpit-careerhub.onrender.com/api/company/all');
+      setCompanies(res.data);
+      setLoading(false); // Set loading to false after data is fetched
+    } catch (err) {
+      console.error('Error fetching companies:', err);
+      setLoading(false); // Set loading to false even if there's an error
+    }
+  };
+
+  useEffect(() => {
+    fetchCompanies();
+  }, []);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -66,10 +42,19 @@ export default function Company() {
       transition: {
         delay: i * 0.1,
         duration: 0.6,
-        type: "spring",
+        type: 'spring',
         stiffness: 80,
       },
     }),
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: 'easeOut' },
+    },
   };
 
   return (
@@ -86,47 +71,91 @@ export default function Company() {
       )}
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <h2 className="text-center text-black my-4">Your Career Starts Here: Meet Our Top Recruiters</h2>
+        {/* Animated Header */}
+        <motion.h2
+          className="text-center text-black my-4"
+          variants={headerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          Your Career Starts Here: Meet Our Top Recruiters
+        </motion.h2>
 
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-          {companies.map((company, index) => (
-            <motion.div
-              className="col"
-              key={index}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover={{ scale: 1.05 }}
-            >
+        {/* Show spinner while loading data */}
+        {loading ? (
+          <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '300px' }}>
+            <Spinner animation="border" variant="primary" />
+          </div>
+        ) : (
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {companies.map((company, index) => (
               <motion.div
-                className="card company-card h-100 p-3 shadow-sm"
-                whileHover={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)' }}
+                className="col"
+                key={company._id} // Using _id as key
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover={{ scale: 1.05 }}
               >
-                <img
-                  src={company.img}
-                  className="card-img-top mb-3"
-                  alt={company.name}
-                  style={{ objectFit: 'contain', height: '140px' }}
-                />
-                <div
-                  className="card-body d-flex flex-column text-center"
-                  style={{
-                    filter: isLoggedIn ? 'none' : 'blur(3px)',
-                    pointerEvents: isLoggedIn ? 'auto' : 'none',
-                  }}
+                <motion.div
+                  className="card company-card h-100 p-3 shadow-lg rounded-3"
+                  whileHover={{ boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3)' }}
                 >
-                  <h5 className="card-title mb-2">{company.name}</h5>
-                  <p className="mb-1"><strong>Role:</strong> {company.role}</p>
-                  <p className="mb-3"><strong>Package:</strong> {company.package}</p>
-                  <button className="btn clr mt-auto" disabled={!isLoggedIn}>
-                    Apply for Jobs
-                  </button>
-                </div>
+                  {/* Avatar Circle */}
+                  <div className="d-flex justify-content-center mb-3">
+                    {company.img ? (
+                      <img
+                        src={company.img}
+                        alt={company.name}
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          objectFit: 'cover',
+                          borderRadius: '50%',
+                          border: '4px solid #dee2e6',
+                          boxShadow: '0 0 12px rgba(0,0,0,0.1)',
+                        }}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          borderRadius: '50%',
+                          background: 'linear-gradient(135deg, #6c63ff, #2575fc)',
+                          color: '#fff',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '28px',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        {company.name?.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+
+                  <div
+                    className="card-body d-flex flex-column text-center"
+                    style={{
+                      filter: isLoggedIn ? 'none' : 'blur(3px)',
+                      pointerEvents: isLoggedIn ? 'auto' : 'none',
+                    }}
+                  >
+                    <h5 className="card-title mb-2">{company.name}</h5>
+                    <p className="mb-1"><strong>Role:</strong> {company.role}</p>
+                    <p className="mb-3"><strong>Package:</strong> {company.package}</p>
+                    <button className="btn btn-primary mt-auto" disabled={!isLoggedIn}>
+                      Apply for Jobs
+                    </button>
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

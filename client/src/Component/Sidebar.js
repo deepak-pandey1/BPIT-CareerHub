@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  FaInfoCircle,
+  FaUserShield ,
   FaPhoneAlt,
   FaQuestionCircle,
   FaBuilding,
@@ -97,8 +97,8 @@ export default function Sidebar() {
 
             <ul className="sidebar-menu">
               <li>
-                <Link to="/Ats" onClick={() => setIsOpen(false)}>
-                  <FaInfoCircle /> <span>ATS Optimizer</span>
+                <Link to="/Admin" onClick={() => setIsOpen(false)}>
+                  <FaUserShield  /> <span>Admin Panel</span>
                 </Link>
               </li>
               <li>

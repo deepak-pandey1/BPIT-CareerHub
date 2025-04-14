@@ -13,7 +13,7 @@ import Login from './Component/MainComponent/Login';
 import Apply from './Component/MainComponent/Apply';
 import Community from './Component/MainComponent/Community';
 import Profile from './Component/MainComponent/Profile';
-import Ats from './Component/MainComponent/Ats';
+import Admin from './Component/MainComponent/Admin';
 import Internship from './Component/MainComponent/Internship';
 import Gamification from './Component/MainComponent/Gamification';
 import Alumni from './Component/MainComponent/Alumni';
@@ -64,7 +64,7 @@ function AppContent({ user, setLoginUser }) {
               )
             }
           />
-          <Route path="/Ats" element={<Ats />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="/Community" element={<Community />} />
           <Route path="/Internship" element={<Internship />} />
           <Route path="/Gamification" element={<Gamification />} />

@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import messageRoute from "./routes/message.route.js";
+import companyRoute from "./routes/company.route.js";
 
 // Setup for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +34,7 @@ app.use(
 // Routes
 app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
+app.use("/api/company", companyRoute);
 
 
 // Serve frontend (React build)
