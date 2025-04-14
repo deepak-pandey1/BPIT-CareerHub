@@ -18,6 +18,30 @@ export default function Admin() {
   const [menuOpenId, setMenuOpenId] = useState(null);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
+  const [loginError, setLoginError] = useState("");
+
+
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const [loginData, setLoginData] = useState({ username: "", password: "" });
+
+const handleLogin = (e) => {
+  e.preventDefault();
+  if (
+    loginData.username === "admin" &&
+    loginData.password === "admin"
+  ) {
+    setIsAuthenticated(true);
+    setLoginError("");
+    toast.success("Login successful! 🚀", {
+      position: "top-center",
+    });
+  } else {
+    setLoginError("Invalid username or password. Please try again.");
+  }
+};
+
+
 
   const fetchCompanies = async () => {
     try {
@@ -66,23 +90,156 @@ export default function Admin() {
   const isFormValid = formData.name && formData.role && formData.package;
 
   return (
+    <>  
+
+<AnimatePresence>
+  {!isAuthenticated && (
+    <motion.div
+      key="login-modal"
+      className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+      style={{
+        backdropFilter: "blur(10px)",
+        background: "rgba(0, 0, 0, 0.6)",
+        zIndex: 3000,
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.5 } }}
+    >
+      <motion.div
+        className="p-5"
+        style={{
+          width: "90%",
+          maxWidth: "430px",
+          background: "linear-gradient(135deg, #ffffff, #f0f4ff)",
+          borderRadius: "2rem",
+          boxShadow: "0 20px 50px rgba(0,0,0,0.2)",
+        }}
+        initial={{ y: -100, opacity: 0, scale: 0.8 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        exit={{ y: -50, opacity: 0, scale: 0.7 }}
+        transition={{ type: "spring", stiffness: 80, damping: 15 }}
+      >
+        <div className="text-center mb-4">
+          <motion.h4
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            style={{ fontWeight: 700, fontSize: "1.5rem", color: "#333" }}
+          >
+            🔐 Admin Login
+          </motion.h4>
+          <p className="text-muted mb-0">Enter your credentials to proceed</p>
+        </div>
+
+        <form onSubmit={handleLogin}>
+          <motion.div
+            className="mb-4"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <label className="form-label" style={{ fontWeight: 500 }}>
+              Username
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="👤 Enter username"
+              style={{
+                padding: "0.8rem 1rem",
+                borderRadius: "1rem",
+                border: "1px solid #ccc",
+              }}
+              value={loginData.username}
+              onChange={(e) =>
+                setLoginData({ ...loginData, username: e.target.value })
+              }
+              required
+            />
+          </motion.div>
+
+          <motion.div
+            className="mb-4"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <label className="form-label" style={{ fontWeight: 500 }}>
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="🔒 Enter password"
+              style={{
+                padding: "0.8rem 1rem",
+                borderRadius: "1rem",
+                border: "1px solid #ccc",
+              }}
+              value={loginData.password}
+              onChange={(e) =>
+                setLoginData({ ...loginData, password: e.target.value })
+              }
+              required
+            />
+          </motion.div>
+
+          <motion.button
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0 0 15px rgba(99, 102, 241, 0.6)",
+            }}
+            whileTap={{ scale: 0.97 }}
+            type="submit"
+            className="btn w-100"
+            style={{
+              background: "linear-gradient(to right, #6366f1, #3b82f6)",
+              color: "#fff",
+              fontWeight: 600,
+              padding: "0.75rem",
+              border: "none",
+              borderRadius: "1rem",
+            }}
+          >
+            🚀 Login
+          </motion.button>
+        </form>
+        {loginError && (
+  <motion.div
+    className="text-danger mt-3 text-center"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    {loginError}
+  </motion.div>
+)}
+
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+
+
+    <div style={{ filter: !isAuthenticated ? "blur(8px)" : "none" }}>
     <div className="container mt-5 position-relative">
       <ToastContainer position="top-right" autoClose={3000} />
-
       <motion.h2
-  className="mb-4 fw-bold text-center"
-  initial={{ opacity: 0, y: -30, scale: 0.9 }}
-  animate={{ opacity: 1, y: 0, scale: 1 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  style={{
-    color: "#333",
-    textShadow: "1px 1px 10px rgba(0,0,0,0.1)",
-    letterSpacing: "1px",
-    marginTop: "-30px", // <-- this pulls it up
-  }}
->
-  🛠️ Admin Panel
-</motion.h2>
+        className="mb-4 fw-bold text-center"
+        initial={{ opacity: 0, y: -30, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        style={{
+          color: "#333",
+          textShadow: "1px 1px 10px rgba(0,0,0,0.1)",
+          letterSpacing: "1px",
+          marginTop: "-30px", // <-- this pulls it up
+        }}
+      >
+        🛠️ Admin Panel
+      </motion.h2>
 
 
       {/* Show Spinner while data is loading */}
@@ -370,5 +527,7 @@ export default function Admin() {
         <FaPlus />
       </motion.button>
     </div>
+    </div>
+    </>
   );
 }
