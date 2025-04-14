@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { UserContext } from '../UserContext.js'; // Import UserContext
+import './Faq.css'; // Import new Faq.css for overlay styles
 
 const Faq = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { username } = useContext(UserContext); // Access username from context
+  const isLoggedIn = !!username; // Check if user is logged in
   const [showMessage, setShowMessage] = useState(true);
+
+  // Redirect to login page
+  const handleLoginRedirect = () => {
+    navigate('/login');
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setShowMessage(false), 3000);
@@ -34,12 +44,28 @@ const Faq = () => {
         }
       `}</style>
 
+      {/* Login Overlay */}
+      {!isLoggedIn && (
+        <div className="login-overlay">
+          <div className="login-overlay-content">
+            <p className="fs-5 fw-semibold mb-0">Please login to access the FAQ chatbot</p>
+            <button onClick={handleLoginRedirect} className="btn btn-dark px-4 py-2">
+              Login
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Fixed Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        style={styles.fixedHeader}
+        style={{
+          ...styles.fixedHeader,
+          filter: isLoggedIn ? 'none' : 'blur(3px)', // Blur header if not logged in
+          pointerEvents: isLoggedIn ? 'auto' : 'none', // Disable interaction if not logged in
+        }}
       >
         <h2>Asked Questions with AI</h2>
       </motion.div>
@@ -49,7 +75,11 @@ const Faq = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          style={styles.chatbotFullScreen}
+          style={{
+            ...styles.chatbotFullScreen,
+            filter: isLoggedIn ? 'none' : 'blur(3px)', // Blur content if not logged in
+            pointerEvents: isLoggedIn ? 'auto' : 'none', // Disable interaction if not logged in
+          }}
         >
           <AnimatePresence>
             {showMessage && (

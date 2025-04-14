@@ -1,0 +1,77 @@
+/* Faq.css */
+
+/* Keyframes for zoom + fade in */
+@keyframes fadeZoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Overlay animation */
+  .login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1002; /* Ensure overlay is above other content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    padding: 1rem;
+    text-align: center;
+    animation: fadeZoomIn 0.6s ease-out;
+  }
+  
+  /* Content animation */
+  .login-overlay-content {
+    max-width: 90%;
+    min-width: 260px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeZoomIn 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+  
+  /* Button styles with hover animation */
+  .login-overlay-content button {
+    width: auto;
+    font-size: 16px;
+    padding: 0.5rem 1.5rem;
+    min-width: 120px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-overlay-content button:hover {
+    background-color: #333;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  /* Mobile-specific tweaks */
+  @media screen and (max-width: 576px) {
+    .login-overlay-content p {
+      font-size: 16px;
+    }
+  
+    .login-overlay-content button {
+      font-size: 15px;
+      padding: 0.5rem 1rem;
+    }
+  }
