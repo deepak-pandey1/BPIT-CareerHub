@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
-import { auth, provider, githubProvider  } from "../../firebase";
+import { auth, provider, githubProvider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 
 function Login() {
@@ -61,18 +61,16 @@ function Login() {
     }
   };
 
-
-
   const handleGithubSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, githubProvider);
       const user = result.user;
-  
+
       localStorage.setItem("username", user.displayName || user.email);
       localStorage.setItem("email", user.email);
       localStorage.setItem("photoURL", user.photoURL);
       localStorage.setItem("loggedIn", "true");
-  
+
       setUsername(user.displayName || user.email);
       toast.success(`Welcome, ${user.displayName || user.email}`);
       navigateTo("/");
@@ -81,12 +79,38 @@ function Login() {
       toast.error("GitHub Sign-In failed");
     }
   };
-  
-
-
 
   return (
     <div className="login-wrapper">
+      {/* ✅ Toast Container */}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            borderRadius: "12px",
+            fontWeight: "500",
+            fontSize: "0.95rem",
+            padding: "14px 18px",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          },
+          success: {
+            style: {
+              background: "white",
+              color: "#1DB954",
+              borderLeft: "6px solid #1DB954",
+            },
+          },
+          error: {
+            style: {
+              background: "white",
+              color: "#e63946",
+              borderLeft: "6px solid #e63946",
+            },
+          },
+        }}
+      />
+
       <div className="login-card">
         <h2 className="login-title">Welcome Back</h2>
 
@@ -132,7 +156,7 @@ function Login() {
           <div className="divider">OR</div>
 
           <button type="button" onClick={handleGoogleSignIn} className="google-btn animated-btn">
-          <img
+            <img
               src="https://freelogopng.com/images/all_img/1657952440google-logo-png-transparent.png"
               alt=""
               className="google-icon"
@@ -149,7 +173,6 @@ function Login() {
             Sign in with GitHub
           </button>
 
-
           <p className="signup-text">
             New user?{" "}
             <Link to="/signup" className="signup-link">
@@ -162,29 +185,24 @@ function Login() {
       {/* Custom Styles */}
       <style>
         {`
+          .google-icon {
+            width: 20px;
+            height: 20px;
+          }
 
-           .google-icon {
-  width: 20px;
-  height: 20px;
-}
+          @media (max-width: 768px) {
+            .google-icon {
+              width: 18px;
+              height: 18px;
+            }
+          }
 
-/* Medium screens */
-@media (max-width: 768px) {
-  .google-icon {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* Small screens (mobile) */
-@media (max-width: 480px) {
-  .google-icon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-
+          @media (max-width: 480px) {
+            .google-icon {
+              width: 16px;
+              height: 16px;
+            }
+          }
 
           .login-wrapper {
             min-height: 100vh;
@@ -341,7 +359,6 @@ function Login() {
             .login-card {
               padding: 1.2rem;
               border-radius: 14px;
-
               margin-top: -130px;
             }
 
