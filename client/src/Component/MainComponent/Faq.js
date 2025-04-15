@@ -66,6 +66,7 @@ const Faq = () => {
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
       />
+      {window.innerWidth > 600 && (
       <motion.h2
         style={styles.loadingText}
         initial={{ y: 20, opacity: 0 }}
@@ -75,6 +76,7 @@ const Faq = () => {
       >
         AI Chatbot is Loading...
       </motion.h2>
+      )}
     </motion.div>
   )}
 </AnimatePresence>

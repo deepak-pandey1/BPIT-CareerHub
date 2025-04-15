@@ -89,9 +89,9 @@ export default function Sidebar() {
                 <div className="sidebar-avatar">{getInitial(username)}</div>
                 <div className="sidebar-name">{username}</div>
               </div>
-              <button className="close-btn" onClick={() => setIsOpen(false)}>
+              {/* <button className="close-btn" onClick={() => setIsOpen(false)}>
                 ×
-              </button>
+              </button> */}
             </div>
 
 
