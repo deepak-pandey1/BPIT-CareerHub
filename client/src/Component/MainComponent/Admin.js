@@ -107,7 +107,7 @@ const handleLogin = (e) => {
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
     >
       <motion.div
-        className="p-5"
+        className="p-5 login-modal-box"
         style={{
           width: "90%",
           maxWidth: "430px",
@@ -527,6 +527,53 @@ const handleLogin = (e) => {
         <FaPlus />
       </motion.button>
     </div>
+
+
+    <style>{`
+  .login-modal-box {
+    padding: 2.5rem;
+    border-radius: 2rem;
+  }
+
+  .login-modal-box h4 {
+    font-size: 1.5rem;
+  }
+
+  .login-modal-box input {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .login-modal-box button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    .login-modal-box {
+      padding: 1.8rem !important;
+      border-radius: 1.2rem !important;
+    }
+
+    .login-modal-box h4 {
+      font-size: 1.2rem !important;
+    }
+
+    .login-modal-box input {
+      padding: 0.6rem 0.8rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    .login-modal-box button {
+      padding: 0.65rem !important;
+      font-size: 0.9rem !important;
+    }
+  }
+`}</style>
+
+
+
+
     </div>
     </>
   );
