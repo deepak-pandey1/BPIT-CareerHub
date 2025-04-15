@@ -723,3 +723,47 @@ padding-top: 10px;
     border: transparent;
     color: blue;
 }
+
+/* Common toast style */
+.Toastify__toast {
+  border-radius: 12px !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 14px 18px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Toast */
+.Toastify__toast--success {
+  background: white;
+  color: #1DB954;
+}
+
+/* Error Toast */
+.Toastify__toast--error {
+  background: white;
+  color: #e63946;
+}
+
+/* Info Toast */
+.Toastify__toast--info {
+  background: white;
+  color: #457b9d;
+}
+
+/* Warning Toast */
+.Toastify__toast--warn {
+  background: white;
+  color: #f4a261;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .Toastify__toast {
+    font-size: 0.85rem;
+    padding: 12px 14px !important;
+    margin: 8px !important;
+    width: 90% !important;
+    min-width: unset !important;
+  }
+}

@@ -1,16 +1,38 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigateTo = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Client-side validation with toasts
+    if (!username || !email || !password) {
+      return toast.warn("All fields are required!", {
+        position: "top-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+      });
+    }
+
+    if (password.length < 6) {
+      return toast.info("Password must be at least 6 characters long.", {
+        position: "top-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+      });
+    }
+
+    setLoading(true);
     try {
       const { data } = await axios.post(
         "https://bpit-careerhub.onrender.com/api/user/signup",
@@ -21,18 +43,31 @@ function Signup() {
         }
       );
       localStorage.setItem("jwt", data.token);
-      navigateTo("/login");
+      toast.success("Signup successful! Redirecting to login...", {
+        position: "top-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+      });
+      setTimeout(() => navigateTo("/login"), 3000);
       setUserName("");
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.error(error);
-      alert("Signup failed. Please try again.");
+      const errMsg =
+        error?.response?.data?.message || "Signup failed. Please try again.";
+      toast.error(errMsg, {
+        position: "top-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="signup-wrapper">
+      <ToastContainer />
       <div className="signup-card">
         <h2 className="signup-title">Create Account</h2>
         <form onSubmit={handleRegister}>
@@ -72,8 +107,14 @@ function Signup() {
               required
             />
           </div>
-          <button type="submit" className="signup-btn">
-            Sign Up
+          <button type="submit" className="signup-btn animated-btn" disabled={loading}>
+            {loading ? (
+              <>
+                <span className="spinner"></span> Creating Account...
+              </>
+            ) : (
+              <>🚀 Sign Up</>
+            )}
           </button>
           <p className="login-text">
             Already have an account?{" "}
@@ -151,10 +192,33 @@ function Signup() {
             border-radius: 12px;
             cursor: pointer;
             transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
           }
 
           .signup-btn:hover {
             background-color: #21867a;
+          }
+
+          .signup-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+
+          .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid white;
+            border-top: 2px solid #2a9d8f;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
 
           .login-text {
@@ -179,7 +243,6 @@ function Signup() {
             to { opacity: 1; transform: translateY(0); }
           }
 
-          /* Responsive Styles */
           @media (max-width: 768px) {
             .signup-card {
               padding: 1.5rem;
@@ -205,7 +268,6 @@ function Signup() {
             .signup-card {
               padding: 1.2rem;
               border-radius: 14px;
-
               margin-top: -130px;
             }
 
