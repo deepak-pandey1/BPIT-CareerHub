@@ -1,15 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UserContext } from '../UserContext'; // Assuming this is where context is
-import './Company.css'; // Reuse same styles for blur overlay
 
 const Faq = () => {
-  const { username } = useContext(UserContext);
-  const isLoggedIn = !!username;
   const location = useLocation();
-  const navigate = useNavigate();
-
   const [showMessage, setShowMessage] = useState(true);
 
   useEffect(() => {
@@ -20,20 +14,26 @@ const Faq = () => {
   // Block scroll on mobile when on /Faq route
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
+
     if (location.pathname === '/Faq' && isMobile) {
       document.body.style.overflow = 'hidden';
     }
+
     return () => {
       document.body.style.overflow = '';
     };
   }, [location.pathname]);
 
-  const handleLoginRedirect = () => {
-    navigate('/login');
-  };
-
   return (
-    <div style={styles.container} className="faq-wrapper position-relative">
+    <div style={styles.container}>
+      {/* Keyframes for Spinner */}
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+
       {/* Fixed Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -44,20 +44,7 @@ const Faq = () => {
         <h2>Asked Questions with AI</h2>
       </motion.div>
 
-      {/* Login Overlay */}
-      {!isLoggedIn && (
-        <div className="login-overlay">
-          <div className="login-overlay-content">
-            <p className="fs-5 fw-semibold mb-0">Please login to access the FAQ Chatbot</p>
-            <button onClick={handleLoginRedirect} className="btn btn-dark px-4 py-2">
-              Login
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Chatbot only visible if logged in */}
-      {isLoggedIn && location.pathname === '/Faq' && (
+      {location.pathname === '/Faq' && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -65,19 +52,33 @@ const Faq = () => {
           style={styles.chatbotFullScreen}
         >
           <AnimatePresence>
-            {showMessage && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                style={styles.loadingWrapper}
-              >
-                <div style={styles.spinner}></div>
-                <h2 style={styles.loadingText}>AI Chatbot is Loading...</h2>
-              </motion.div>
-            )}
-          </AnimatePresence>
+  {showMessage && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      style={styles.loadingWrapper}
+    >
+      <motion.div
+        style={styles.spinner}
+        initial={{ rotate: 0 }}
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+      />
+      <motion.h2
+        style={styles.loadingText}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 20, opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        AI Chatbot is Loading...
+      </motion.h2>
+    </motion.div>
+  )}
+</AnimatePresence>
+
 
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <iframe
@@ -134,31 +135,37 @@ const styles = {
     zIndex: 999,
     backgroundColor: '#e7eaf6',
   },
-  loadingWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    zIndex: 1000,
-  },
-  spinner: {
-    border: '6px solid #f3f3f3',
-    borderTop: '6px solid #113f67',
-    borderRadius: '50%',
-    width: '50px',
-    height: '50px',
-    animation: 'spin 1s linear infinite',
-  },
-  loadingText: {
-    marginTop: '20px',
-    fontSize: '1.5rem',
-    color: '#113f67',
-  },
   iframeFull: {
     width: '100%',
     height: '100%',
     border: 'none',
+  },
+  loadingWrapper: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 1002,
+    // background: 'rgba(255,255,255,0.9)',
+    padding: '30px 40px',
+    borderRadius: '12px',
+    textAlign: 'center',
+    // boxShadow: '0 0 20px rgba(0,0,0,0.1)',
+  },
+  spinner: {
+    width: '30px',
+    height: '30px',
+    border: '4px solid #ccc',
+    borderTop: '4px solid #004085',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite',
+    margin: '0 auto',
+  },
+  loadingText: {
+    fontSize: '1.2rem',
+    marginTop: '15px',
+    color: '#004085',
+    fontWeight: 600,
   },
 };
 

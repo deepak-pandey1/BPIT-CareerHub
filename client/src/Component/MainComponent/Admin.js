@@ -99,7 +99,7 @@ const handleLogin = (e) => {
       className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
       style={{
         backdropFilter: "blur(10px)",
-        background: "rgba(0, 0, 0, 0.6)",
+        background: "rgba(255, 255, 255, 0.2)",
         zIndex: 3000,
       }}
       initial={{ opacity: 0 }}
