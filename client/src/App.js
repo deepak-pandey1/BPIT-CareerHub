@@ -22,6 +22,11 @@ import Referral from './Component/MainComponent/Referral';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loader from './Component/Loader';
+import PrivacyPolicy from './Component/MainComponent/PrivacyPolicy';
+import ScrollToTop from './Component/Header/ScrollToTop';
+import TermsOfService from './Component/MainComponent/TermsOfService';
+
+
 
 // 👇 This component now uses useLocation and screen size to hide Header conditionally
 function AppContent({ user, setLoginUser }) {
@@ -39,12 +44,18 @@ function AppContent({ user, setLoginUser }) {
 
   const isCommunityOnSmallScreen = location.pathname === '/Community' && isSmallScreen;
 
+  const hideFooter =
+    location.pathname === '/Community' ||
+    (isSmallScreen &&
+      ['/Internship', '/Referral', '/Alumni', '/Gamification', '/Admin', '/Company'].includes(location.pathname));
+
   return (
     <>
       {/* Hide Header only on Community page AND small screens */}
       {!isCommunityOnSmallScreen && <Header />}
 
       <main className="main-content">
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
@@ -70,11 +81,13 @@ function AppContent({ user, setLoginUser }) {
           <Route path="/Gamification" element={<Gamification />} />
           <Route path="/Alumni" element={<Alumni />} />
           <Route path="/Referral" element={<Referral />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/TermsOfService" element={<TermsOfService />} />
         </Routes>
       </main>
 
-      {/* Hide Footer on Community page only */}
-      {location.pathname !== '/Community' && <Footer />}
+      {/* Hide Footer based on updated conditions */}
+      {!hideFooter && <Footer />}
     </>
   );
 }
