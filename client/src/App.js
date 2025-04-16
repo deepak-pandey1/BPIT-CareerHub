@@ -45,9 +45,11 @@ function AppContent({ user, setLoginUser }) {
   const isCommunityOnSmallScreen = location.pathname === '/Community' && isSmallScreen;
 
   const hideFooter =
-    location.pathname === '/Community' ||
-    (isSmallScreen &&
-      ['/Internship', '/Referral', '/Alumni', '/Gamification', '/Admin', '/Company'].includes(location.pathname));
+  location.pathname === '/Community' ||
+  location.pathname === '/Admin' ||
+  (isSmallScreen &&
+    ['/Internship', '/Referral', '/Alumni', '/Gamification', '/Company'].includes(location.pathname));
+
 
   return (
     <>
