@@ -188,6 +188,111 @@ export default function Home() {
             }
           `}
         </style>
+
+        {/* Scroll Down Button - Only on Desktop */}
+<button
+  onClick={() => {
+    const nextSection = document.querySelector('.scroll.container');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }}
+  className="scroll-down-btnss"
+>
+
+
+  <div className="mouse">
+    <span className="arrow arrow1"></span>
+    <span className="arrow arrow2"></span>
+  </div>
+</button>
+
+<style>
+{`
+  .scroll-down-btnss {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: pulseBorder 2s infinite ease-in-out;
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  opacity: 0;
+  animation: fallDown 2s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+.arrow1 {
+  animation-delay: 0s;
+}
+
+.arrow2 {
+  animation-delay: 1s;
+}
+
+@keyframes fallDown {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-down-btnss {
+    display: none;
+  }
+}
+
+`}
+</style>
+
       </div>
 
       <div className="scroll container" >
