@@ -36,7 +36,7 @@ const Community = () => {
 
   return (
     <div className="community-container">
-      <h2 className="chat-heading">
+      <h2 className="chat-heading" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
         <FontAwesomeIcon icon={faComments} className="fa-icon" />
         Community Chat
       </h2>

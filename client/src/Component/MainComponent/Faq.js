@@ -41,7 +41,7 @@ const Faq = () => {
         transition={{ duration: 1 }}
         style={styles.fixedHeader}
       >
-        <h2>Asked Questions with AI</h2>
+        <h2 style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>Asked Questions with AI</h2>
       </motion.div>
 
       {location.pathname === '/Faq' && (

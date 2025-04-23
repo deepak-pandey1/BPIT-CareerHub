@@ -37,7 +37,9 @@ export default function Footer() {
         >
           {/* Quick Links */}
           <motion.div className="footer-column" variants={itemLeftVariants}>
-            <h4 className="footer-title">Quick Links</h4>
+            <h4 className="footer-title" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
+              Quick Links
+            </h4>
             <ul className="footer-list">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/Faq">FAQs</Link></li>
@@ -55,7 +57,9 @@ export default function Footer() {
 
           {/* Legal */}
           <motion.div className="footer-column" variants={itemLeftVariants}>
-            <h4 className="footer-title">Legal</h4>
+            <h4 className="footer-title" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
+              Legal
+            </h4>
             <ul className="footer-list">
               <li><Link to="/PrivacyPolicy">Privacy Policy</Link></li>
               <li><Link to="/TermsOfService">Terms of Service</Link></li>
@@ -111,12 +115,39 @@ export default function Footer() {
               </motion.a>
             ))}
           </div>
-          <motion.span className="footer-text" variants={itemRightVariants}>
+          <motion.span
+            className="footer-text"
+            variants={itemRightVariants}
+            style={{
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
+          >
+            &copy; {fecha} All Rights Reserved.
+          </motion.span>
+          
+          <motion.span
+            className="footer-credit"
+            variants={itemRightVariants}
+            style={{
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
+          >
+            Made by Deepak Pandey
+          </motion.span>
+
+
+          {/* <motion.span className="footer-text" variants={itemRightVariants}>
             &copy; {fecha} All Rights Reserved.
           </motion.span>
           <motion.span className="footer-credit" variants={itemRightVariants}>
             Made by Deepak Pandey
-          </motion.span>
+          </motion.span> */}
         </motion.div>
       </footer>
 
