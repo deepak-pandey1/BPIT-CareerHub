@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { motion } from 'framer-motion';
+import { motion  } from 'framer-motion';
 import HighestPackageChart from '../Charts/HighestPackageChart';
 import AveragePackageChart from '../Charts/AveragePackageChart';
 import StudentsSelectedChart from '../Charts/StudentsSelectedChart';
@@ -64,15 +64,26 @@ const containerVariants = {
     userSelect: 'none',
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.12,
+      when: "beforeChildren"
     },
   },
 };
 
 const wordVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+      mass: 0.6,
+    },
+  },
 };
+
 
 // Scroll animation for .hig images
 const imageVariants = {
@@ -165,7 +176,20 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+<motion.div
+  key="home-page"
+  className="home-anim-wrapper"
+  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  transition={{
+    type: "spring",
+    stiffness: 120,
+    damping: 20,
+    mass: 0.8,
+    // overall entrance delay so sub‑animations finish cleanly
+    delay: 0.1,
+  }}
+>
 
       {/* Hero Section */}
       <div
@@ -496,6 +520,6 @@ export default function Home() {
     </div>
   </div>
 </div>
-    </div>
+</motion.div>
   );
 }
