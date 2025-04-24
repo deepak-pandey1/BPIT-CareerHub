@@ -1,6 +1,60 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion } from 'framer-motion';
+import HighestPackageChart from '../Charts/HighestPackageChart';
+import AveragePackageChart from '../Charts/AveragePackageChart';
+import StudentsSelectedChart from '../Charts/StudentsSelectedChart';
+import CompaniesVisitedChart from '../Charts/CompaniesVisitedChart';
+
+
+const headingVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+    rotateX: -45,
+    transformOrigin: 'center',
+    perspective: 800,
+    filter: 'blur(4px)',
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotateX: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+
+const rowStyle = {
+  display: 'flex',
+  justifyContent: 'center', // center the group
+  flexWrap: 'wrap',
+  gap: '2%',                // small gap
+};
+
+const itemStyle = {
+  flex: '1 1 300px',        // grow/shrink, base 300px
+  maxWidth: '500px',        // never exceed 500px
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+};
+
+
 
 const sentence = "Placement is not just about getting a job, it's about stepping into your future.";
 
@@ -296,7 +350,26 @@ export default function Home() {
       </div>
 
       <div className="scroll container" >
-          <h2 style={{color: 'black', marginTop: '40px', textAlign: 'center'}}> <b> Our Leading Recruiters </b></h2>
+      <motion.h2
+  style={{
+    color: '#111',
+    marginTop: '40px',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    // scales between 1.25rem (min) and 2rem (max), 
+    // with an ideal size of 5vw
+    fontSize: 'clamp(1.6rem, 5vw, 2rem)',
+    textShadow: '0 6px 12px rgba(0, 0, 0, 0.25)',
+    userSelect: 'none',
+  }}
+  variants={headingVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.6 }}
+>
+  Our Leading Recruiters
+</motion.h2>
+
           <div className="row_companys">
             <div className="row_companys_slider">
               <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/ZS_Associates.svg" alt="" className="row_company" />
@@ -369,27 +442,60 @@ export default function Home() {
 
       {/* Animated Image Section */}
       <div className="container mt-5 mb-5">
-        <div className="h-1">
-          <div className="h-1-1 divhome">
-            <h4>Highest Package (last 5 years trends)</h4>
-            <AnimatedImage src="img/hi1.jpg" alt="img" />
-          </div>
-          <div className="h-1-2 divhome">
-            <h4>Average Package (Last 5 Years Trend)</h4>
-            <AnimatedImage src="img/hh.png" alt="img" />
-          </div>
-        </div>
-        <div className="h-1">
-          <div className="h1-1 divhome">
-            <h4>Students Selected (Last 5 Years Trend)</h4>
-            <AnimatedImage src="img/hi3.jpg" alt="img" />
-          </div>
-          <div className="h1-2 divhome">
-            <h4>Companies Visited (Last 5 Years Trend)</h4>
-            <AnimatedImage src="img/hi4.jpg" alt="img" />
-          </div>
-        </div>
-      </div>
+  <div className="h-1" style={rowStyle}>
+    <div className="h-1-1 divhome" style={itemStyle}>
+      <motion.h4
+      style={{ userSelect: 'none' }}
+        variants={fadeLeft}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+      >
+        Highest Package (last 5 years trends)
+      </motion.h4>
+      <HighestPackageChart />
+    </div>
+    <div className="h-1-2 divhome" style={itemStyle}>
+      <motion.h4
+      style={{ userSelect: 'none' }}
+        variants={fadeRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+      >
+        Average Package (Last 5 Years Trend)
+      </motion.h4>
+      <AveragePackageChart />
+    </div>
+  </div>
+
+  <div className="h-1" style={rowStyle}>
+    <div className="h1-1 divhome" style={itemStyle}>
+      <motion.h4
+      style={{ userSelect: 'none' }}
+        variants={fadeLeft}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+      >
+        Students Selected (Last 5 Years Trend)
+      </motion.h4>
+      <StudentsSelectedChart />
+    </div>
+    <div className="h1-2 divhome" style={itemStyle}>
+      <motion.h4
+      style={{ userSelect: 'none' }}
+        variants={fadeRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
+      >
+        Companies Visited (Last 5 Years Trend)
+      </motion.h4>
+      <CompaniesVisitedChart />
+    </div>
+  </div>
+</div>
     </div>
   );
 }

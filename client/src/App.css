@@ -769,3 +769,9 @@ padding-top: 10px;
     min-width: unset !important;
   }
 }
+
+@media (max-width: 575.98px) {
+    .container {
+      overflow-x: hidden;
+    }
+  }
