@@ -24,6 +24,15 @@ export default function Footer() {
     show: { x: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
   };
 
+  const pulseAnimation = {
+    scale: [1, 1.2, 1],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
+
   return (
     <div className="footer-container">
       <footer className="footer">
@@ -37,7 +46,7 @@ export default function Footer() {
         >
           {/* Quick Links */}
           <motion.div className="footer-column" variants={itemLeftVariants}>
-            <h4 className="footer-title" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
+            <h4 className="footer-title" style={{ userSelect: 'none' }}>
               Quick Links
             </h4>
             <ul className="footer-list">
@@ -46,18 +55,9 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Student Resources
-          <motion.div className="footer-column" variants={itemLeftVariants}>
-            <h4 className="footer-title">Student Material</h4>
-            <ul className="footer-list">
-              <li><a href="#">Resume Tips</a></li>
-              <li><a href="#">Interview Prep</a></li>
-            </ul>
-          </motion.div> */}
-
           {/* Legal */}
           <motion.div className="footer-column" variants={itemLeftVariants}>
-            <h4 className="footer-title" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
+            <h4 className="footer-title" style={{ userSelect: 'none' }}>
               Legal
             </h4>
             <ul className="footer-list">
@@ -103,51 +103,42 @@ export default function Footer() {
               },
             ].map((social, i) => (
               <motion.a
-                key={i}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`footer-icon ${social.className}`}
-                aria-label={social.label}
-                variants={itemRightVariants}
-              >
-                <i className={`bi ${social.icon}`}></i>
-              </motion.a>
+  key={i}
+  href={social.href}
+  target="_blank"
+  rel="noreferrer"
+  className={`footer-icon ${social.className}`}
+  aria-label={social.label}
+  variants={itemRightVariants}
+  initial={{ scale: 1 }}   // 👈 This is the fix
+  animate={{
+    scale: [1, 0.85, 1],
+  }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+>
+  <i className={`bi ${social.icon}`}></i>
+</motion.a>
+
             ))}
           </div>
           <motion.span
             className="footer-text"
             variants={itemRightVariants}
-            style={{
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-              MozUserSelect: 'none',
-              msUserSelect: 'none'
-            }}
+            style={{ userSelect: 'none' }}
           >
             &copy; {fecha} All Rights Reserved.
           </motion.span>
-          
           <motion.span
             className="footer-credit"
             variants={itemRightVariants}
-            style={{
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-              MozUserSelect: 'none',
-              msUserSelect: 'none'
-            }}
+            style={{ userSelect: 'none' }}
           >
             Made by Deepak Pandey
           </motion.span>
-
-
-          {/* <motion.span className="footer-text" variants={itemRightVariants}>
-            &copy; {fecha} All Rights Reserved.
-          </motion.span>
-          <motion.span className="footer-credit" variants={itemRightVariants}>
-            Made by Deepak Pandey
-          </motion.span> */}
         </motion.div>
       </footer>
 
@@ -277,20 +268,55 @@ export default function Footer() {
           font-weight: 300;
         }
 
-        @media (max-width: 768px) {
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
           .footer {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
           }
 
           .footer-sections {
             flex-direction: column;
-            gap: 30px;
+            align-items: center;
+            gap: 40px;
           }
 
           .footer-right {
-            align-items: flex-start;
-            margin-top: 20px;
+            align-items: center;
+            margin-top: 30px;
+          }
+
+          .footer-column {
+            flex: none;
+            width: 100%;
+            max-width: 300px;
+          }
+
+          .footer-icons {
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer {
+            padding: 30px 20px;
+          }
+
+          .footer-title {
+            font-size: 16px;
+          }
+
+          .footer-list a {
+            font-size: 14px;
+          }
+
+          .footer-icon {
+            font-size: 22px;
+          }
+
+          .footer-text, .footer-credit {
+            font-size: 12px;
           }
         }
       `}</style>
