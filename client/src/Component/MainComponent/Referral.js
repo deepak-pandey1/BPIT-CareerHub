@@ -24,7 +24,7 @@ function Community() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100 p-4">
-      <audio ref={audioRef} src="/ss1.mp3" />
+      <audio ref={audioRef} src="/" />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
