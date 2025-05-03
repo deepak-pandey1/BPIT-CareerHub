@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion  } from 'framer-motion';
 import HighestPackageChart from '../Charts/HighestPackageChart';
@@ -86,45 +86,45 @@ const wordVariants = {
 
 
 // Scroll animation for .hig images
-const imageVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-};
+// const imageVariants = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.8 },
+//   },
+// };
 
-function AnimatedImage({ src, alt }) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+// function AnimatedImage({ src, alt }) {
+//   const ref = useRef(null);
+//   const [inView, setInView] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setInView(true);
+//           observer.unobserve(entry.target);
+//         }
+//       },
+//       { threshold: 0.5 }
+//     );
+//     if (ref.current) observer.observe(ref.current);
+//     return () => observer.disconnect();
+//   }, []);
 
-  return (
-    <motion.img
-      ref={ref}
-      className="hig"
-      src={src}
-      alt={alt}
-      variants={imageVariants}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-    />
-  );
-}
+//   return (
+//     <motion.img
+//       ref={ref}
+//       className="hig"
+//       src={src}
+//       alt={alt}
+//       variants={imageVariants}
+//       initial="hidden"
+//       animate={inView ? 'visible' : 'hidden'}
+//     />
+//   );
+// }
 
 export default function Home() {
   const words = sentence.split(" ");

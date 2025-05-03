@@ -24,15 +24,6 @@ export default function Footer() {
     show: { x: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
   };
 
-  const pulseAnimation = {
-    scale: [1, 1.2, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  };
-
   return (
     <div className="footer-container">
       <footer className="footer">
@@ -103,25 +94,27 @@ export default function Footer() {
               },
             ].map((social, i) => (
               <motion.a
-  key={i}
-  href={social.href}
-  target="_blank"
-  rel="noreferrer"
-  className={`footer-icon ${social.className}`}
-  aria-label={social.label}
-  variants={itemRightVariants}
-  initial={{ scale: 1 }}   // 👈 This is the fix
-  animate={{
-    scale: [1, 0.85, 1],
-  }}
-  transition={{
-    duration: 2,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
->
-  <i className={`bi ${social.icon}`}></i>
-</motion.a>
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`footer-icon ${social.className}`}
+                aria-label={social.label}
+                initial={{ x: 100, opacity: 0 }}
+                whileInView={{
+                  x: 0,
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 70,
+                  damping: 10,
+                  delay: i * 0.2, // stagger effect
+                }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <i className={`bi ${social.icon}`}></i>
+              </motion.a>
 
             ))}
           </div>

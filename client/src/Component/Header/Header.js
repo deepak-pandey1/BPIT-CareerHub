@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import {
   FaInfoCircle,
@@ -14,7 +14,7 @@ import Sidebar from "../Sidebar";
 
 export default function Header() {
   const { username, setUsername } = useContext(UserContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const mobileNavRef = useRef(null);
 
   useEffect(() => {
@@ -106,22 +106,6 @@ export default function Header() {
           <li className="nav-item">
             <Link to="/Company" className="nav-link nav-custom"><FaBuilding size={20} /></Link>
           </li>
-          {/* {username && (
-            <li className="nav-item">
-              <Link to="/Community" className="nav-link nav-custom">
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <FaUsers size={20} />
-                </motion.div>
-              </Link>
-            </li>
-          )} */}
         </ul>
       </div>
 
