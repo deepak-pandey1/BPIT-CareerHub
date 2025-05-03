@@ -95,7 +95,7 @@ export default function PrivacyPolicy() {
           {
             heading: "Contact Us",
             desc: "Have questions? Reach out to us anytime at:",
-            extra: <a href="mailto:contact@example.com">contact@example.com</a>
+            extra: <a href="mailto:contact@example.com">placement@bpitindia.com</a>
           }
         ].map((section, index) => (
             <motion.div
