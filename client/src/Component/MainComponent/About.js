@@ -4,6 +4,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Briefcase, FileText, Users, BarChart2 } from "lucide-react";
 import { useEffect } from "react";
 import { useState } from "react";
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 export default function About() {
   const fadeInUp = {
@@ -133,6 +134,7 @@ export default function About() {
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
         }}
       >
+        <ProgressBar progress={50} /> {/* Adjust the progress value as needed */}
         <motion.h1
           style={{
             fontSize: "3rem",
