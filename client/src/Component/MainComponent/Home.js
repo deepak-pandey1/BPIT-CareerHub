@@ -5,6 +5,9 @@ import HighestPackageChart from '../Charts/HighestPackageChart';
 import AveragePackageChart from '../Charts/AveragePackageChart';
 import StudentsSelectedChart from '../Charts/StudentsSelectedChart';
 import CompaniesVisitedChart from '../Charts/CompaniesVisitedChart';
+import ProgressBar from '../ProgressBar/ProgressBar';
+
+
 
 
 const headingVariants = {
@@ -190,6 +193,7 @@ export default function Home() {
     delay: 0.1,
   }}
 >
+<ProgressBar />
 
       {/* Hero Section */}
       <div
