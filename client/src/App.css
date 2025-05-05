@@ -134,11 +134,28 @@ body {
 
 
 .row_companys_slider {
+  display: flex;
+  mix-blend-mode: multiply;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+}
+
+.row_company {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  pointer-events: none; /* Prevent drag */
+  -webkit-user-drag: none; /* Prevent drag in Safari/Chrome */
+}
+
+/* .row_companys_slider {
     display: flex;
     mix-blend-mode: multiply;
     width: max-content;
     animation: scroll-left 40s linear infinite;
-}
+} */
 
 @keyframes scroll-left {
   from {
