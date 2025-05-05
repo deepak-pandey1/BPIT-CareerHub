@@ -12,7 +12,9 @@ export default function Admin() {
     role: "",
     package: "",
     img: "",
+    applylink: "",  // ➡️ New field added
   });
+  
   const [companies, setCompanies] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [menuOpenId, setMenuOpenId] = useState(null);
@@ -67,7 +69,7 @@ const handleLogin = (e) => {
     try {
       await axios.post("https://bpit-careerhub.onrender.com/api/company/add", formData);
       toast.success("✅ Company added successfully!");
-      setFormData({ name: "", role: "", package: "", img: "" });
+      setFormData({ name: "", role: "", package: "", img: "", applylink: "", lastDate: "" });
       fetchCompanies();
       setShowForm(false);
     } catch (err) {
@@ -75,6 +77,7 @@ const handleLogin = (e) => {
       console.error(err);
     }
   };
+  
 
   const handleDelete = async (id) => {
     try {
@@ -87,7 +90,8 @@ const handleLogin = (e) => {
     }
   };
 
-  const isFormValid = formData.name && formData.role && formData.package;
+  const isFormValid = formData.name && formData.role && formData.package && formData.applylink;
+
 
   return (
     <>  
@@ -320,6 +324,8 @@ const handleLogin = (e) => {
                     <p className="mb-0 text-muted">
                       <strong>Package:</strong> {company.package}
                     </p>
+                    <p><strong>Apply Link:</strong> <a href={company.applyLink} target="_blank" rel="noopener noreferrer">{company.applyLink}</a></p>
+
                   </div>
 
                   {/* Dropdown */}
@@ -444,6 +450,18 @@ const handleLogin = (e) => {
                   placeholder="Image URL (optional)"
                   className="form-control my-2"
                 />
+                <div className="mb-3">
+                  <input
+                    type="url"
+                    className="form-control"
+                    placeholder="Apply Link (https://example.com)"
+                    name="applylink"
+                    value={formData.applylink}
+                    onChange={handleChange}
+                    required // ✅ this makes it mandatory
+                  />
+                </div>
+
                 {isFormValid && (
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -570,10 +588,6 @@ const handleLogin = (e) => {
     }
   }
 `}</style>
-
-
-
-
     </div>
     </>
   );
