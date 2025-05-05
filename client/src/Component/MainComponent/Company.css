@@ -87,35 +87,66 @@
   
 
   .company-card {
-    border-radius: 18px;
-    /* background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2); */
+    border-radius: 20px;
+    /* background: linear-gradient(135deg, #f5f7fa, #c3cfe2); */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     transition: all 0.4s ease;
     color: black;
+    position: relative;
+    overflow: hidden;
   }
   
   .company-card:hover {
-    /* background: rgba(255, 255, 255, 0.2); */
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
     border-color: #113f67;
   }
   
   .company-card .btn {
     border-radius: 30px;
     transition: all 0.3s ease;
-
-    background-color: white;
-    color: #113f67;
-    border-color: #113f67;
-
+    background: linear-gradient(135deg, #113f67, #00509e);
+    color: white;
+    border: none;
+    font-weight: 500;
   }
   
   .company-card .btn:hover {
-    background-color: #113f67;
-    color: white;
-    border-color: #113f67;
+    background: linear-gradient(135deg, #00509e, #113f67);
+    transform: scale(1.05);
   }
+  
+  .company-card h5 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  
+  .company-card p {
+    font-size: 0.95rem;
+    margin: 4px 0;
+  }
+  
+  /* Chips for role and package */
+  .chip {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(17, 63, 103, 0.1);
+    color: #113f67;
+    font-size: 0.85rem;
+    margin: 4px;
+    font-weight: 500;
+  }
+  
+  /* Avatar glow effect */
+  .company-avatar {
+    transition: all 0.3s ease;
+  }
+  
+  .company-card:hover .company-avatar {
+    box-shadow: 0 0 20px rgba(0, 80, 158, 0.4);
+  }
+  
   
 
   /* Reply preview bar above input */

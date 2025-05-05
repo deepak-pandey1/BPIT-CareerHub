@@ -110,17 +110,18 @@ export default function Company() {
                   <div className="d-flex justify-content-center mb-3">
                     {company.img ? (
                       <img
-                        src={company.img}
-                        alt={company.name}
-                        style={{
-                          width: '80px',
-                          height: '80px',
-                          objectFit: 'cover',
-                          borderRadius: '50%',
-                          border: '4px solid #dee2e6',
-                          boxShadow: '0 0 12px rgba(0,0,0,0.1)',
-                        }}
-                      />
+                      src={company.img}
+                      alt={company.name}
+                      className="company-avatar"
+                      style={{
+                        width: '80px',
+                        height: '80px',
+                        objectFit: 'cover',
+                        borderRadius: '50%',
+                        border: '4px solid #dee2e6',
+                      }}
+                    />
+                    
                     ) : (
                       <div
                         style={{
@@ -149,8 +150,11 @@ export default function Company() {
                     }}
                   >
                     <h5 className="card-title mb-2">{company.name}</h5>
-                    <p className="mb-1"><strong>Role:</strong> {company.role}</p>
-                    <p className="mb-3"><strong>Package:</strong> {company.package}</p>
+<div>
+  <span className="chip">Role: {company.role}</span>
+  <span className="chip">Package: {company.package}</span>
+</div>
+
                     <a
                       href={company.applylink}
                       target="_blank"
