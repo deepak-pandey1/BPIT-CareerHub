@@ -69,7 +69,7 @@ const handleLogin = (e) => {
     try {
       await axios.post("https://bpit-careerhub.onrender.com/api/company/add", formData);
       toast.success("✅ Company added successfully!");
-      setFormData({ name: "", role: "", package: "", img: "", applylink: "", lastDate: "" });
+      setFormData({ name: "", role: "", package: "", img: "", applylink: "" });
       fetchCompanies();
       setShowForm(false);
     } catch (err) {
