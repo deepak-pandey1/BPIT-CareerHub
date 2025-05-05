@@ -62,7 +62,7 @@ export default function Company() {
       {!isLoggedIn && (
         <div className="login-overlay">
           <div className="login-overlay-content">
-            <p className="fs-5 fw-semibold mb-0">Please login to view company details</p>
+            <p className="fs-5 fw-semibold mb-0" style={{ userSelect: 'none' }}>Please login to view company details</p>
             <button onClick={handleLoginRedirect} className="btn btn-dark px-4 py-2">
               Login
             </button>
@@ -72,14 +72,18 @@ export default function Company() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Animated Header */}
-        <motion.h2
-          className="text-center text-black my-4"
-          variants={headerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          Your Career Starts Here: Meet Our Top Recruiters
-        </motion.h2>
+        {/* Main Heading */}
+<motion.h2
+  className="text-center fw-bold my-4 cool-heading"
+  variants={headerVariants}
+  initial="hidden"
+  animate="visible"
+  // whileHover={{ scale: 1.05, textShadow: '0px 0px 12px rgba(0, 123, 255, 1)' }}
+>
+  Your <span className="highlight-blue">Dream Job</span> Awaits: Meet the <span className="highlight-green">Recruiters</span>
+</motion.h2>
+
+
 
         {/* Show spinner while loading data */}
         {loading ? (
@@ -147,9 +151,16 @@ export default function Company() {
                     <h5 className="card-title mb-2">{company.name}</h5>
                     <p className="mb-1"><strong>Role:</strong> {company.role}</p>
                     <p className="mb-3"><strong>Package:</strong> {company.package}</p>
-                    <button className="btn btn-primary mt-auto" disabled={!isLoggedIn}>
+                    <a
+                      href={company.applylink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`btn btn-primary mt-auto ${!isLoggedIn ? 'disabled' : ''}`}
+                      style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
+                    >
                       Apply for Jobs
-                    </button>
+                    </a>
+
                   </div>
                 </motion.div>
               </motion.div>

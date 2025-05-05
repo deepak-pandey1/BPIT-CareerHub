@@ -197,3 +197,24 @@
 .message:hover {
   background: #f9f9f9;
 }
+
+
+/* Color Highlight */
+.highlight-blue {
+  color: #007bff;
+}
+
+.highlight-green {
+  color: #28a745;
+}
+
+/* Hover Underline */
+.cool-heading span {
+  border-bottom: 3px solid transparent;
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.cool-heading:hover span {
+  border-bottom: 3px solid currentColor;
+}

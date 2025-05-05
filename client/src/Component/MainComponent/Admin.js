@@ -68,7 +68,7 @@ const handleLogin = (e) => {
     e.preventDefault();
     try {
       await axios.post("https://bpit-careerhub.onrender.com/api/company/add", formData);
-      toast.success("✅ Company added successfully!");
+      toast.success("Company added successfully!");
       setFormData({ name: "", role: "", package: "", img: "", applylink: "" });
       fetchCompanies();
       setShowForm(false);
@@ -324,8 +324,9 @@ const handleLogin = (e) => {
                     <p className="mb-0 text-muted">
                       <strong>Package:</strong> {company.package}
                     </p>
-                    <p><strong>Apply Link:</strong> <a href={company.applyLink} target="_blank" rel="noopener noreferrer">{company.applyLink}</a></p>
-
+                    <p className="mb-0 text-muted">
+                      <p><strong>Apply Link:</strong> <a href={company.applyLink} target="_blank" rel="noopener noreferrer">{company.applylink}</a></p>
+                    </p>
                   </div>
 
                   {/* Dropdown */}
