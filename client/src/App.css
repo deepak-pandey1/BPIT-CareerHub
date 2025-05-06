@@ -819,4 +819,26 @@ input, textarea, select {
     height: auto !important;
     box-sizing: border-box;
   }
+  /* admin apply link for */
+  .apply-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease-out; /* Added a more natural ease-out */
+  }
+  
+  .apply-link:hover {
+    transform: scale(1.05) translateY(-2px); /* Combine scale and translate for smooth effect */
+  }
+  
+  .apply-text {
+    transition: color 0.3s ease-out, font-weight 0.3s ease-out, text-decoration 0.3s ease-out;
+  }
+  
+  .apply-link:hover .apply-text {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #007bff; /* Change color for a more noticeable effect */
+  }
   

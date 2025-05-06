@@ -108,7 +108,7 @@ export default function Sidebar() {
                   <FaGamepad /> <span>Gamification</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/Alumni" onClick={() => setIsOpen(false)}>
                   <FaUsers /> <span>Network with Alumni</span>
                 </Link>
@@ -117,7 +117,7 @@ export default function Sidebar() {
                 <Link to="/Referral" onClick={() => setIsOpen(false)}>
                   <FaShareAlt /> <span>Job Referral Hub</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
 

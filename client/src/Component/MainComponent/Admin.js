@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "react-bootstrap"; // Import the Spinner component from react-bootstrap
+import { AiFillFileText } from "react-icons/ai";
+import { FiGlobe } from "react-icons/fi";
 
 export default function Admin() {
   const [formData, setFormData] = useState({
@@ -325,8 +327,42 @@ const handleLogin = (e) => {
                       <strong>Package:</strong> {company.package}
                     </p>
                     <p className="mb-0 text-muted">
-                      <p><strong>Apply Link:</strong> <a href={company.applyLink} target="_blank" rel="noopener noreferrer">{company.applylink}</a></p>
+                      <strong>Apply Link:</strong>{" "}
+                      <a
+                        href={company.applylink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "5px",
+                          textDecoration: "none",
+                        }}
+                        className="apply-link"
+                      >
+                        {company.applylink.includes("docs.google.com/forms") ? (
+                          <>
+                            <motion.span whileHover={{ scale: 1.2 }}>
+                              <AiFillFileText size={18} color="green" />
+                            </motion.span>
+                            <span className="apply-text" style={{ color: "green" }}>
+                              Google Form
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <motion.span whileHover={{ scale: 1.2 }}>
+                              <FiGlobe size={18} color="blue" />
+                            </motion.span>
+                            <span className="apply-text" style={{ color: "blue" }}>
+                              {/* Company Link */}
+                              Visit Company Page
+                            </span>
+                          </>
+                        )}
+                      </a>
                     </p>
+
                   </div>
 
                   {/* Dropdown */}
