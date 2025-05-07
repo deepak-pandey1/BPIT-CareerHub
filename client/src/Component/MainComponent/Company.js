@@ -14,13 +14,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Company() {
 
-  const [isOpen, setIsOpen] = useState(false);
 
-  const options = [
-    { label: "Sort by", value: "" },
-    { label: "Highest Package", value: "package" },
-    { label: "A-Z Name", value: "name" },
-  ];
   const { username } = useContext(UserContext);
   const navigate = useNavigate();
   const isLoggedIn = !!username;
@@ -119,6 +113,16 @@ export default function Company() {
   };
 
   return (
+    <AnimatePresence>
+  <motion.div
+    className="company-wrapper"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 1, ease: 'easeOut' }}
+  >
+    {/* Your content goes here */}
+  </motion.div>
     <div className="company-wrapper position-relative" style={{ minHeight: '100vh', padding: '1rem' }}>
       {!isLoggedIn && (
         <div className="login-overlay">
@@ -246,72 +250,79 @@ export default function Company() {
           </div>
         </motion.div>
 
+        <div className="hide-on-small">
         {/* Filter & Sort */}
         <div className="d-flex flex-wrap gap-2 align-items-center mb-4">
-          {/* Role Filter */}
-          {['Software', 'Analyst', 'Core'].map((role) => (
-            <motion.button
-              key={role}
-              className={`btn btn-sm rounded-pill ${
-                roleFilter === role ? 'btn-dark' : 'btn-outline-dark'
-              }`}
-              onClick={() => setRoleFilter(roleFilter === role ? '' : role)}
-              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaFilter className="me-2" />
-              {role}
-            </motion.button>
-          ))}
+  <AnimatePresence>
+    {/* Role Filter */}
+    {['Software', 'Analyst', 'Core'].map((role) => (
+      <motion.button
+        key={role}
+        className={`btn btn-sm rounded-pill ${roleFilter === role ? 'btn-dark' : 'btn-outline-dark'}`}
+        onClick={() => setRoleFilter(roleFilter === role ? '' : role)}
+        whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}  // Fade out when removed
+        transition={{ opacity: { duration: 0.4 }, delay: 0.2 }}
+      >
+        <FaFilter className="me-2" />
+        {role}
+      </motion.button>
+    ))}
 
-          {/* Package Slab Filter */}
-          {['<5', '5-10', '>10'].map((slab) => (
-  <motion.button
-    key={slab}
-    className={`btn btn-sm rounded-pill border-2`}
-    onClick={() => setPackageFilter(packageFilter === slab ? '' : slab)}
-    whileHover={{
-      scale: 1.05,
-      backgroundColor: '#00509e', // Hover background color
-      color: '#fff', // Hover text color
-      transition: { duration: 0.3 },
-    }}
-    whileTap={{
-      scale: 0.95,
-    }}
-    style={{
-      borderColor: '#00509e',
-      backgroundColor: packageFilter === slab ? '#00509e' : 'transparent', // Initial background
-      color: packageFilter === slab ? '#fff' : '#00509e', // Initial text color
-    }}
-  >
-    <FaDollarSign
-      className="me-2"
-      style={{
-        color: packageFilter === slab ? '#fff' : '#00509e', // Icon color based on state
-      }}
-      whileHover={{
-        color: '#fff', // Change icon color to white on hover
-      }}
-    />
-    {slab === '<5' ? '<5 LPA' : slab === '5-10' ? '5-10 LPA' : '10+ LPA'}
-  </motion.button>
-))}
+    {/* Package Slab Filter */}
+    {['<5', '5-10', '>10'].map((slab) => (
+      <motion.button
+        key={slab}
+        className={`btn btn-sm rounded-pill border-2`}
+        onClick={() => setPackageFilter(packageFilter === slab ? '' : slab)}
+        whileHover={{
+          scale: 1.05,
+          backgroundColor: '#00509e', 
+          color: '#fff',
+          transition: { duration: 0.3 },
+        }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}  // Fade out when removed
+        transition={{ opacity: { duration: 0.5 }, delay: 0.3 }}  // Slightly longer delay for staggered effect
+        style={{
+          borderColor: '#00509e',
+          backgroundColor: packageFilter === slab ? '#00509e' : 'transparent',
+          color: packageFilter === slab ? '#fff' : '#00509e',
+        }}
+      >
+        <FaDollarSign
+          className="me-2"
+          style={{
+            color: packageFilter === slab ? '#fff' : '#00509e',
+          }}
+        />
+        {slab === '<5' ? '<5 LPA' : slab === '5-10' ? '5-10 LPA' : '10+ LPA'}
+      </motion.button>
+    ))}
 
-
-          {/* Sort */}
-          <motion.select
-            className="form-select form-select-sm ms-auto"
-            style={{ width: '200px' }}
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-            
-          >
-            <option value="">Sort by</option>
-            <option value="package">Highest Package</option>
-            <option value="name">A-Z Name</option>
-          </motion.select>
+    {/* Sort */}
+    <motion.select
+      className="form-select form-select-sm ms-auto"
+      style={{ width: '200px' }}
+      value={sortOption}
+      onChange={(e) => setSortOption(e.target.value)}
+      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}  // Fade out when removed
+      transition={{ opacity: { duration: 0.5 }, delay: 0.4 }}
+    >
+      <option value="">Sort by</option>
+      <option value="package">Highest Package</option>
+      <option value="name">A-Z Name</option>
+    </motion.select>
+  </AnimatePresence>
+</div>
         </div>
 
         {loading ? (
@@ -437,5 +448,7 @@ export default function Company() {
         )}
       </AnimatePresence>
     </div>
+    </AnimatePresence>
   );
+  
 }
