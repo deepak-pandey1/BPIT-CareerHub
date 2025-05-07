@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { UserContext } from '../UserContext.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Spinner } from 'react-bootstrap'; // Import Spinner from react-bootstrap
+import { Spinner } from 'react-bootstrap';
+import { FaTimes, FaSearch, FaTimesCircle, FaPaperPlane } from 'react-icons/fa'; // Added FaPaperPlane
 import './Company.css';
 
 export default function Company() {
@@ -12,21 +13,24 @@ export default function Company() {
   const isLoggedIn = !!username;
 
   const [companies, setCompanies] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state to show spinner
+  const [loading, setLoading] = useState(true);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
 
   const handleLoginRedirect = () => {
     navigate('/login');
   };
 
-  // Fetch companies from the API
   const fetchCompanies = async () => {
     try {
       const res = await axios.get('https://bpit-careerhub.onrender.com/api/company/all');
       setCompanies(res.data);
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false);
     } catch (err) {
       console.error('Error fetching companies:', err);
-      setLoading(false); // Set loading to false even if there's an error
+      setLoading(false);
     }
   };
 
@@ -34,27 +38,32 @@ export default function Company() {
     fetchCompanies();
   }, []);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.6,
-        type: 'spring',
-        stiffness: 80,
-      },
-    }),
-  };
+  const filteredCompanies = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  const headerVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: 'easeOut' },
-    },
+  const renderCompanyLogoOrLetter = (companyName, companyImg) => {
+    if (companyImg) {
+      return <img src={companyImg} alt={companyName} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} />;
+    } else {
+      return (
+        <div
+          style={{
+            width: '40px',
+            height: '40px',
+            backgroundColor: '#d1d9e6',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '50%',
+            fontSize: '18px',
+            color: '#fff',
+          }}
+        >
+          {companyName.charAt(0).toUpperCase()}
+        </div>
+      );
+    }
   };
 
   return (
@@ -62,116 +71,239 @@ export default function Company() {
       {!isLoggedIn && (
         <div className="login-overlay">
           <div className="login-overlay-content">
-            <p className="fs-5 fw-semibold mb-0" style={{ userSelect: 'none' }}>Please login to view company details</p>
-            <button onClick={handleLoginRedirect} className="btn btn-dark px-4 py-2">
-              Login
-            </button>
+            <p className="fs-5 fw-semibold mb-0" style={{ userSelect: 'none' }}>
+              Please login to view company details
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleLoginRedirect}
+              className="btn btn-dark px-4 py-2 d-flex align-items-center gap-2"
+            >
+              <FaPaperPlane /> Login
+            </motion.button>
           </div>
         </div>
       )}
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Animated Header */}
-        {/* Main Heading */}
-<motion.h2
-  className="text-center fw-bold my-4 cool-heading"
-  variants={headerVariants}
-  initial="hidden"
-  animate="visible"
-  // whileHover={{ scale: 1.05, textShadow: '0px 0px 12px rgba(0, 123, 255, 1)' }}
->
-  Your <span className="highlight-blue">Dream Job</span> Awaits: Meet the <span className="highlight-green">Recruiters</span>
-</motion.h2>
+        {/* Search Bar */}
+        <motion.div
+          className="my-4 d-flex justify-content-end"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut' } }}
+        >
+          <div
+            className={`search-wrapper position-relative ${searchFocused ? 'focused' : ''}`}
+            style={{
+              width: '100%',
+              maxWidth: '400px',
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <FaSearch
+              className="search-icon"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '15px',
+                transform: 'translateY(-50%)',
+                color: '#666',
+                zIndex: 1,
+              }}
+            />
 
+            <input
+              type="text"
+              placeholder="Search for a company..."
+              className="form-control form-control-lg shadow-sm search-input ps-5"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setShowSuggestions(e.target.value.length > 0);
+              }}
+              onFocus={() => {
+                setSearchFocused(true);
+                if (searchTerm.length > 0) setShowSuggestions(true);
+              }}
+              onBlur={() => {
+                setSearchFocused(false);
+                setTimeout(() => setShowSuggestions(false), 150);
+              }}
+              style={{
+                borderRadius: '30px',
+                boxShadow: searchFocused
+                  ? 'inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff, 0 4px 10px rgba(0,0,0,0.1)'
+                  : 'inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff',
+                transition: 'all 0.3s ease',
+                background: '#f1f3f5',
+              }}
+            />
 
+            {searchTerm && (
+              <FaTimesCircle
+                className="clear-icon"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: '15px',
+                  transform: 'translateY(-50%)',
+                  cursor: 'pointer',
+                  color: '#999',
+                  zIndex: 1,
+                }}
+                onClick={() => {
+                  setSearchTerm('');
+                  setShowSuggestions(false);
+                }}
+              />
+            )}
 
-        {/* Show spinner while loading data */}
+            {showSuggestions && (
+              <motion.div
+                className="suggestions-dropdown bg-white shadow rounded-4 p-2 mt-2"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                {filteredCompanies.length > 0 ? (
+                  filteredCompanies.map((company) => (
+                    <div
+                      key={company._id}
+                      className="d-flex align-items-center gap-2 p-2 rounded-3 hover-bg"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        setSelectedCompany(company);
+                        setSearchTerm(company.name);
+                        setShowSuggestions(false);
+                      }}
+                    >
+                      {renderCompanyLogoOrLetter(company.name, company.img)}
+                      <span>{company.name}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div className="no-results text-center p-2 text-muted">No companies found</div>
+                )}
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
+
         {loading ? (
           <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '300px' }}>
             <Spinner animation="border" variant="primary" />
           </div>
         ) : (
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            {companies.map((company, index) => (
-              <motion.div
-                className="col"
-                key={company._id} // Using _id as key
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ scale: 1.05 }}
-              >
+          <AnimatePresence>
+            <motion.div
+              className="company-list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              {filteredCompanies.map((company, index) => (
                 <motion.div
-                  className="card company-card h-100 p-3 shadow-lg rounded-3"
-                  whileHover={{ boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3)' }}
+                  key={company._id}
+                  className="company-list-item"
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={() => setSelectedCompany(company)}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 30 }}
+                  transition={{ delay: index * 0.08, duration: 0.6, ease: 'easeOut' }}
                 >
-                  {/* Avatar Circle */}
-                  <div className="d-flex justify-content-center mb-3">
-                    {company.img ? (
-                      <img
-                      src={company.img}
-                      alt={company.name}
-                      className="company-avatar"
-                      style={{
-                        width: '80px',
-                        height: '80px',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                        border: '4px solid #dee2e6',
-                      }}
-                    />
-                    
-                    ) : (
-                      <div
-                        style={{
-                          width: '80px',
-                          height: '80px',
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #6c63ff, #2575fc)',
-                          color: '#fff',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '28px',
-                          fontWeight: 'bold',
-                        }}
-                      >
-                        {company.name?.charAt(0)}
-                      </div>
-                    )}
-                  </div>
+                  {renderCompanyLogoOrLetter(company.name, company.img)}
+                  <span className="company-list-name">{company.name}</span>
 
-                  <div
-                    className="card-body d-flex flex-column text-center"
-                    style={{
-                      filter: isLoggedIn ? 'none' : 'blur(3px)',
-                      pointerEvents: isLoggedIn ? 'auto' : 'none',
+                  {/* Animated Apply Button */}
+                  <motion.a
+                    href={company.applylink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn btn-sm btn-primary d-flex align-items-center gap-2 ${!isLoggedIn ? 'disabled' : ''}`}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
+                    whileHover={{
+                      scale: 1.1,
+                      transition: { duration: 0.2 },
                     }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <h5 className="card-title mb-2">{company.name}</h5>
-<div>
-  <span className="chip">Role: {company.role}</span>
-  <span className="chip">Package: {company.package}</span>
-</div>
-
-                    <a
-                      href={company.applylink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`btn btn-primary mt-auto ${!isLoggedIn ? 'disabled' : ''}`}
-                      style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
-                    >
-                      Apply for Jobs
-                    </a>
-
-                  </div>
+                    <FaPaperPlane /> Apply
+                  </motion.a>
                 </motion.div>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
+
+      {/* Popup */}
+      <AnimatePresence>
+        {selectedCompany && (
+          <motion.div
+            className="popup-overlay"
+            onClick={() => setSelectedCompany(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="popup-card-new"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.85 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.button
+                className="popup-close-btn"
+                onClick={() => setSelectedCompany(null)}
+                whileHover={{ rotate: 180, scale: 1.2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaTimes />
+              </motion.button>
+
+              <div className="popup-img-wrapper">
+                <img
+                  src={selectedCompany.img || 'https://via.placeholder.com/100'}
+                  alt={selectedCompany.name}
+                  className="popup-img-new"
+                />
+              </div>
+
+              <div className="popup-content">
+                <h5 className="company-name text-center">{selectedCompany.name}</h5>
+                <p className="chip text-center mb-2">Role: {selectedCompany.role}</p>
+                <p className="chip text-center mb-4">Package: {selectedCompany.package}</p>
+
+                {/* Animated Apply Button */}
+                <motion.a
+                  href={selectedCompany.applylink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`popup-apply-btn d-flex align-items-center justify-content-center gap-2 ${!isLoggedIn ? 'disabled' : ''}`}
+                  style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaPaperPlane /> Apply Now
+                </motion.a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -249,3 +249,447 @@
 .cool-heading:hover span {
   border-bottom: 3px solid currentColor;
 }
+
+/* List style */
+.company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.company-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.company-list-item:hover {
+  background: #e9ecef;
+}
+
+.company-list-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #dee2e6;
+}
+
+.company-list-name {
+  flex-grow: 1;
+  margin-left: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #113f67;
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.popup-card {
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: fadeZoomIn 0.5s ease;
+}
+
+.popup-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #dee2e6;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  backdrop-filter: blur(10px); /* Glassmorphism effect: soft blur */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-card {
+  position: relative;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2); /* Slight white transparency */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px); /* Glassmorphism blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Company.css */
+
+/* Keyframes for zoom + fade in */
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Overlay animation */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 1rem;
+  text-align: center;
+  animation: fadeZoomIn 0.6s ease-out;
+}
+
+/* Content animation */
+.login-overlay-content {
+  max-width: 90%;
+  min-width: 260px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeZoomIn 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Button styles with hover animation */
+.login-overlay-content button {
+  width: auto;
+  font-size: 16px;
+  padding: 0.5rem 1.5rem;
+  min-width: 120px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-overlay-content button:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Mobile-specific tweaks */
+@media screen and (max-width: 576px) {
+  .login-overlay-content p {
+    font-size: 16px;
+  }
+
+  .login-overlay-content button {
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.clr {
+  border: 1px solid #113f67; /* Orange border */
+  background-color: transparent;
+  color: #113f67;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.company-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 1.0rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.company-list-item:hover {
+  background: #e9ecef;
+  transform: scale(1.02);
+}
+
+.company-list-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #dee2e6;
+}
+
+.company-list-name {
+  flex-grow: 1;
+  margin-left: 1.2rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #113f67;
+}
+
+.company-list-item .btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #00509e;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.company-list-item .btn:hover {
+  background-color: #00438a;
+}
+
+.company-list-item .disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Light transparent white instead of black */
+  backdrop-filter: blur(10px); /* Glassmorphism blur */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* New fade-in animation */
+  animation: fadeIn 0.4s ease;
+}
+
+
+.popup-card {
+  position: relative;
+  background-color: white;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  animation: fadeZoomIn 0.6s ease-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+
+
+.search-suggestions {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.search-suggestions li:hover {
+  background-color: #f0f0f0;
+  font-weight: 500;
+}
+
+.hover-bg:hover {
+  background-color: #f1f1f1;
+}
+.no-results {
+  font-size: 14px;
+  color: #aaa;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.search-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #0d6efd;
+  outline: none;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+/* For medium and larger screens, limit width and align right */
+@media (min-width: 768px) {
+  .search-wrapper {
+    width: 40%;
+  }
+}
+
+.popup-card-new {
+  max-width: 420px;
+  width: 90%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem 1.5rem 1.5rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  animation: fadeZoomIn 0.4s ease;
+}
+
+.popup-img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.popup-img-new {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #dee2e6;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.popup-img-new:hover {
+  transform: scale(1.05);
+}
+
+.popup-content .company-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #113f67;
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 1.4rem;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.popup-apply-btn {
+  background: linear-gradient(135deg, #113f67, #00509e);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.popup-apply-btn:hover {
+  background: linear-gradient(135deg, #00509e, #113f67);
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .popup-card-new {
+    padding: 1.5rem 1rem;
+  }
+
+  .popup-content .company-name {
+    font-size: 1.1rem;
+  }
+
+  .popup-apply-btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: transparent !important;
+}
+
+.suggestions-dropdown div:hover {
+  background-color: #f3f6f8;
+  transition: background 0.2s ease;
+}
+
+.search-wrapper.focused {
+  max-width: 450px !important; /* Expand slightly on focus */
+}
