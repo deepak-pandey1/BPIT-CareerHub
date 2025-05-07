@@ -648,10 +648,11 @@
 }
 
 .popup-apply-btn {
-  background: linear-gradient(135deg, #113f67, #00509e);
-  border: none;
+  background: white;
+  /* border: linear-gradient(135deg, #113f67, #00509e); */
+  border: 1.5px solid #00509e;
   border-radius: 30px;
-  color: white;
+  color: #00509e;
   font-weight: 600;
   padding: 10px 24px;
   text-decoration: none;
@@ -660,7 +661,8 @@
 }
 
 .popup-apply-btn:hover {
-  background: linear-gradient(135deg, #00509e, #113f67);
+  background: linear-gradient(135deg, #113f67, #00509e);
+  color:white;
   transform: scale(1.05);
 }
 

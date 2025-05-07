@@ -3,11 +3,24 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { UserContext } from '../UserContext.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Spinner } from 'react-bootstrap';
-import { FaTimes, FaSearch, FaTimesCircle, FaPaperPlane } from 'react-icons/fa'; // Added FaPaperPlane
+// import { Spinner } from 'react-bootstrap';
+import { FaTimes, FaSearch, FaTimesCircle, FaPaperPlane } from 'react-icons/fa';
 import './Company.css';
+import { FaFilter, FaDollarSign } from 'react-icons/fa';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+
+
 
 export default function Company() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const options = [
+    { label: "Sort by", value: "" },
+    { label: "Highest Package", value: "package" },
+    { label: "A-Z Name", value: "name" },
+  ];
   const { username } = useContext(UserContext);
   const navigate = useNavigate();
   const isLoggedIn = !!username;
@@ -19,9 +32,11 @@ export default function Company() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
 
-  const handleLoginRedirect = () => {
-    navigate('/login');
-  };
+  const [roleFilter, setRoleFilter] = useState('');
+  const [packageFilter, setPackageFilter] = useState('');
+  const [sortOption, setSortOption] = useState('');
+
+  const handleLoginRedirect = () => navigate('/login');
 
   const fetchCompanies = async () => {
     try {
@@ -38,13 +53,50 @@ export default function Company() {
     fetchCompanies();
   }, []);
 
-  const filteredCompanies = companies.filter((company) =>
-    company.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const getPackageValue = (pkg) => {
+    if (!pkg) return 0;
+    // Extract number like "5" from "5 LPA" or "10+ LPA"
+    const match = pkg.match(/\d+(\.\d+)?/); 
+    return match ? parseFloat(match[0]) : 0;
+  };
+  
+
+  const filteredCompanies = companies
+    .filter((company) =>
+      company.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((company) => (roleFilter ? company.role?.toLowerCase() === roleFilter.toLowerCase() : true))
+
+    .filter((company) => {
+      const pkgVal = getPackageValue(company.package);
+      if (packageFilter === '<5') return pkgVal < 5;
+      if (packageFilter === '5-10') return pkgVal >= 5 && pkgVal <= 10;
+      if (packageFilter === '>10') return pkgVal > 10;
+      return true;
+    })
+    .sort((a, b) => {
+      if (sortOption === 'package') {
+        return getPackageValue(b.package) - getPackageValue(a.package);
+      } else if (sortOption === 'name') {
+        return a.name.localeCompare(b.name);
+      }
+      return 0;
+    });
 
   const renderCompanyLogoOrLetter = (companyName, companyImg) => {
     if (companyImg) {
-      return <img src={companyImg} alt={companyName} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} />;
+      return (
+        <img
+          src={companyImg}
+          alt={companyName}
+          style={{
+            width: '40px',
+            height: '40px',
+            objectFit: 'cover',
+            borderRadius: '50%',
+          }}
+        />
+      );
     } else {
       return (
         <div
@@ -87,7 +139,7 @@ export default function Company() {
       )}
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Search Bar */}
+        {/* Search */}
         <motion.div
           className="my-4 d-flex justify-content-end"
           initial={{ opacity: 0, y: -50 }}
@@ -95,11 +147,7 @@ export default function Company() {
         >
           <div
             className={`search-wrapper position-relative ${searchFocused ? 'focused' : ''}`}
-            style={{
-              width: '100%',
-              maxWidth: '400px',
-              transition: 'all 0.3s ease',
-            }}
+            style={{ width: '100%', maxWidth: '400px', transition: 'all 0.3s ease' }}
           >
             <FaSearch
               className="search-icon"
@@ -110,9 +158,9 @@ export default function Company() {
                 transform: 'translateY(-50%)',
                 color: '#666',
                 zIndex: 1,
+                transition: 'transform 0.3s ease',
               }}
             />
-
             <input
               type="text"
               placeholder="Search for a company..."
@@ -132,16 +180,15 @@ export default function Company() {
               }}
               style={{
                 borderRadius: '30px',
+                background: '#f1f3f5',
                 boxShadow: searchFocused
                   ? 'inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff, 0 4px 10px rgba(0,0,0,0.1)'
                   : 'inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff',
                 transition: 'all 0.3s ease',
-                background: '#f1f3f5',
               }}
             />
-
             {searchTerm && (
-              <FaTimesCircle
+              <motion.div
                 className="clear-icon"
                 style={{
                   position: 'absolute',
@@ -156,9 +203,13 @@ export default function Company() {
                   setSearchTerm('');
                   setShowSuggestions(false);
                 }}
-              />
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.3, ease: 'easeInOut' } }}
+                exit={{ opacity: 0 }}
+              >
+                <FaTimesCircle />
+              </motion.div>
             )}
-
             {showSuggestions && (
               <motion.div
                 className="suggestions-dropdown bg-white shadow rounded-4 p-2 mt-2"
@@ -169,7 +220,7 @@ export default function Company() {
               >
                 {filteredCompanies.length > 0 ? (
                   filteredCompanies.map((company) => (
-                    <div
+                    <motion.div
                       key={company._id}
                       className="d-flex align-items-center gap-2 p-2 rounded-3 hover-bg"
                       style={{ cursor: 'pointer' }}
@@ -178,10 +229,14 @@ export default function Company() {
                         setSearchTerm(company.name);
                         setShowSuggestions(false);
                       }}
+                      whileHover={{
+                        scale: 1.05,
+                        transition: { duration: 0.2, ease: 'easeInOut' },
+                      }}
                     >
                       {renderCompanyLogoOrLetter(company.name, company.img)}
                       <span>{company.name}</span>
-                    </div>
+                    </motion.div>
                   ))
                 ) : (
                   <div className="no-results text-center p-2 text-muted">No companies found</div>
@@ -191,9 +246,85 @@ export default function Company() {
           </div>
         </motion.div>
 
+        {/* Filter & Sort */}
+        <div className="d-flex flex-wrap gap-2 align-items-center mb-4">
+          {/* Role Filter */}
+          {['Software', 'Analyst', 'Core'].map((role) => (
+            <motion.button
+              key={role}
+              className={`btn btn-sm rounded-pill ${
+                roleFilter === role ? 'btn-dark' : 'btn-outline-dark'
+              }`}
+              onClick={() => setRoleFilter(roleFilter === role ? '' : role)}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaFilter className="me-2" />
+              {role}
+            </motion.button>
+          ))}
+
+          {/* Package Slab Filter */}
+          {['<5', '5-10', '>10'].map((slab) => (
+  <motion.button
+    key={slab}
+    className={`btn btn-sm rounded-pill border-2`}
+    onClick={() => setPackageFilter(packageFilter === slab ? '' : slab)}
+    whileHover={{
+      scale: 1.05,
+      backgroundColor: '#00509e', // Hover background color
+      color: '#fff', // Hover text color
+      transition: { duration: 0.3 },
+    }}
+    whileTap={{
+      scale: 0.95,
+    }}
+    style={{
+      borderColor: '#00509e',
+      backgroundColor: packageFilter === slab ? '#00509e' : 'transparent', // Initial background
+      color: packageFilter === slab ? '#fff' : '#00509e', // Initial text color
+    }}
+  >
+    <FaDollarSign
+      className="me-2"
+      style={{
+        color: packageFilter === slab ? '#fff' : '#00509e', // Icon color based on state
+      }}
+      whileHover={{
+        color: '#fff', // Change icon color to white on hover
+      }}
+    />
+    {slab === '<5' ? '<5 LPA' : slab === '5-10' ? '5-10 LPA' : '10+ LPA'}
+  </motion.button>
+))}
+
+
+          {/* Sort */}
+          <motion.select
+            className="form-select form-select-sm ms-auto"
+            style={{ width: '200px' }}
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+            
+          >
+            <option value="">Sort by</option>
+            <option value="package">Highest Package</option>
+            <option value="name">A-Z Name</option>
+          </motion.select>
+        </div>
+
         {loading ? (
-          <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '300px' }}>
-            <Spinner animation="border" variant="primary" />
+            <div className="company-skeleton-list">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="company-list-item d-flex align-items-center gap-3 p-3 mb-3 shadow-sm rounded-4">
+                <Skeleton circle width={40} height={40} />
+                <div className="flex-grow-1">
+                  <Skeleton height={20} width="60%" />
+                </div>
+                <Skeleton height={30} width={80} />
+              </div>
+            ))}
           </div>
         ) : (
           <AnimatePresence>
@@ -208,20 +339,19 @@ export default function Company() {
                 <motion.div
                   key={company._id}
                   className="company-list-item"
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   onClick={() => setSelectedCompany(company)}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 30 }}
-                  transition={{ delay: index * 0.08, duration: 0.6, ease: 'easeOut' }}
+                  transition={{
+                    delay: index * 0.08,
+                    duration: 0.6,
+                    ease: 'easeOut',
+                  }}
                 >
                   {renderCompanyLogoOrLetter(company.name, company.img)}
                   <span className="company-list-name">{company.name}</span>
-
-                  {/* Animated Apply Button */}
                   <motion.a
                     href={company.applylink}
                     target="_blank"
@@ -229,13 +359,16 @@ export default function Company() {
                     className={`btn btn-sm btn-primary d-flex align-items-center gap-2 ${!isLoggedIn ? 'disabled' : ''}`}
                     onClick={(e) => e.stopPropagation()}
                     style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
-                    whileHover={{
-                      scale: 1.1,
-                      transition: { duration: 0.2 },
-                    }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FaPaperPlane /> Apply
+                    <motion.span
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <FaPaperPlane />
+                    </motion.span>{' '}
+                    Apply
                   </motion.a>
                 </motion.div>
               ))}
@@ -270,7 +403,6 @@ export default function Company() {
               >
                 <FaTimes />
               </motion.button>
-
               <div className="popup-img-wrapper">
                 <img
                   src={selectedCompany.img || 'https://via.placeholder.com/100'}
@@ -278,26 +410,26 @@ export default function Company() {
                   className="popup-img-new"
                 />
               </div>
-
               <div className="popup-content">
                 <h5 className="company-name text-center">{selectedCompany.name}</h5>
                 <p className="chip text-center mb-2">Role: {selectedCompany.role}</p>
                 <p className="chip text-center mb-4">Package: {selectedCompany.package}</p>
-
-                {/* Animated Apply Button */}
                 <motion.a
                   href={selectedCompany.applylink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`popup-apply-btn d-flex align-items-center justify-content-center gap-2 ${!isLoggedIn ? 'disabled' : ''}`}
                   style={{ pointerEvents: isLoggedIn ? 'auto' : 'none' }}
-                  whileHover={{
-                    scale: 1.1,
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaPaperPlane /> Apply Now
+                  <motion.span
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <FaPaperPlane />
+                  </motion.span>{' '}
+                  Apply Now
                 </motion.a>
               </div>
             </motion.div>
