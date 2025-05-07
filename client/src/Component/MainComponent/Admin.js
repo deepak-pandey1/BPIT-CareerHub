@@ -10,7 +10,7 @@ import { FiGlobe } from "react-icons/fi";
 import { AiFillLock, AiFillUnlock } from "react-icons/ai"; // Import lock icons
 import {  useCycle } from "framer-motion"; // Import useCycle from framer-motion
 import { BiLogInCircle } from 'react-icons/bi'; // Import the BiLogInCircle icon
-
+// import { FaBuilding } from "react-icons/fa";  // For company/ For add
 
 
 export default function Admin() {
@@ -479,15 +479,16 @@ const handleLogin = (e) => {
               transition={{ duration: 0.3 }}
             >
               <h5 className="mb-3 text-center">
-                <motion.span
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ display: "inline-block", marginRight: "0.5rem" }}
-                >
-                  🚀
-                </motion.span>
-                Add New Company
-              </h5>
+  <motion.span
+    animate={{ y: [0, -4, 0] }}
+    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+    style={{ display: "inline-block", marginRight: "0.5rem", color: "inherit" }}
+  >
+    {/* <FaBuilding size={18} style={{ marginRight: "0.25rem" }} /> */}
+    <FaPlus size={14} />
+  </motion.span>
+  Add New Company
+</h5>
               <form onSubmit={handlePost}>
                 <input
                   type="text"

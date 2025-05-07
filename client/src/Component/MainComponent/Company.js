@@ -252,43 +252,51 @@ export default function Company() {
 
         <div className="hide-on-small">
         {/* Filter & Sort */}
-        <div className="d-flex flex-wrap gap-2 align-items-center mb-4">
+<div className="d-flex flex-wrap gap-2 align-items-center mb-4">
   <AnimatePresence>
-    {/* Role Filter */}
-    {['Software', 'Analyst', 'Core'].map((role) => (
+    {['Software', 'Analyst', 'Core'].map((role, index) => (
       <motion.button
         key={role}
         className={`btn btn-sm rounded-pill ${roleFilter === role ? 'btn-dark' : 'btn-outline-dark'}`}
         onClick={() => setRoleFilter(roleFilter === role ? '' : role)}
         whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
         whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}  // Fade out when removed
-        transition={{ opacity: { duration: 0.4 }, delay: 0.2 }}
+        initial={{ opacity: 0, y: -30 }} // Start higher for better bounce
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        transition={{
+          type: "spring",
+          stiffness: 60,  // lower stiffness => softer bounce
+          damping: 12,    // higher damping => less bouncy
+          delay: index * 0.1,
+        }}
       >
         <FaFilter className="me-2" />
         {role}
       </motion.button>
     ))}
 
-    {/* Package Slab Filter */}
-    {['<5', '5-10', '>10'].map((slab) => (
+    {['<5', '5-10', '>10'].map((slab, index) => (
       <motion.button
         key={slab}
         className={`btn btn-sm rounded-pill border-2`}
         onClick={() => setPackageFilter(packageFilter === slab ? '' : slab)}
         whileHover={{
           scale: 1.05,
-          backgroundColor: '#00509e', 
+          backgroundColor: '#00509e',
           color: '#fff',
           transition: { duration: 0.3 },
         }}
         whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}  // Fade out when removed
-        transition={{ opacity: { duration: 0.5 }, delay: 0.3 }}  // Slightly longer delay for staggered effect
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        transition={{
+          type: "spring",
+          stiffness: 60,
+          damping: 12,
+          delay: (index + 3) * 0.1,
+        }}
         style={{
           borderColor: '#00509e',
           backgroundColor: packageFilter === slab ? '#00509e' : 'transparent',
@@ -305,17 +313,21 @@ export default function Company() {
       </motion.button>
     ))}
 
-    {/* Sort */}
     <motion.select
       className="form-select form-select-sm ms-auto"
       style={{ width: '200px' }}
       value={sortOption}
       onChange={(e) => setSortOption(e.target.value)}
       whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}  // Fade out when removed
-      transition={{ opacity: { duration: 0.5 }, delay: 0.4 }}
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{
+        type: "spring",
+        stiffness: 60,
+        damping: 12,
+        delay: 0.7,
+      }}
     >
       <option value="">Sort by</option>
       <option value="package">Highest Package</option>
@@ -323,6 +335,7 @@ export default function Company() {
     </motion.select>
   </AnimatePresence>
 </div>
+
         </div>
 
         {loading ? (
