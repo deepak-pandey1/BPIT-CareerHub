@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { UserContext } from "./UserContext.js";
 import { motion, AnimatePresence } from "framer-motion";
-import {  FaLaptopCode, FaGamepad, FaUsers, FaShareAlt } from "react-icons/fa";
+import {  FaLaptopCode, FaGamepad } from "react-icons/fa";
 
 
 export default function Sidebar() {
