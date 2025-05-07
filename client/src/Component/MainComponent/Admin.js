@@ -7,6 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "react-bootstrap"; // Import the Spinner component from react-bootstrap
 import { AiFillFileText } from "react-icons/ai";
 import { FiGlobe } from "react-icons/fi";
+import { AiFillLock, AiFillUnlock } from "react-icons/ai"; // Import lock icons
+import {  useCycle } from "framer-motion"; // Import useCycle from framer-motion
+import { BiLogInCircle } from 'react-icons/bi'; // Import the BiLogInCircle icon
+
+
 
 export default function Admin() {
   const [formData, setFormData] = useState({
@@ -94,7 +99,15 @@ const handleLogin = (e) => {
 
   const isFormValid = formData.name && formData.role && formData.package && formData.applylink;
 
+  const [current, cycleIcon] = useCycle("lock", "unlock");
 
+  // Automatically cycle between lock and unlock
+  useEffect(() => {
+    const interval = setInterval(() => {
+      cycleIcon();
+    }, 1500); // change every 1.5 seconds
+    return () => clearInterval(interval);
+  }, [cycleIcon]);
   return (
     <>  
 
@@ -126,17 +139,33 @@ const handleLogin = (e) => {
         exit={{ y: -50, opacity: 0, scale: 0.7 }}
         transition={{ type: "spring", stiffness: 80, damping: 15 }}
       >
-        <div className="text-center mb-4">
-          <motion.h4
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            style={{ fontWeight: 700, fontSize: "1.5rem", color: "#333" }}
-          >
-            🔐 Admin Login
-          </motion.h4>
-          <p className="text-muted mb-0">Enter your credentials to proceed</p>
-        </div>
+  <div className="text-center mb-4">
+      <motion.h4
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        style={{
+          fontWeight: 700,
+          fontSize: "1.5rem",
+          color: "#333",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.5rem",
+        }}
+      >
+        {/* Animated Lock/Unlock Icon */}
+        <motion.span
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          style={{ display: "inline-block", color: "#333" }}
+        >
+          {current === "lock" ? <AiFillLock size={24} /> : <AiFillUnlock size={24} />}
+        </motion.span>
+        Admin Login
+      </motion.h4>
+      <p className="text-muted mb-0">Enter your credentials to proceed</p>
+    </div>
 
         <form onSubmit={handleLogin}>
           <motion.div
@@ -192,24 +221,32 @@ const handleLogin = (e) => {
           </motion.div>
 
           <motion.button
-            whileHover={{
-              scale: 1.03,
-              boxShadow: "0 0 15px rgba(99, 102, 241, 0.6)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            type="submit"
-            className="btn w-100"
-            style={{
-              background: "linear-gradient(to right, #6366f1, #3b82f6)",
-              color: "#fff",
-              fontWeight: 600,
-              padding: "0.75rem",
-              border: "none",
-              borderRadius: "1rem",
-            }}
-          >
-            🚀 Login
-          </motion.button>
+  whileHover={{
+    scale: 1.05,
+    boxShadow: "0 0 15px rgba(99, 102, 241, 0.6)",
+    transition: { type: "spring", stiffness: 300, damping: 20 }, // Adding smooth transition
+  }}
+  whileTap={{
+    scale: 0.95,
+    transition: { type: "spring", stiffness: 400, damping: 20 }, // Smooth animation on tap
+  }}
+  type="submit"
+  className="btn w-100"
+  style={{
+    background: "linear-gradient(to right, #6366f1, #3b82f6)",
+    color: "#fff",
+    fontWeight: 600,
+    padding: "0.75rem 1.2rem",
+    border: "none",
+    borderRadius: "1rem",
+    display: "flex",
+    alignItems: "center", // Center the icon and text
+    justifyContent: "center", // Center the icon and text
+  }}
+>
+  <BiLogInCircle style={{ marginRight: '8px', fontSize: '1.5rem' }} /> Login
+</motion.button>
+
         </form>
         {loginError && (
   <motion.div
