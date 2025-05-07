@@ -415,12 +415,20 @@ export default function Company() {
                 <FaTimes />
               </motion.button>
               <div className="popup-img-wrapper">
-                <img
-                  src={selectedCompany.img || 'https://via.placeholder.com/100'}
-                  alt={selectedCompany.name}
-                  className="popup-img-new"
-                />
-              </div>
+  {selectedCompany.img ? (
+    <img
+      src={selectedCompany.img}
+      alt={selectedCompany.name}
+      className="popup-img-new"
+      onError={(e) => e.target.style.display = 'none'} // hide broken image
+    />
+  ) : (
+    <div className="company-img-placeholder">
+      {selectedCompany.name?.charAt(0).toUpperCase()}
+    </div>
+  )}
+</div>
+
               <div className="popup-content">
                 <h5 className="company-name text-center">{selectedCompany.name}</h5>
                 <p className="chip text-center mb-2">Role: {selectedCompany.role}</p>
