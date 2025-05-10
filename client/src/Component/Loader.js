@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Loader = ({ fadeOut }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const next = prev + Math.random() * 10;
+        return next >= 100 ? 100 : next;
+      });
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className={`loader-container ${fadeOut ? 'fade-out' : ''}`}>
+    <div className={`loader-container ${fadeOut ? 'fade-out' : 'fade-in'}`}>
+      {/* Progress Bar */}
+      <div className={`loader-progress-bar-container ${fadeOut ? 'bar-fade-out' : 'bar-fade-in'}`}>
+        <div
+          className="loader-progress-bar-fill"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      {/* Lottie animation */}
       <DotLottieReact
         src="https://lottie.host/af2163d0-3315-44b8-a3a2-bcaea1516ffb/GrS0NwGP50.lottie"
         loop
         autoplay
-        style={{ width: '70%', height: '70%' }}  // Inline style for smaller size
+        style={{ width: '50%', height: '50%' }}
       />
+
       <style jsx>{`
         .loader-container {
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           height: 100vh;
@@ -22,25 +46,45 @@ const Loader = ({ fadeOut }) => {
           top: 0;
           left: 0;
           z-index: 9999;
+          transition: opacity 0.6s ease;
+        }
+
+        .fade-in {
           opacity: 1;
-          transform: scale(1);
-          visibility: visible;
-          transition: opacity 1.2s ease, transform 1.2s ease, visibility 1.2s ease;
         }
 
         .fade-out {
           opacity: 0;
-          transform: scale(0.95);
-          visibility: hidden;
+          pointer-events: none;
         }
 
-        @media (max-width: 768px) {
-          .loader-container {
-            height: 100vh;
-          }
+        .loader-progress-bar-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 4px;
+          width: 100%;
+          background-color: #d0d0d0;
+          border-radius: 0 2px 2px 0;
+          overflow: hidden;
+          transition: opacity 0.5s ease;
         }
 
-        @media (max-width: 576px) {
+        .bar-fade-in {
+          opacity: 1;
+        }
+
+        .bar-fade-out {
+          opacity: 0;
+        }
+
+        .loader-progress-bar-fill {
+          height: 100%;
+          background: #0073b1;
+          transition: width 0.4s ease-in-out;
+        }
+
+        @media (max-width: 768px), (max-width: 576px) {
           .loader-container {
             height: 100vh;
           }
