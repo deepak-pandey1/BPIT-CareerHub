@@ -30,7 +30,7 @@ const Loader = ({ fadeOut }) => {
         src="https://lottie.host/af2163d0-3315-44b8-a3a2-bcaea1516ffb/GrS0NwGP50.lottie"
         loop
         autoplay
-        style={{ width: '50%', height: '50%' }}
+        className="loader-lottie"
       />
 
       <style jsx>{`
@@ -83,6 +83,19 @@ const Loader = ({ fadeOut }) => {
           background: #0073b1;
           transition: width 0.4s ease-in-out;
         }
+
+        .loader-lottie {
+          width: 50%;
+          height: 50%;
+        }
+        
+        @media (max-width: 768px) {
+          .loader-lottie {
+            width: 70%;
+            height: 70%;
+          }
+        }
+
 
         @media (max-width: 768px), (max-width: 576px) {
           .loader-container {
