@@ -12,11 +12,24 @@ const Community = () => {
   const messageEndRef = useRef(null);
 
   useEffect(() => {
+  // Function to fetch messages
+  const fetchMessages = () => {
     axios
       .get("https://bpit-careerhub.onrender.com/api/message")
       .then((res) => setMessages(res.data))
       .catch((err) => console.error("Error fetching messages:", err));
-  }, []);
+  };
+
+  // Initial fetch when component mounts
+  fetchMessages();
+
+  // Set interval to fetch every 3 seconds
+  const interval = setInterval(fetchMessages, 1000);
+
+  // Clear interval when component unmounts
+  return () => clearInterval(interval);
+}, []);
+
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
