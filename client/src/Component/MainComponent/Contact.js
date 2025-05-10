@@ -197,7 +197,7 @@ export default function Contact() {
         >
           {/* NEW LOTTIE ANIMATION (above contact info) */}
           <DotLottieReact
-            src="https://lottie.host/21eac1a9-0a5c-45e9-b092-259c0ce82d52/kWAa4Hmwew.lottie"
+            src="https://lottie.host/6fbda686-629c-4de8-9655-c877d718af66/sJcafziG9p.lottie"
             loop
             autoplay
             style={{
