@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Faq = () => {
   const location = useLocation();
@@ -27,12 +28,12 @@ const Faq = () => {
   return (
     <div style={styles.container}>
       {/* Keyframes for Spinner */}
-      <style>{`
-        @keyframes spin {
+      <style>
+        {`@keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
-        }
-      `}</style>
+        }`}
+      </style>
 
       {/* Fixed Header */}
       <motion.div
@@ -41,7 +42,9 @@ const Faq = () => {
         transition={{ duration: 1 }}
         style={styles.fixedHeader}
       >
-        <h2 style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>Asked Questions with AI</h2>
+        <h2 style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
+          Asked Questions with AI
+        </h2>
       </motion.div>
 
       {location.pathname === '/Faq' && (
@@ -52,35 +55,36 @@ const Faq = () => {
           style={styles.chatbotFullScreen}
         >
           <AnimatePresence>
-  {showMessage && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      style={styles.loadingWrapper}
-    >
-      <motion.div
-        style={styles.spinner}
-        initial={{ rotate: 0 }}
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-      />
-      {window.innerWidth > 600 && (
-      <motion.h2
-        style={styles.loadingText}
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        AI Chatbot is Loading...
-      </motion.h2>
-      )}
-    </motion.div>
-  )}
-</AnimatePresence>
+            {showMessage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                style={styles.loadingWrapper}
+              >
+                {/* Replace Spinner with Lottie Animation */}
+                <DotLottieReact
+                  src="https://lottie.host/0f5a1f7f-8b8d-4243-b1c2-e94221f838c2/2GJy0YJAnf.lottie"
+                  loop
+                  autoplay
+                  style={styles.lottieAnimation} // Adjust size of the Lottie animation
+                />
 
+                {window.innerWidth > 600 && (
+                  <motion.h2
+                    style={styles.loadingText}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    AI Chatbot is Loading...
+                  </motion.h2>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <iframe
@@ -148,26 +152,29 @@ const styles = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     zIndex: 1002,
-    // background: 'rgba(255,255,255,0.9)',
     padding: '30px 40px',
     borderRadius: '12px',
     textAlign: 'center',
-    // boxShadow: '0 0 20px rgba(0,0,0,0.1)',
+    display: 'flex',  // Flex to center content
+    flexDirection: 'column',  // Align content vertically
+    justifyContent: 'center', // Center vertically
+    alignItems: 'center', // Center horizontally
   },
-  spinner: {
-    width: '30px',
-    height: '30px',
-    border: '4px solid #ccc',
-    borderTop: '4px solid #004085',
-    borderRadius: '50%',
-    animation: 'spin 1s linear infinite',
-    margin: '0 auto',
-  },
+  lottieAnimation: {
+  width: '30vw',  // Width will be 30% of the viewport width
+  height: '30vw', // Height will be 30% of the viewport width, maintaining aspect ratio
+  maxWidth: '200px', // Maximum width for larger screens
+  maxHeight: '200px', // Maximum height for larger screens
+  minWidth: '50px',  // Minimum width to avoid being too small
+  minHeight: '50px', // Minimum height to avoid being too small
+},
   loadingText: {
-    fontSize: '1.2rem',
-    marginTop: '15px',
+    fontSize: '1.5rem',  // Increased font size for better visibility
+    marginTop: '20px', // Space between Lottie and text
     color: '#004085',
     fontWeight: 600,
+    textAlign: 'center',  // Center the text
+    animation: 'fadeIn 2s ease-in-out',  // Add a fade-in effect
   },
 };
 
