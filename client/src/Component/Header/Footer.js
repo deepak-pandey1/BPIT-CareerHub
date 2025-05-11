@@ -224,6 +224,11 @@ export default function Footer() {
         }
 
         .footer-icon {
+  transform: none !important;
+}
+
+
+        .footer-icon {
           font-size: 24px;
           transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
           color: #555;
