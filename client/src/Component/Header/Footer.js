@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -224,9 +223,8 @@ export default function Footer() {
         }
 
         .footer-icon {
-  transform: none !important;
-}
-
+          transform: none !important;
+        }
 
         .footer-icon {
           font-size: 24px;
