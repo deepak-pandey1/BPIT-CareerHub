@@ -1,6 +1,4 @@
-// src/firebase.js
 
-// ✅ Import only what's needed
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, GithubAuthProvider  } from "firebase/auth";
 
