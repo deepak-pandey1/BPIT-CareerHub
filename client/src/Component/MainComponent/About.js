@@ -160,11 +160,17 @@ export default function About() {
         </motion.p>
 
         <div style={{ marginTop: "40px", maxWidth: isMobile ? "300px" : "500px", margin: "auto" }}>
-          <DotLottieReact
-            src="https://lottie.host/304379fa-3c27-4f37-a5ed-09081c78f024/ibgPneoRYw.lottie"
-            loop
-            autoplay
-          />
+           <motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, ease: "easeInOut" }}
+>
+        <DotLottieReact
+          src="https://lottie.host/304379fa-3c27-4f37-a5ed-09081c78f024/ibgPneoRYw.lottie"
+          loop
+          autoplay
+        />
+      </motion.div>
         </div>
       </motion.section>
 

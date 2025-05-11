@@ -4,6 +4,9 @@ import axios from "axios";
 import "./Community.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { motion } from "framer-motion";
+
 
 const Community = () => {
   const { username } = useContext(UserContext);
@@ -24,7 +27,7 @@ const Community = () => {
   fetchMessages();
 
   // Set interval to fetch every 3 seconds
-  const interval = setInterval(fetchMessages, 1000);
+  const interval = setInterval(fetchMessages, 10000);
 
   // Clear interval when component unmounts
   return () => clearInterval(interval);
@@ -48,7 +51,33 @@ const Community = () => {
   };
 
   return (
-    <div className="community-container">
+    <div className="community-container" style={{ position: "relative", zIndex: 1 }}>
+
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: "clamp(150px, 40vw, 300px)",
+          height: "clamp(150px, 40vw, 300px)",
+          transform: "translate(-50%, -50%)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <DotLottieReact
+          src="https://lottie.host/f440ff22-1136-4d3c-8c70-e3090ef4a166/YfjJWcTjbe.lottie"
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
+      </motion.div>
+
+
       <h2 className="chat-heading" style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', msUserSelect: 'none' }}>
         <FontAwesomeIcon icon={faComments} className="fa-icon" />
         Community Chat

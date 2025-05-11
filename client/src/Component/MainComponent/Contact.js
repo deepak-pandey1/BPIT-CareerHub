@@ -196,17 +196,23 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* NEW LOTTIE ANIMATION (above contact info) */}
-          <DotLottieReact
-            src="https://lottie.host/6fbda686-629c-4de8-9655-c877d718af66/sJcafziG9p.lottie"
-            loop
-            autoplay
-            style={{
-              width: "100%",
-              maxWidth: "350px",
-              height: "auto",
-              marginBottom: "20px",
-            }}
-          />
+          <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+      >
+        <DotLottieReact
+          src="https://lottie.host/6fbda686-629c-4de8-9655-c877d718af66/sJcafziG9p.lottie"
+          loop
+          autoplay
+          style={{
+            width: "100%",
+            maxWidth: "350px",
+            height: "auto",
+            marginBottom: "20px",
+          }}
+        />
+      </motion.div>
 
           {/* EXISTING LOTTIE ANIMATION */}
           <motion.div
