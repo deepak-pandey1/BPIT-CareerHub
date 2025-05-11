@@ -29,7 +29,12 @@ export default function TermsOfService() {
   };
 
   return (
-    <div className="terms-wrapper">
+   <motion.div
+    className="terms-wrapper"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+  >
       <div className="lottie-header">
         <motion.div
   initial={{ opacity: 0, y: 50, scale: 0.8 }}
@@ -286,6 +291,6 @@ export default function TermsOfService() {
           }
         }
       `}</style>
-    </div>
+     </motion.div>
   );
 }
