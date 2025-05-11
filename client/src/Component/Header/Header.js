@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import {
@@ -168,8 +168,6 @@ export default function Header() {
           margin: 0 10px;
           position: relative;
           transition: all 0.3s ease-in-out;
-
-          
         }
 
         .nav-custom::after {
