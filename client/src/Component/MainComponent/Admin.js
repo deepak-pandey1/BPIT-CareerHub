@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaPlus, FaEllipsisV, FaTrash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,7 +32,7 @@ export default function Admin() {
 
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
 
 const handleLogin = (e) => {
   e.preventDefault();
@@ -49,8 +49,6 @@ const handleLogin = (e) => {
     setLoginError("Invalid username or password. Please try again.");
   }
 };
-
-
 
   const fetchCompanies = async () => {
     try {
@@ -111,7 +109,7 @@ const handleLogin = (e) => {
   return (
     <>  
 
-<AnimatePresence>
+  <AnimatePresence>
   {!isAuthenticated && (
     <motion.div
       key="login-modal"
@@ -139,33 +137,33 @@ const handleLogin = (e) => {
         exit={{ y: -50, opacity: 0, scale: 0.7 }}
         transition={{ type: "spring", stiffness: 80, damping: 15 }}
       >
-  <div className="text-center mb-4">
-      <motion.h4
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        style={{
-          fontWeight: 700,
-          fontSize: "1.5rem",
-          color: "#333",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "0.5rem",
-        }}
-      >
-        {/* Animated Lock/Unlock Icon */}
-        <motion.span
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          style={{ display: "inline-block", color: "#333" }}
+      <div className="text-center mb-4">
+        <motion.h4
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          style={{
+            fontWeight: 700,
+            fontSize: "1.5rem",
+            color: "#333",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.5rem",
+          }}
         >
-          {current === "lock" ? <AiFillLock size={24} /> : <AiFillUnlock size={24} />}
-        </motion.span>
-        Admin Login
-      </motion.h4>
-      <p className="text-muted mb-0">Enter your credentials to proceed</p>
-    </div>
+          {/* Animated Lock/Unlock Icon */}
+          <motion.span
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            style={{ display: "inline-block", color: "#333" }}
+          >
+            {current === "lock" ? <AiFillLock size={24} /> : <AiFillUnlock size={24} />}
+          </motion.span>
+          Admin Login
+        </motion.h4>
+        <p className="text-muted mb-0">Enter your credentials to proceed</p>
+      </div>
 
         <form onSubmit={handleLogin}>
           <motion.div
@@ -221,50 +219,46 @@ const handleLogin = (e) => {
           </motion.div>
 
           <motion.button
-  whileHover={{
-    scale: 1.05,
-    boxShadow: "0 0 15px rgba(99, 102, 241, 0.6)",
-    transition: { type: "spring", stiffness: 300, damping: 20 }, // Adding smooth transition
-  }}
-  whileTap={{
-    scale: 0.95,
-    transition: { type: "spring", stiffness: 400, damping: 20 }, // Smooth animation on tap
-  }}
-  type="submit"
-  className="btn w-100"
-  style={{
-    background: "linear-gradient(to right, #6366f1, #3b82f6)",
-    color: "#fff",
-    fontWeight: 600,
-    padding: "0.75rem 1.2rem",
-    border: "none",
-    borderRadius: "1rem",
-    display: "flex",
-    alignItems: "center", // Center the icon and text
-    justifyContent: "center", // Center the icon and text
-  }}
->
-  <BiLogInCircle style={{ marginRight: '8px', fontSize: '1.5rem' }} /> Login
-</motion.button>
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 15px rgba(99, 102, 241, 0.6)",
+              transition: { type: "spring", stiffness: 300, damping: 20 }, // Adding smooth transition
+            }}
+            whileTap={{
+              scale: 0.95,
+              transition: { type: "spring", stiffness: 400, damping: 20 }, // Smooth animation on tap
+            }}
+            type="submit"
+            className="btn w-100"
+            style={{
+              background: "linear-gradient(to right, #6366f1, #3b82f6)",
+              color: "#fff",
+              fontWeight: 600,
+              padding: "0.75rem 1.2rem",
+              border: "none",
+              borderRadius: "1rem",
+              display: "flex",
+              alignItems: "center", // Center the icon and text
+              justifyContent: "center", // Center the icon and text
+            }}
+          >
+            <BiLogInCircle style={{ marginRight: '8px', fontSize: '1.5rem' }} /> Login
+          </motion.button>
 
         </form>
         {loginError && (
-  <motion.div
-    className="text-danger mt-3 text-center"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-  >
-    {loginError}
-  </motion.div>
-)}
-
+        <motion.div
+          className="text-danger mt-3 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          {loginError}
+        </motion.div>
+      )}
       </motion.div>
     </motion.div>
   )}
 </AnimatePresence>
-
-
-
 
     <div style={{ filter: !isAuthenticated ? "blur(8px)" : "none" }}>
     <div className="container mt-5 position-relative">
