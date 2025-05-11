@@ -32,18 +32,24 @@ export default function TermsOfService() {
     <div className="terms-wrapper">
       <div className="lottie-header">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          >
-            <DotLottieReact
-            src="https://lottie.host/f7a9f660-24d8-4f05-8285-bff2d8b98ddb/eEYLpRZlMd.lottie"
-            loop
-            autoplay
-            style={{ height: '250px' }}
-          />
-        </motion.div>
+  initial={{ opacity: 0, y: 50, scale: 0.8 }}
+  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+  transition={{
+    type: "spring",
+    stiffness: 50,  // Lower stiffness for smoothness
+    damping: 16,    // Higher damping for less bounce (more butter 🧈)
+  }}
+  viewport={{ once: true }}
+>
+  <DotLottieReact
+    src="https://lottie.host/f7a9f660-24d8-4f05-8285-bff2d8b98ddb/eEYLpRZlMd.lottie"
+    loop
+    autoplay
+    style={{ height: '250px' }}
+  />
+</motion.div>
+
+
         <h1 className="title">Terms of Service</h1>
         <p className="subtitle">Please read these Terms of Service carefully before using BPIT's Placement Portal.</p>
       </div>

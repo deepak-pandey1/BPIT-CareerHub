@@ -44,7 +44,11 @@ export default function PrivacyPolicy() {
   initial={{ opacity: 0, scale: 0.8, y: 30 }}
   whileInView={{ opacity: 1, scale: 1, y: 0 }}
   viewport={{ once: true, amount: 0.5 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
+  transition={{
+    type: "spring",
+    stiffness: 60,
+    damping: 14,
+  }}
 >
   <DotLottieReact
     src="https://lottie.host/23e7a87d-15dc-40a3-a9e0-b31fd2cbc4b9/fXFZEem2mR.lottie"
@@ -53,6 +57,7 @@ export default function PrivacyPolicy() {
     style={{ height: '250px' }}
   />
 </motion.div>
+
 
         <h1 className="title">Privacy Policy</h1>
         <p className="subtitle">Your trust matters. Here's how we handle your data.</p>
