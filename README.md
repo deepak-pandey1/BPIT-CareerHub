@@ -136,19 +136,21 @@ This project is open-source and available under the MIT License. See the LICENSE
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
 
-## 📋 How It Works
-
-The platform streamlines the placement process through a clear workflow:
+## 🧠 How It Works
 
 ```mermaid
-graph TD
-    A[Student] -->|Logs In| B{Platform}
-    A -->|Creates Profile| C[Student Profile]
-    D[Company] -->|Logs In| B
-    D -->|Posts Jobs| E[Job Listings]
-    C -->|Applies to Jobs| E
-    B -->|Sends Notifications| A
-    B -->|Sends Notifications| D
-    F[Admin] -->|Manages Platform| G[Admin Dashboard]
-    G -->|Approves Jobs| E
-    B -->|Contact Form| H[EmailJS Integration]
+graph LR
+A[👤 Student / Company Sign Up/Login] --> B{JWT Auth & Cookie}
+B --> C[🌐 Frontend (React)]
+C --> D[📬 Axios API Requests]
+D --> E[🛠️ Backend (Express + Node.js)]
+E --> F[(MongoDB Database)]
+
+C --> G[🎨 Animations (Lottie, Framer Motion)]
+E --> H[🔐 JWT Auth, Zod, bcrypt]
+C --> I[📊 Charts (Recharts), Toasts (Toastify)]
+
+F --> J[📄 Placement Listings]
+F --> K[📝 Applications]
+F --> L[📬 Contact Messages]
+F --> M[📢 Notifications]
