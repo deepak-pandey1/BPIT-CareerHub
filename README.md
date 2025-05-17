@@ -120,3 +120,16 @@ Feel free to fork this project and submit issues or pull requests if you want to
 ## Project Workflow Diagram
 ![image](https://github.com/user-attachments/assets/1eca8422-0d9c-4b4d-95b9-cf44de3caeec)
 
+graph TD
+    subgraph TNP_Admin
+        A[TNP Admin Signup / Login] --> B[Verify Admin Credentials]
+        B -->|Valid| C[Access Admin Page]
+        C --> D[Post Job / Internship Details]
+        C --> E[Delete Job Posts]
+    end
+
+    subgraph Students
+        F[Signup / Login] --> G[Ask Doubts on FAQ Page - Chatbot]
+        F --> H[Go to Company Page]
+        H --> I[Fill Job Application Form]
+    end
