@@ -118,9 +118,6 @@ This project is open-source and available under the MIT License. See the LICENSE
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
 ## Project Workflow Diagram
-![image](https://github.com/user-attachments/assets/1eca8422-0d9c-4b4d-95b9-cf44de3caeec)
-
-## Project Workflow Diagrams
 ```mermaid
 graph TD
     subgraph TNP_Admin
