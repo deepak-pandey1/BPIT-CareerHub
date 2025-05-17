@@ -118,8 +118,4 @@ This project is open-source and available under the MIT License. See the LICENSE
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
 ## Project Workflow Diagram
-[View SVG diagram](https://www.mermaidchart.com/raw/3b80d10a-77e9-41f2-8a78-3e6546e76b3e?theme=light&version=v0.1&format=svg)
-    H --> N[End]
-    I --> N
-    L --> N
-    M --> N
+https://www.mermaidchart.com/raw/3b80d10a-77e9-41f2-8a78-3e6546e76b3e?theme=light&version=v0.1&format=svg
