@@ -111,6 +111,8 @@ This project was created to improve the placement process for BPIT students and 
 ## License
 This project is open-source and available under the MIT License. See the LICENSE file for details.
 
+## Contributing
+Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
 ## Workflow Diagram
 
@@ -120,7 +122,7 @@ The following flowchart illustrates the user flows for students and admins:
 graph TD
     A[Start] --> B{User Type}
     B --> |Student| C[Sign Up / Log In]
-    B --> |Admin| D[Admin Log In <br> (e.g., admin/admin)]
+    B --> |Admin| D[Admin Log In \n (e.g., admin/admin)]
 
     C --> E{Student Actions}
     E --> F[Visit FAQ Page]
@@ -137,5 +139,3 @@ graph TD
     I --> N
     L --> N
     M --> N
-## Contributing
-Feel free to fork this project and submit issues or pull requests if you want to contribute.
