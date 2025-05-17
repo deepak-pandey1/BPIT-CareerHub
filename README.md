@@ -5,21 +5,6 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
-### 🔁 User Journey Flow
-
-```mermaid
-graph TD
-    A[Student Signup / Login] --> B[Ask Doubts on FAQ Page (Chatbot)]
-    A --> C[Go to Company Page]
-    C --> D[Fill Job Application Form]
-
-    E[TNP Teacher Login (admin/admin)] --> F[Go to Admin Page]
-    F --> G[Post New Job Form]
-    F --> H[Delete Job Post (after deadline)]
-
-    style A fill:#e3f2fd,stroke:#90caf9,stroke-width:2px
-    style E fill:#ffecb3,stroke:#ffb74d,stroke-width:2px
-
 ## Features
 - User authentication and authorization
 - Student and company profiles
@@ -126,5 +111,31 @@ This project was created to improve the placement process for BPIT students and 
 ## License
 This project is open-source and available under the MIT License. See the LICENSE file for details.
 
+
+## Workflow Diagram
+
+The following flowchart illustrates the user flows for students and admins:
+
+```mermaid
+graph TD
+    A[Start] --> B{User Type}
+    B --> |Student| C[Sign Up / Log In]
+    B --> |Admin| D[Admin Log In <br> (e.g., admin/admin)]
+
+    C --> E{Student Actions}
+    E --> F[Visit FAQ Page]
+    E --> G[Visit Company Page]
+    F --> H[Interact with Chatbot]
+    G --> I[Fill & Submit Company Form]
+
+    D --> J[Access Admin Dashboard]
+    J --> K{Admin Actions}
+    K --> L[Post New Job]
+    K --> M[Delete Job]
+
+    H --> N[End]
+    I --> N
+    L --> N
+    M --> N
 ## Contributing
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
