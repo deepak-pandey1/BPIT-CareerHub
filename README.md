@@ -64,6 +64,7 @@ graph TD
         F --> H[Go to Company Page]
         H --> I[Fill Job Application Form]
     end
+```
 
 ## Prerequisites
 - Node.js and npm (Node Package Manager)
