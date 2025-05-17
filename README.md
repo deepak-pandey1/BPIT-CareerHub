@@ -1,4 +1,4 @@
-# BPIT Placement Website
+# BPIT Placement Website ![Website](https://img.shields.io/badge/website-%23007ACC.svg?style=for-the-badge&logo=internet-explorer&logoColor=white)
 
 ## Description
 This project is created for BPIT (Bhagwan Parshuram Institute of Technology) college placement students to streamline and manage placement activities. Currently, students rely on third-party platforms like POD for job-related updates and placement information. This platform aims to provide a more personalized and efficient way for students and companies to engage with the placement process.
