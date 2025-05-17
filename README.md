@@ -134,3 +134,21 @@ This project is open-source and available under the MIT License. See the LICENSE
 
 ## Contributing
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
+
+
+## 📋 How It Works
+
+The platform streamlines the placement process through a clear workflow:
+
+```mermaid
+graph TD
+    A[Student] -->|Logs In| B{Platform}
+    A -->|Creates Profile| C[Student Profile]
+    D[Company] -->|Logs In| B
+    D -->|Posts Jobs| E[Job Listings]
+    C -->|Applies to Jobs| E
+    B -->|Sends Notifications| A
+    B -->|Sends Notifications| D
+    F[Admin] -->|Manages Platform| G[Admin Dashboard]
+    G -->|Approves Jobs| E
+    B -->|Contact Form| H[EmailJS Integration]
