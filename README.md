@@ -48,6 +48,24 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ![Zod](https://img.shields.io/badge/Zod-%233068B7.svg?style=for-the-badge&logo=zod&logoColor=white)
 ![CORS](https://img.shields.io/badge/CORS-%23000000.svg?style=for-the-badge&logo=security&logoColor=white)
 
+
+## Project Workflow Diagram
+```mermaid
+graph TD
+    subgraph TNP_Admin
+        A[TNP Admin Signup / Login] --> B[Verify Admin Credentials]
+        B -->|Valid| C[Access Admin Page]
+        C --> D[Post Job / Internship Details]
+        C --> E[Delete Job Posts]
+    end
+
+    subgraph Students
+        F[Signup / Login] --> G[Ask Doubts on FAQ Page - Chatbot]
+        F --> H[Go to Company Page]
+        H --> I[Fill Job Application Form]
+    end
+
+
 ## Prerequisites
 - Node.js and npm (Node Package Manager)
 - MongoDB for database management
@@ -114,18 +132,3 @@ This project is open-source and available under the MIT License. See the LICENSE
 ## Contributing
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
-## Project Workflow Diagram
-```mermaid
-graph TD
-    subgraph TNP_Admin
-        A[TNP Admin Signup / Login] --> B[Verify Admin Credentials]
-        B -->|Valid| C[Access Admin Page]
-        C --> D[Post Job / Internship Details]
-        C --> E[Delete Job Posts]
-    end
-
-    subgraph Students
-        F[Signup / Login] --> G[Ask Doubts on FAQ Page - Chatbot]
-        F --> H[Go to Company Page]
-        H --> I[Fill Job Application Form]
-    end
