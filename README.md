@@ -99,27 +99,6 @@ To run this project locally, follow the steps below:
       ```
     Your application should now be running on [http://localhost:3000](http://localhost:3000).
 
-## Technologies Used
-
-### Frontend:
-- React
-- React Router
-- Framer Motion (for animations)
-- Lottie (for animations)
-- Bootstrap (UI components)
-- Axios (API requests)
-- React Icons
-- React Toastify (for notifications)
-
-### Backend:
-- Node.js
-- Express.js
-- MongoDB (for database)
-- JWT (JSON Web Token for authentication)
-- Bcrypt.js (for password hashing)
-- Cookie Parser (for cookie handling)
-- Zod (for validation)
-
 ## Deployment
 The project is deployed on Render and can be accessed at:
 
@@ -134,23 +113,3 @@ This project is open-source and available under the MIT License. See the LICENSE
 
 ## Contributing
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
-
-
-## 🧠 How It Works
-
-```mermaid
-graph LR
-A[👤 Student / Company Sign Up/Login] --> B{JWT Auth & Cookie}
-B --> C[🌐 Frontend (React)]
-C --> D[📬 Axios API Requests]
-D --> E[🛠️ Backend (Express + Node.js)]
-E --> F[(MongoDB Database)]
-
-C --> G[🎨 Animations (Lottie, Framer Motion)]
-E --> H[🔐 JWT Auth, Zod, bcrypt]
-C --> I[📊 Charts (Recharts), Toasts (Toastify)]
-
-F --> J[📄 Placement Listings]
-F --> K[📝 Applications]
-F --> L[📬 Contact Messages]
-F --> M[📢 Notifications]
