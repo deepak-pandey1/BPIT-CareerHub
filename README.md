@@ -1,3 +1,6 @@
+why work flow diagram not show what error ?
+
+
 # BPIT Placement Website
 
 ## Description
@@ -118,39 +121,24 @@ Feel free to fork this project and submit issues or pull requests if you want to
 
 The following flowchart illustrates the user flows for students and admins:
 
+```mermaid
 graph TD
     A[Start] --> B{User Type}
     B --> |Student| C[Sign Up / Log In]
-    B --> |Admin| D[Admin Log In]
+    B --> |Admin| D[Admin Log In \n (e.g., admin/admin)]
 
-    C --> X{Login Status}
-    X --> |Success| E[Student Actions]
-    X --> |Invalid Credentials| Y[Show Error: Retry]
-    Y --> |Retry| C
-    Y --> |Too Many Attempts| Z[Account Locked]
-
+    C --> E{Student Actions}
     E --> F[Visit FAQ Page]
     E --> G[Visit Company Page]
     F --> H[Interact with Chatbot]
     G --> I[Fill & Submit Company Form]
 
-    I --> O{Form Valid?}
-    O --> |Yes| N[End]
-    O --> |No| P[Show Validation Error]
-    P --> |Retry| I
-
-    D --> Q{Admin Credentials}
-    Q --> |Valid| J[Access Admin Dashboard]
-    Q --> |Invalid| R[Access Denied]
-    R --> |Retry| D
-
+    D --> J[Access Admin Dashboard]
     J --> K{Admin Actions}
     K --> L[Post New Job]
     K --> M[Delete Job]
-    L --> S{Server Response}
-    S --> |Success| N
-    S --> |Failure| T[Server Error: Retry]
 
-    H --> N
-    Z --> N
-    T --> N
+    H --> N[End]
+    I --> N
+    L --> N
+    M --> N
