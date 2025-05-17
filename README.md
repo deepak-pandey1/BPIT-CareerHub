@@ -1,6 +1,6 @@
 <h1>
-  <img src="https://img.collegepravesh.com/2017/02/BPIT-Delhi-Logo.png" alt="BPIT Logo" width="40" style="vertical-align: middle;"/>
-  BPIT Placement Website
+  <img src="https://img.collegepravesh.com/2017/02/BPIT-Delhi-Logo.png" alt="BPIT Logo" width="120" style="vertical-align: middle;"/>
+  Placement Website
 </h1>
 
 ## Description
