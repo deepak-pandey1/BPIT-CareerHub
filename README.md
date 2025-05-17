@@ -5,6 +5,21 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
+### 🔁 User Journey Flow
+
+```mermaid
+graph TD
+    A[Student Signup / Login] --> B[Ask Doubts on FAQ Page (Chatbot)]
+    A --> C[Go to Company Page]
+    C --> D[Fill Job Application Form]
+
+    E[TNP Teacher Login (admin/admin)] --> F[Go to Admin Page]
+    F --> G[Post New Job Form]
+    F --> H[Delete Job Post (after deadline)]
+
+    style A fill:#e3f2fd,stroke:#90caf9,stroke-width:2px
+    style E fill:#ffecb3,stroke:#ffb74d,stroke-width:2px
+
 ## Features
 - User authentication and authorization
 - Student and company profiles
