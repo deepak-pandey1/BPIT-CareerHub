@@ -1,7 +1,8 @@
 <div style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://img.collegepravesh.com/2017/02/BPIT-Delhi-Logo.png" alt="BPIT Logo" width="120"/>
-  <h1 style="margin: 0;">Placement Website</h1>
+  <img src="https://img.collegepravesh.com/2017/02/BPIT-Delhi-Logo.png" alt="BPIT Logo" width="120" height="120" style="object-fit: contain;" />
+  <span style="font-size: 32px; font-weight: bold;">Placement Website</span>
 </div>
+
 
 
 
