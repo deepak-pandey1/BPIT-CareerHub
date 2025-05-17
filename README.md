@@ -65,7 +65,6 @@ graph TD
         H --> I[Fill Job Application Form]
     end
 
-
 ## Prerequisites
 - Node.js and npm (Node Package Manager)
 - MongoDB for database management
