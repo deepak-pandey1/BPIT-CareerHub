@@ -135,3 +135,33 @@ graph TD
         F --> H[Go to Company Page]
         H --> I[Fill Job Application Form]
     end
+
+
+
+## Project Workflow Diagram
+```mermaid
+graph TD
+    %% Styling for subgraphs and nodes
+    classDef admin fill:#f9e79f,stroke:#d4ac0d,stroke-width:2px;
+    classDef student fill:#a3e4d7,stroke:#1abc9c,stroke-width:2px;
+    classDef action fill:#f5b7b1,stroke:#e74c3c,stroke-width:2px;
+
+    subgraph TNP_Admin["🔑 TNP Admin"]
+        A[📝 TNP Admin Signup / Login] --> B[🔍 Verify Admin Credentials]
+        B -->|Valid| C[🏠 Access Admin Page]
+        C --> D[📌 Post Job / Internship Details]
+        C --> E[🗑️ Delete Job Posts]
+        A:::action B:::action C:::action D:::action E:::action
+    end
+    TNP_Admin:::admin
+
+    subgraph Students["🎓 Students"]
+        F[📝 Signup / Login] --> G[❓ Ask Doubts on FAQ Page - Chatbot]
+        F --> H[🏢 Go to Company Page]
+        H --> I[📋 Fill Job Application Form]
+        F:::action G:::action H:::action I:::action
+    end
+    Students:::student
+
+    %% Link styling
+    linkStyle default stroke:#2c3e50,stroke-width:2px;
