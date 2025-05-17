@@ -118,4 +118,5 @@ This project is open-source and available under the MIT License. See the LICENSE
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
 ## Project Workflow Diagram
-https://www.mermaidchart.com/raw/3b80d10a-77e9-41f2-8a78-3e6546e76b3e?theme=light&version=v0.1&format=svg
+![image](https://github.com/user-attachments/assets/1eca8422-0d9c-4b4d-95b9-cf44de3caeec)
+
