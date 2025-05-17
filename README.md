@@ -117,27 +117,8 @@ This project is open-source and available under the MIT License. See the LICENSE
 ## Contributing
 Feel free to fork this project and submit issues or pull requests if you want to contribute.
 
-## Workflow Diagram
-
-The following flowchart illustrates the user flows for students and admins:
-
-```mermaid
-graph TD
-    A[Start] --> B{User Type}
-    B --> |Student| C[Sign Up / Log In]
-    B --> |Admin| D[Admin Log In \n (e.g., admin/admin)]
-
-    C --> E{Student Actions}
-    E --> F[Visit FAQ Page]
-    E --> G[Visit Company Page]
-    F --> H[Interact with Chatbot]
-    G --> I[Fill & Submit Company Form]
-
-    D --> J[Access Admin Dashboard]
-    J --> K{Admin Actions}
-    K --> L[Post New Job]
-    K --> M[Delete Job]
-
+## Project Workflow Diagram
+[View SVG diagram](https://www.mermaidchart.com/raw/3b80d10a-77e9-41f2-8a78-3e6546e76b3e?theme=light&version=v0.1&format=svg)
     H --> N[End]
     I --> N
     L --> N
