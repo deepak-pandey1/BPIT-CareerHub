@@ -118,24 +118,39 @@ Feel free to fork this project and submit issues or pull requests if you want to
 
 The following flowchart illustrates the user flows for students and admins:
 
-```mermaid
 graph TD
     A[Start] --> B{User Type}
     B --> |Student| C[Sign Up / Log In]
-    B --> |Admin| D[Admin Log In \n (e.g., admin/admin)]
+    B --> |Admin| D[Admin Log In]
 
-    C --> E{Student Actions}
+    C --> X{Login Status}
+    X --> |Success| E[Student Actions]
+    X --> |Invalid Credentials| Y[Show Error: Retry]
+    Y --> |Retry| C
+    Y --> |Too Many Attempts| Z[Account Locked]
+
     E --> F[Visit FAQ Page]
     E --> G[Visit Company Page]
     F --> H[Interact with Chatbot]
     G --> I[Fill & Submit Company Form]
 
-    D --> J[Access Admin Dashboard]
+    I --> O{Form Valid?}
+    O --> |Yes| N[End]
+    O --> |No| P[Show Validation Error]
+    P --> |Retry| I
+
+    D --> Q{Admin Credentials}
+    Q --> |Valid| J[Access Admin Dashboard]
+    Q --> |Invalid| R[Access Denied]
+    R --> |Retry| D
+
     J --> K{Admin Actions}
     K --> L[Post New Job]
     K --> M[Delete Job]
+    L --> S{Server Response}
+    S --> |Success| N
+    S --> |Failure| T[Server Error: Retry]
 
-    H --> N[End]
-    I --> N
-    L --> N
-    M --> N
+    H --> N
+    Z --> N
+    T --> N
