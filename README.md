@@ -1,6 +1,3 @@
-why work flow diagram not show what error ?
-
-
 # BPIT Placement Website
 
 ## Description
