@@ -23,14 +23,14 @@ graph TD
 ```
 
 ## Features
-- User authentication and authorization
-- Student and company profiles
-- Placement job listings and application management
-- Admin dashboard to manage placements
-- Real-time notifications
-- Contact form with EmailJS integration
-- Attractive UI with smooth animations using Lottie and Framer Motion
-- Responsive design for mobile and desktop devices
+- 🔒 **User Authentication & Authorization**: Secure login for students, admins, and companies.
+- 👤 **Profiles**: Dedicated profiles for students and companies.
+- 💼 **Job Listings & Applications**: Browse and apply for placement opportunities.
+- 📊 **Admin Dashboard**: Manage job postings and placements with ease.
+- 🔔 **Real-Time Notifications**: Stay updated with instant alerts.
+- 📧 **Contact Form**: Integrated with EmailJS for seamless communication.
+- 🎨 **Attractive UI**: Smooth animations using Lottie and Framer Motion.
+- 📱 **Responsive Design**: Optimized for both mobile and desktop devices.
 
 ## 🧰 Tech Stack
 
