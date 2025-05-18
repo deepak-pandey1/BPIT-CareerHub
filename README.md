@@ -106,6 +106,16 @@ graph TD
 
 </div>
 
+<div align="center">
+
+### 🚀 Deployment and Hosting
+
+![Git](https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Render](https://img.shields.io/badge/Render-%2346E3B7.svg?style=for-the-badge&logo=render&logoColor=black)
+
+</div>
+
 <h2>Project Structure</h2>
 <pre><code>
 bpit-careerhub/
