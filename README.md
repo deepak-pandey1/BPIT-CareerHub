@@ -8,34 +8,33 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## 🚀 Project Workflow Diagram
 ```mermaid
 graph TD
-    %% Define styles for dark theme with rounded corners and subtle shadows
+    %% Define styles
     classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a
 
     %% TNP Admin Flow
-    subgraph TNP_Admin["👨‍💼 TNP Admin Flow"]
+    subgraph TNP_Admin["👨‍💼 **TNP Admin Flow**"]
         direction TB
-        A1([📝 TNP Admin Signup / Login]):::adminNode --> B1{🔐 Verify Admin Credentials}:::decisionNode
-        B1 -->|✅ Valid| C1([📂 Access Admin Page]):::adminNode
+        A1([📝 <b>Admin Signup / Login</b>]):::adminNode --> B1{🔐 <b>Verify Credentials</b>}:::decisionNode
+        B1 -->|✅ Valid| C1([📂 <b>Access Admin Page</b>]):::adminNode
         B1 -->|❌ Invalid| A1
-        C1 --> D1([📢 Post Job / Internship Details]):::adminNode
-        C1 --> E1([🗑️ Delete Job Posts]):::adminNode
+        C1 --> D1([📢 <b>Post Job / Internship</b><br>🕵️‍♂️ Details Entry]):::adminNode
+        C1 --> E1([🗑️ <b>Delete Job Posts</b><br>⚠️ Cleanup]):::adminNode
     end
 
     %% Students Flow
-    subgraph Students["🎓 Students Flow"]
+    subgraph Students["🎓 **Students Flow**"]
         direction TB
-        F1([🌐 Access Public Pages:<br>🏠 Homepage, ℹ️ About, 📞 Contact,<br>📃 Privacy Policy, 📜 Terms & Conditions, ❓ FAQ-chatbot]):::publicNode --> G1{🔐 Login / Signup?}:::decisionNode
-        G1 -->|✅ Yes| H1([🏢 Access Company & Community Pages]):::studentNode
+        F1([🌐 <b>Public Pages</b>:<br>🏠 Home, ℹ️ About, 📞 Contact,<br>📃 Privacy, 📜 Terms, ❓ FAQ Chatbot]):::publicNode --> G1{🔓 <b>Login / Signup?</b>}:::decisionNode
+        G1 -->|✅ Yes| H1([🏢 <b>Access Company &<br>Community Pages</b>]):::studentNode
         G1 -->|❌ No| F1
 
-        H1 --> I1([📝 Fill Job Application Form]):::studentNode
-        H1 -.-> J1([🚫 Cannot Access Admin Page]):::studentNode
+        H1 --> I1([📝 <b>Apply via Job Form</b><br>🧾 Resume Submission]):::studentNode
+        H1 -.-> J1([🚫 <b>Restricted: Admin Page</b>]):::studentNode
 
-        %% Communication in Community Page
-        H1 --> L1([💬 Send/Receive Messages in Community Page]):::studentNode
+        H1 --> L1([💬 <b>Community Chat</b><br>📨 Send/Receive Messages]):::studentNode
         C1 --> L1
     end
 
