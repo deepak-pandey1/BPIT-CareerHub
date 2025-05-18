@@ -126,11 +126,8 @@ graph TD
 
 <a href="https://openai.com/chatgpt" target="_blank"><img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" /></a>
 <a href="https://grok.x.ai/" target="_blank">
-  <img src="https://img.shields.io/badge/Grok-%23000000.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFACAYAAADNkKWqAAAskElEQVR4nO3debxVVfnH8Q/KJCAC4j..." />
+  <img src="https://img.shields.io/badge/Grok-%23000000.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyBICj48c3ZnIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsPSIjMDAwIiBkPSJNNDE1LjIgNzAuN0MyNzkuNC0zMiAxMDQuMy01LjggMTEuNSAxMzAuM0MtMTEgMTYzLjMgLTMuNiAyMTEuNyAxOS43IDI0NS40YzE2LjcgMjQuMSA0Ni45IDM3LjIgNzguMSAzNS41bC0xNC4zIDIyLjRjLTIxLjUtMy45LTQxLjEtMTYuOC01My43LTM1LjUgQzE2LjMgMjU2LjMgNi4zIDIwMC43IDI3LjUgMTQ0LjNDMTEzLjMgMi44IDI4My4yLTE3LjcgNDA4LjcgNzcuMkw0MTUuMiA3MC43Wk0xMjMuNCA0MjcuNkMyNTguOCA1MzAgNDMzLjkgNTA0IDUyNi44IDM2OS41QzU1Mi44IDMzNi41IDU2MC4yIDI4OC4xIDUzNi45IDI1NC40QzUyMC4yIDIzMC4zIDQ5MC4xIDIxNy4yIDQ1OC44IDIxOWwyLjUgMjQuNGMtMTAuNiAyMi4yLTI3LjEgNDEuOS00OC40IDU2LjdsLTEyLjEgMTcuMkMzNjYuMyA1MTEuMyAyODMuMiA1NDAuMyAxMjMuNCA0MjcuNloiLz4KPC9zdmc+" />
 </a>
-
-
-
 
 
 </div>
