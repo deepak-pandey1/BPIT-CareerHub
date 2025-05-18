@@ -27,7 +27,7 @@ graph TD
     subgraph Students["Students Flow"]
         direction TB
         F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms & condition, FAQ-chatbot]):::publicNode --> G1{Login / Signup?}:::decisionNode
-        G1 -->|Yes| H1([Access Community & Company Pages]):::studentNode
+        G1 -->|Yes| H1([Access Company & Community Pages]):::studentNode
         G1 -->|No| F1
 
         H1 --> I1([Fill Job Application Form]):::studentNode
