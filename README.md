@@ -75,6 +75,34 @@ graph TD
 
 </div>
 
+<h2>Project Structure</h2>
+<pre><code>
+bpit-placement/
+│
+├── backend/                 # Express.js backend
+│   ├── controller/          # Route handlers for various features
+│   ├── model/               # Mongoose schema definitions
+│   ├── route/               # API routes
+│   ├── middleware/          # Authentication and error-handling middleware
+│   ├── jwt/                 # JWT token generation/verification
+│   ├── .env                 # Environment variables
+│   └── index.js             # Entry point for the backend server
+│
+├── client/                  # React frontend
+│   ├── public/              # Static assets
+│   └── src/
+│       ├── assets/          # Images, animations, icons
+│       ├── Components/      # React components
+│       ├── Context/         # React context providers
+│       ├── Pages/           # Main page components
+│       ├── App.js           # Main app file
+│       └── index.js         # React entry point
+│
+├── README.md                # Project documentation
+└── package.json             # Project metadata and scripts
+
+</code></pre>
+
 
 ## Prerequisites
 - Node.js and npm (Node Package Manager)
