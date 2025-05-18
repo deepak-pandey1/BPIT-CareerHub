@@ -69,24 +69,24 @@ graph TD
 
 <br>
 
-<img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
-<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
-<img src="https://img.shields.io/badge/Framer_Motion-%23000000.svg?style=for-the-badge&logo=framer&logoColor=white" />
-<img src="https://img.shields.io/badge/Lottie-%23FF4F4F.svg?style=for-the-badge&logo=lottie&logoColor=white" />
-<img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white" />
-<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
-<img src="https://img.shields.io/badge/Axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white" />
-<img src="https://img.shields.io/badge/React_Toastify-%23FFCA28.svg?style=for-the-badge&logo=react&logoColor=black" />
-<img src="https://img.shields.io/badge/React_Icons-%23000000.svg?style=for-the-badge&logo=react&logoColor=white" />
-<img src="https://img.shields.io/badge/Font_Awesome-%23539E43.svg?style=for-the-badge&logo=font-awesome&logoColor=white" />
-<img src="https://img.shields.io/badge/Lucide-%23000000.svg?style=for-the-badge&logo=lucide&logoColor=white" />
-<img src="https://img.shields.io/badge/React_Loading_Skeleton-%23D3D3D3.svg?style=for-the-badge&logo=react&logoColor=black" />
-<img src="https://img.shields.io/badge/React_Responsive-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black" />
-<img src="https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white" />
-<img src="https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white" />
-<img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" />
-<img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" />
-<img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" />
+<a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /></a>
+<a href="https://reactrouter.com/" target="_blank"><img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" /></a>
+<a href="https://www.framer.com/motion/" target="_blank"><img src="https://img.shields.io/badge/Framer_Motion-%23000000.svg?style=for-the-badge&logo=framer&logoColor=white" /></a>
+<a href="https://lottiefiles.com/" target="_blank"><img src="https://img.shields.io/badge/Lottie-%23FF4F4F.svg?style=for-the-badge&logo=lottie&logoColor=white" /></a>
+<a href="https://getbootstrap.com/" target="_blank"><img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white" /></a>
+<a href="https://styled-components.com/" target="_blank"><img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" /></a>
+<a href="https://axios-http.com/" target="_blank"><img src="https://img.shields.io/badge/Axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white" /></a>
+<a href="https://fkhadra.github.io/react-toastify/" target="_blank"><img src="https://img.shields.io/badge/React_Toastify-%23FFCA28.svg?style=for-the-badge&logo=react&logoColor=black" /></a>
+<a href="https://react-icons.github.io/react-icons/" target="_blank"><img src="https://img.shields.io/badge/React_Icons-%23000000.svg?style=for-the-badge&logo=react&logoColor=white" /></a>
+<a href="https://fontawesome.com/" target="_blank"><img src="https://img.shields.io/badge/Font_Awesome-%23539E43.svg?style=for-the-badge&logo=font-awesome&logoColor=white" /></a>
+<a href="https://lucide.dev/" target="_blank"><img src="https://img.shields.io/badge/Lucide-%23000000.svg?style=for-the-badge&logo=lucide&logoColor=white" /></a>
+<a href="https://github.com/dvtng/react-loading-skeleton" target="_blank"><img src="https://img.shields.io/badge/React_Loading_Skeleton-%23D3D3D3.svg?style=for-the-badge&logo=react&logoColor=black" /></a>
+<a href="https://github.com/contra/react-responsive" target="_blank"><img src="https://img.shields.io/badge/React_Responsive-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black" /></a>
+<a href="https://recharts.org/" target="_blank"><img src="https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white" /></a>
+<a href="https://www.emailjs.com/" target="_blank"><img src="https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white" /></a>
+<a href="https://firebase.google.com/" target="_blank"><img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" /></a>
+<a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
+<a href="https://www.chatbase.co/" target="_blank"><img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" /></a>
 
 ---
 
@@ -94,18 +94,18 @@ graph TD
 
 <br>
 
-<img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" />
-<img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" />
-<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" />
-<img src="https://img.shields.io/badge/Mongoose-%23880000.svg?style=for-the-badge&logo=mongoose&logoColor=white" />
-<img src="https://img.shields.io/badge/JWT-%23000000.svg?style=for-the-badge&logo=json-web-tokens&logoColor=white" />
-<img src="https://img.shields.io/badge/bcrypt-%232E8B57.svg?style=for-the-badge&logo=security&logoColor=white" />
-<img src="https://img.shields.io/badge/Cookie_Parser-%23000000.svg?style=for-the-badge&logo=node.js&logoColor=white" />
-<img src="https://img.shields.io/badge/dotenv-%23ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black" />
-<img src="https://img.shields.io/badge/Zod-%233068B7.svg?style=for-the-badge&logo=zod&logoColor=white" />
-<img src="https://img.shields.io/badge/CORS-%23000000.svg?style=for-the-badge&logo=security&logoColor=white" />
-<img src="https://img.shields.io/badge/Postman-%23FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white" />
-<img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" />
+<a href="https://nodejs.org/" target="_blank"><img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" /></a>
+<a href="https://expressjs.com/" target="_blank"><img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" /></a>
+<a href="https://www.mongodb.com/" target="_blank"><img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" /></a>
+<a href="https://mongoosejs.com/" target="_blank"><img src="https://img.shields.io/badge/Mongoose-%23880000.svg?style=for-the-badge&logo=mongoose&logoColor=white" /></a>
+<a href="https://jwt.io/" target="_blank"><img src="https://img.shields.io/badge/JWT-%23000000.svg?style=for-the-badge&logo=json-web-tokens&logoColor=white" /></a>
+<a href="https://www.npmjs.com/package/bcrypt" target="_blank"><img src="https://img.shields.io/badge/bcrypt-%232E8B57.svg?style=for-the-badge&logo=security&logoColor=white" /></a>
+<a href="https://www.npmjs.com/package/cookie-parser" target="_blank"><img src="https://img.shields.io/badge/Cookie_Parser-%23000000.svg?style=for-the-badge&logo=node.js&logoColor=white" /></a>
+<a href="https://www.npmjs.com/package/dotenv" target="_blank"><img src="https://img.shields.io/badge/dotenv-%23ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black" /></a>
+<a href="https://zod.dev/" target="_blank"><img src="https://img.shields.io/badge/Zod-%233068B7.svg?style=for-the-badge&logo=zod&logoColor=white" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank"><img src="https://img.shields.io/badge/CORS-%23000000.svg?style=for-the-badge&logo=security&logoColor=white" /></a>
+<a href="https://www.postman.com/" target="_blank"><img src="https://img.shields.io/badge/Postman-%23FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white" /></a>
+<a href="https://firebase.google.com/" target="_blank"><img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" /></a>
 
 ---
 
@@ -113,9 +113,9 @@ graph TD
 
 <br>
 
-<img src="https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" />
-<img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
-<img src="https://img.shields.io/badge/Render-%2346E3B7.svg?style=for-the-badge&logo=render&logoColor=black" />
+<a href="https://git-scm.com/" target="_blank"><img src="https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" /></a>
+<a href="https://github.com/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" /></a>
+<a href="https://render.com/" target="_blank"><img src="https://img.shields.io/badge/Render-%2346E3B7.svg?style=for-the-badge&logo=render&logoColor=black" /></a>
 
 ---
 
@@ -123,10 +123,11 @@ graph TD
 
 <br>
 
-<img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" />
-<a href="https://grok.com/"><img src="https://img.shields.io/badge/Grok-%231E3A8A.svg?style=for-the-badge&logo=tensorflow&logoColor=white" /></a>
+<a href="https://openai.com/chatgpt" target="_blank"><img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" /></a>
+<a href="https://grok.x.ai/" target="_blank"><img src="https://img.shields.io/badge/Grok-%231E3A8A.svg?style=for-the-badge&logo=tensorflow&logoColor=white" /></a>
 
 </div>
+
 
 
 <h2 style="font-size: 2rem; margin-bottom: 1rem;">📁 Project Structure</h2>
