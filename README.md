@@ -5,11 +5,6 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
-## 🎥 Live Preview
-
-🚀 **Experience the app live here:**  
-🌐 [Visit Live Site](https://bpit-careerhub.onrender.com)
-
 
 ## 🚀 Project Workflow Diagram
 ```mermaid
