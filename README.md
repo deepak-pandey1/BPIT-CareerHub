@@ -5,6 +5,11 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
+## 🎥 Live Preview
+
+[![Live Demo](https://img.shields.io/badge/Live_Site-BPIT_CareerHub-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://bpit-careerhub.onrender.com)
+
+
 ## 🚀 Project Workflow Diagram
 ```mermaid
 graph TD
