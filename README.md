@@ -32,7 +32,6 @@ graph TD
 
         H1 --> I1([Fill Job Application Form]):::studentNode
         H1 -.-> J1([Cannot Access Admin Page]):::studentNode
-        H1 --> K1([Ask Doubts on FAQ Page - Chatbot]):::studentNode
 
         %% Communication in Community Page
         H1 --> L1([Send/Receive Messages in Community Page]):::studentNode
