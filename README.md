@@ -78,7 +78,6 @@ graph TD
 ![React Icons](https://img.shields.io/badge/React_Icons-%23000000.svg?style=for-the-badge&logo=react&logoColor=white)
 ![Font Awesome](https://img.shields.io/badge/Font_Awesome-%23539E43.svg?style=for-the-badge&logo=font-awesome&logoColor=white)
 ![Lucide](https://img.shields.io/badge/Lucide-%23000000.svg?style=for-the-badge&logo=lucide&logoColor=white)
-![React CountUp](https://img.shields.io/badge/React_CountUp-%234B9E98.svg?style=for-the-badge&logo=react&logoColor=white)
 ![React Loading Skeleton](https://img.shields.io/badge/React_Loading_Skeleton-%23D3D3D3.svg?style=for-the-badge&logo=react&logoColor=black)
 ![React Responsive](https://img.shields.io/badge/React_Responsive-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black)
 ![Recharts](https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white)
