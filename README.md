@@ -125,22 +125,7 @@ graph TD
 <br>
 
 <a href="https://openai.com/chatgpt" target="_blank"><img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" /></a>
-<a href="https://grok.x.ai/" target="_blank" style="text-decoration: none;">
-  <div style="
-    display: inline-flex;
-    align-items: center;
-    background-color: #000000;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-  ">
-    <img src="https://images.seeklogo.com/logo-png/61/2/grok-logo-png_seeklogo-613403.png" alt="Grok Logo" style="height: 20px; margin-right: 8px;" />
-    Grok
-  </div>
-</a>
+<a href="https://grok.x.ai/" target="_blank"><img src="https://img.shields.io/badge/Grok-%23000000.svg?style=for-the-badge&logo=https://your-grok-logo-url.png&logoColor=white" /></a>
 
 
 
