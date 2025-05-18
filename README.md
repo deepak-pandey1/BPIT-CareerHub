@@ -67,7 +67,7 @@ graph TD
 
 ### 🖥️ Frontend
 
-<img src="https://readme-typing-svg.herokuapp.com/?lines=🖥️+Frontend center=true&width=800&height=45&color=F7F7F7&background=000000&vCenter=true&size=22" />
+<img src="https://readme-typing-svg.herokuapp.com/?lines=Frontend&center=true&width=500&height=45&color=F7F7F7&background=000000&vCenter=true&size=22" />
 
 <br>
 
