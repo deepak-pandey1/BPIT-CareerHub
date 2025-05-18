@@ -8,11 +8,11 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## Project Workflow Diagram
 ```mermaid
 graph TD
-    %% Define styles
-    classDef adminNode fill:#ffd6a5,stroke:#ff9e0d,stroke-width:2px,color:#5a3300,rounded
-    classDef studentNode fill:#9bf6ff,stroke:#0288d1,stroke-width:2px,color:#003a6b,rounded
-    classDef publicNode fill:#caffbf,stroke:#4caf50,stroke-width:2px,color:#2e7d32,rounded
-    classDef decisionNode fill:#ffadad,stroke:#d00000,stroke-width:2px,color:#700000,diamond
+    %% Define styles for dark theme
+    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:2px,color:#1a1a1a,rounded
+    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:2px,color:#1a1a1a,rounded
+    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:2px,color:#1a1a1a,rounded
+    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:2px,color:#1a1a1a,diamond
 
     %% TNP Admin Flow
     subgraph TNP_Admin
@@ -33,6 +33,7 @@ graph TD
 
         H1 --> K1([Ask Doubts on FAQ Page - Chatbot]):::studentNode
     end
+
 
 
 ```
