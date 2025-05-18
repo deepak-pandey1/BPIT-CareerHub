@@ -77,29 +77,30 @@ graph TD
 
 <h2>Project Structure</h2>
 <pre><code>
-bpit-placement/
+bpit-careerhub/
+├── backend/                    # Express.js backend
+│   ├── index.js               # Entry point
+│   ├── controller/            # Route logic (company, user, message)
+│   ├── model/                 # Mongoose schemas
+│   ├── routes/                # API endpoints
+│   ├── middleware/            # Auth middleware
+│   └── jwt/                   # JWT token utils
 │
-├── backend/                 # Express.js backend
-│   ├── controller/          # Route handlers for various features
-│   ├── model/               # Mongoose schema definitions
-│   ├── route/               # API routes
-│   ├── middleware/          # Authentication and error-handling middleware
-│   ├── jwt/                 # JWT token generation/verification
-│   ├── .env                 # Environment variables
-│   └── index.js             # Entry point for the backend server
-│
-├── client/                  # React frontend
-│   ├── public/              # Static assets
+├── client/                    # React frontend
+│   ├── public/                # Static assets
 │   └── src/
-│       ├── assets/          # Images, animations, icons
-│       ├── Components/      # React components
-│       ├── Context/         # React context providers
-│       ├── Pages/           # Main page components
-│       ├── App.js           # Main app file
-│       └── index.js         # React entry point
+│       ├── Component/         # Reusable components
+│       │   ├── Charts/        # Placement stats charts
+│       │   ├── Header/        # Header, footer, scroll handling
+│       │   ├── MainComponent/ # Pages (Home, Company, Admin, etc.)
+│       │   └── ProgressBar/   # Scroll progress UI
+│       ├── App.js             # Main app component
+│       ├── index.js           # React entry point
+│       └── firebase.js        # Firebase config
 │
-├── README.md                # Project documentation
-└── package.json             # Project metadata and scripts
+├── README.md
+└── package.json               # Project metadata and scripts
+
 
 </code></pre>
 
