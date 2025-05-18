@@ -8,38 +8,65 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## Project Workflow Diagram
 ```mermaid
 graph TD
-    %% Define styles for dark theme
-    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:2px,color:#1a1a1a,rounded
-    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:2px,color:#1a1a1a,rounded
-    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:2px,color:#1a1a1a,rounded
-    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:2px,color:#1a1a1a,diamond
+    %% Styling for dark mode with bright colors
+    classDef adminNode fill:#FF6F61,stroke:#FF3B30,stroke-width:2px,color:#1E1E1E,rounded
+    classDef studentNode fill:#4FC3F7,stroke:#0288D1,stroke-width:2px,color:#1E1E1E,rounded
+    classDef publicNode fill:#81C784,stroke:#388E3C,stroke-width:2px,color:#1E1E1E,rounded
+    classDef decisionNode fill:#FFD54F,stroke:#FFB300,stroke-width:2px,color:#1E1E1E,diamond
 
-    %% TNP Admin Flow
+    %% Public Access Section
+    subgraph Public_Pages
+        direction TB
+        P1(["🏠 Homepage"])
+        P2(["📖 About"])
+        P3(["📞 Contact"])
+        P4(["📜 Privacy Policy"])
+        P5(["📄 Terms & Conditions"])
+    end
+
+    %% Admin Section
     subgraph TNP_Admin
-        A1([TNP Admin Signup / Login]):::adminNode --> B1{Verify Admin Credentials}:::decisionNode
-        B1 -->|Valid| C1([Access Admin Page]):::adminNode
-        C1 --> D1([Post Job / Internship Details]):::adminNode
-        C1 --> E1([Delete Job Posts]):::adminNode
+        direction TB
+        A1(["👤 Admin Signup / Login"]):::adminNode
+        B1{"🔐 Verify Admin Credentials"}:::decisionNode
+        C1(["🛠️ Access Admin Page"]):::adminNode
+        D1(["➕ Post Job / Internship Details"]):::adminNode
+        E1(["🗑️ Delete Job Posts"]):::adminNode
     end
 
-    %% Students Flow
+    %% Students Section
     subgraph Students
-        F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms]):::publicNode --> G1{Login / Signup?}:::decisionNode
-        G1 -->|Yes| H1([Access Community & Company Pages]):::studentNode
-        G1 -->|No| F1
-
-        H1 --> I1([Fill Job Application Form]):::studentNode
-        H1 -.-> J1([Cannot Access Admin Page]):::studentNode
-
-        H1 --> K1([Ask Doubts on FAQ Page - Chatbot]):::studentNode
-
-        %% Communication in Community Page
-        H1 --> L1([Send/Receive Messages in Community Page]):::studentNode
-        C1 --> L1
+        direction TB
+        F1{"🔑 Student Login / Signup?"}:::decisionNode
+        G1(["🌐 Access Public Pages"]):::publicNode
+        H1(["👥 Access Community & Company Pages"]):::studentNode
+        I1(["📝 Fill Job Application Form"]):::studentNode
+        J1(["❌ Cannot Access Admin Page"]):::studentNode
+        K1(["💬 Ask Doubts on FAQ Page - Chatbot"]):::studentNode
+        L1(["📨 Communicate in Community Page"]):::studentNode
     end
 
+    %% Connections Public
+    G1 -->|No| G1
+    G1 -->|Yes| H1
+    H1 --> I1
+    H1 --> J1
+    H1 --> K1
+    H1 --> L1
 
+    %% Admin Connections
+    A1 --> B1
+    B1 -->|Valid| C1
+    C1 --> D1
+    C1 --> E1
+    C1 --> L1
 
+    %% Public pages visible without login/signup
+    P1 --- G1
+    P2 --- G1
+    P3 --- G1
+    P4 --- G1
+    P5 --- G1
 
 ```
 
