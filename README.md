@@ -122,7 +122,7 @@ graph TD
 ### Help
 
 ![ChatGPT](https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white)
-![Grok](https://img.shields.io/badge/Grok-%231E3A8A.svg?style=for-the-badge&logo=tensorflow&logoColor=white)
+[![Grok](https://img.shields.io/badge/Grok-%231E3A8A.svg?style=for-the-badge&logo=tensorflow&logoColor=white)](https://grok.com/)
 
 </div>
 
