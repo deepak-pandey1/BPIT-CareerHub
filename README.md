@@ -143,9 +143,20 @@ You can use the following test credentials to explore the Admin Dashboard:
 
 <br>
 
-<a href="https://openai.com/chatgpt" target="_blank"><img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" /></a>
+<a href="https://openai.com/chatgpt" target="_blank">
+  <img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" />
+</a>
 <a href="https://grok.x.ai/" target="_blank">
-  <img src="https://img.shields.io/badge/Grok-%23000000.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQk..." />
+  <img src="https://img.shields.io/badge/Grok-%23000000.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZPE..." />
+</a>
+<a href="https://code.visualstudio.com/" target="_blank">
+  <img src="https://img.shields.io/badge/VSCode-%23007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
+</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next" target="_blank">
+  <img src="https://img.shields.io/badge/VSCode_DevTools-%23007ACC.svg?style=for-the-badge&logo=visualstudiocode&logoColor=white" />
+</a>
+<a href="https://www.spotify.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Spotify-%231ED760.svg?style=for-the-badge&logo=spotify&logoColor=white" />
 </a>
 
 
