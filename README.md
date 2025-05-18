@@ -101,6 +101,7 @@ graph TD
 ![dotenv](https://img.shields.io/badge/dotenv-%23ECD53F.svg?style=for-the-badge&logo=dotenv&logoColor=black)
 ![Zod](https://img.shields.io/badge/Zod-%233068B7.svg?style=for-the-badge&logo=zod&logoColor=white)
 ![CORS](https://img.shields.io/badge/CORS-%23000000.svg?style=for-the-badge&logo=security&logoColor=white)
+![POSTMAN]([https://img.shields.io/badge/CORS-%23000000.svg?style=for-the-badge&logo=security&logoColor=white](https://img.shields.io/badge/Postman-%23FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white))
 
 </div>
 
