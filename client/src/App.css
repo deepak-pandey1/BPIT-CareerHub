@@ -825,3 +825,25 @@ input, textarea, select {
     color: #007bff; /* Change color for a more noticeable effect */
   }
   
+
+  .admin-heading-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: -30px; /* your upward shift */
+  position: relative; /* allow z-index to work */
+  z-index: 10; /* higher than other page elements */
+}
+
+/* On mobile, smaller negative margin but keep position and z-index */
+@media (max-width: 480px) {
+  .admin-heading-container {
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.container.mt-5.position-relative {
+  overflow: visible !important;
+}

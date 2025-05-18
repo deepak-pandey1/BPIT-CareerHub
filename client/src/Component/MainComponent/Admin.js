@@ -10,8 +10,8 @@ import { FiGlobe } from "react-icons/fi";
 import { AiFillLock, AiFillUnlock } from "react-icons/ai"; // Import lock icons
 import {  useCycle } from "framer-motion"; // Import useCycle from framer-motion
 import { BiLogInCircle } from 'react-icons/bi'; // Import the BiLogInCircle icon
-// import { FaBuilding } from "react-icons/fa";  // For company/ For add
-
+import { MdAdminPanelSettings } from "react-icons/md";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Admin() {
   const [formData, setFormData] = useState({
@@ -28,8 +28,6 @@ export default function Admin() {
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
   const [loginError, setLoginError] = useState("");
-
-
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginData, setLoginData] = useState({ username: "", password: "" });
@@ -82,7 +80,6 @@ const handleLogin = (e) => {
       console.error(err);
     }
   };
-  
 
   const handleDelete = async (id) => {
     try {
@@ -263,20 +260,36 @@ const handleLogin = (e) => {
     <div style={{ filter: !isAuthenticated ? "blur(8px)" : "none" }}>
     <div className="container mt-5 position-relative">
       <ToastContainer position="top-right" autoClose={3000} />
-      <motion.h2
-        className="mb-4 fw-bold text-center"
-        initial={{ opacity: 0, y: -30, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        style={{
-          color: "#333",
-          textShadow: "1px 1px 10px rgba(0,0,0,0.1)",
-          letterSpacing: "1px",
-          marginTop: "-30px", // <-- this pulls it up
-        }}
-      >
-        🛠️ Admin Panel
-      </motion.h2>
+      <div className="admin-heading-container">
+  <motion.h2
+    className="mb-4 fw-bold"
+    initial={{ opacity: 0, y: -30, scale: 0.9 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 1, ease: "easeInOut" }}
+    style={{
+      color: "#333",
+      textShadow: "1px 1px 10px rgba(0,0,0,0.1)",
+      letterSpacing: "1px",
+      display: "inline-flex",
+      alignItems: "center",
+    }}
+  >
+    <MdAdminPanelSettings style={{ marginRight: "8px", verticalAlign: "middle" }} />
+    <span>
+      <Typewriter
+        words={['Admin Panel']}
+        loop={0}
+        cursor
+        cursorStyle='_'
+        typeSpeed={100}
+        deleteSpeed={50}
+        delaySpeed={1000}
+      />
+    </span>
+  </motion.h2>
+</div>
+
+
 
 
       {/* Show Spinner while data is loading */}
