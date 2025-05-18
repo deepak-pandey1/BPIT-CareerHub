@@ -152,9 +152,7 @@ You can use the following test credentials to explore the Admin Dashboard:
 <a href="https://code.visualstudio.com/" target="_blank">
   <img src="https://img.shields.io/badge/VSCode-%23007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
 </a>
-<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next" target="_blank">
-  <img src="https://img.shields.io/badge/VSCode_DevTools-%23007ACC.svg?style=for-the-badge&logo=visualstudiocode&logoColor=white" />
-</a>
+
 <a href="https://www.spotify.com/" target="_blank">
   <img src="https://img.shields.io/badge/Spotify-%231ED760.svg?style=for-the-badge&logo=spotify&logoColor=white" />
 </a>
