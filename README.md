@@ -8,18 +8,27 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## Project Workflow Diagram
 ```mermaid
 graph TD
+    %% TNP Admin Flow
     subgraph TNP_Admin
-        A[TNP Admin Signup / Login] --> B[Verify Admin Credentials]
-        B -->|Valid| C[Access Admin Page]
-        C --> D[Post Job / Internship Details]
-        C --> E[Delete Job Posts]
+        A1[TNP Admin Signup / Login] --> B1[Verify Admin Credentials]
+        B1 -->|Valid| C1[Access Admin Page]
+        C1 --> D1[Post Job / Internship Details]
+        C1 --> E1[Delete Job Posts]
     end
 
+    %% Students Flow
     subgraph Students
-        F[Signup / Login] --> G[Ask Doubts on FAQ Page - Chatbot]
-        F --> H[Go to Company Page]
-        H --> I[Fill Job Application Form]
+        F1[Access Homepage, About, Contact, Privacy Policy, Terms] --> G1{Login / Signup?}
+        G1 -->|Yes| H1[Access Community Page & Company Page]
+        G1 -->|No| F1
+
+        H1 --> I1[Fill Job Application Form on Company Page]
+        H1 -.-> J1[Cannot Access Admin Page]
+
+        %% Also show FAQ chatbot access after login
+        H1 --> K1[Ask Doubts on FAQ Page - Chatbot]
     end
+
 ```
 
 ## Features
