@@ -4,13 +4,14 @@
 This project is created for BPIT (Bhagwan Parshuram Institute of Technology) college placement students to streamline and manage placement activities. Currently, students rely on third-party platforms like POD for job-related updates and placement information. This platform aims to provide a more personalized and efficient way for students and companies to engage with the placement process.
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
-
+## Project Workflow Diagram
+```mermaid
 graph TD
     %% Define styles for dark theme with rounded corners and subtle shadows
-    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
-    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
-    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
-    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a,shape:diamond
+    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
+    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
+    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
+    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a
 
     %% TNP Admin Flow
     subgraph TNP_Admin["TNP Admin Flow"]
@@ -37,6 +38,7 @@ graph TD
         H1 --> L1([Send/Receive Messages in Community Page]):::studentNode
         C1 --> L1
     end
+
 
 
 ```
