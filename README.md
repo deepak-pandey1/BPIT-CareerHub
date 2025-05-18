@@ -8,36 +8,45 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## 🚀 Project Workflow Diagram
 ```mermaid
 graph TD
-    %% Define styles for dark theme with rounded corners and subtle shadows
+    %% Define styles
     classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
     classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a
 
+    %% Shared Public Access
+    subgraph Public["🌐 Public Pages"]
+        direction TB
+        P1([🏠 Homepage<br>ℹ️ About<br>📞 Contact<br>📃 Privacy Policy<br>📜 Terms & Conditions<br>🤖 FAQ Chatbot]):::publicNode
+    end
+
     %% TNP Admin Flow
     subgraph TNP_Admin["👨‍💼 TNP Admin Flow"]
         direction TB
         A1([📝 TNP Admin Signup / Login]):::adminNode --> B1{🔐 Verify Admin Credentials}:::decisionNode
-        B1 -->|✅ Valid| C1([📂 Access Admin Page]):::adminNode
-        B1 -->|❌ Invalid| A1
-        C1 --> D1([📢 Post Job / Internship Details]):::adminNode
+        B1 -->|✅ Admin| C1([📂 Access Admin Page]):::adminNode
+        B1 -->|❌ Not Admin| A1
+
+        C1 --> D1([📢 Post Job / Internship]):::adminNode
         C1 --> E1([🗑️ Delete Job Posts]):::adminNode
+
+        A1 --> A2([🏢 Access Company & Community Pages]):::studentNode
+        A2 --> A3([📝 Fill Job Application Form]):::studentNode
+        A2 --> A4([💬 Community Chat]):::studentNode
     end
 
     %% Students Flow
     subgraph Students["🎓 Students Flow"]
         direction TB
-        F1([🌐 Access Public Pages:<br>Homepage, About, Contact,<br> Privacy Policy, Terms & Conditions, FAQ-chatbot]):::publicNode --> G1{🔐 Login / Signup?}:::decisionNode
-        G1 -->|✅ Yes| H1([🏢 Access Company & Community Pages]):::studentNode
-        G1 -->|❌ No| F1
-
-        H1 --> I1([📝 Fill Job Application Form]):::studentNode
-        H1 -.-> J1([🚫 Cannot Access Admin Page]):::studentNode
-
-        %% Communication in Community Page
-        H1 --> L1([💬 Send/Receive Messages in Community Page]):::studentNode
-        C1 --> L1
+        S1([🔓 Login / Signup]):::studentNode --> S2([🏢 Access Company & Community Pages]):::studentNode
+        S2 --> S3([📝 Fill Job Application Form]):::studentNode
+        S2 --> S4([💬 Community Chat]):::studentNode
+        S2 -.-> S5([🚫 Cannot Access Admin Page]):::studentNode
     end
+
+    %% Connect Public to both flows
+    P1 --> A1
+    P1 --> S1
 
 
 ```
