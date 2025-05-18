@@ -88,6 +88,10 @@ graph TD
 <a href="https://firebase.google.com/" target="_blank"><img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" /></a>
 <a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
 <a href="https://www.chatbase.co/" target="_blank"><img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" /></a>
+<a href="https://www.npmjs.com/package/react-countup" target="_blank">
+  <img src="https://img.shields.io/badge/react--countup-black?style=for-the-badge&logo=react&logoColor=white" />
+</a>
+
 
 ---
 
