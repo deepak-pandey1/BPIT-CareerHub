@@ -8,26 +8,32 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 ## Project Workflow Diagram
 ```mermaid
 graph TD
+    %% Define styles
+    classDef adminNode fill:#ffd6a5,stroke:#ff9e0d,stroke-width:2px,color:#5a3300,rounded
+    classDef studentNode fill:#9bf6ff,stroke:#0288d1,stroke-width:2px,color:#003a6b,rounded
+    classDef publicNode fill:#caffbf,stroke:#4caf50,stroke-width:2px,color:#2e7d32,rounded
+    classDef decisionNode fill:#ffadad,stroke:#d00000,stroke-width:2px,color:#700000,diamond
+
     %% TNP Admin Flow
     subgraph TNP_Admin
-        A1[TNP Admin Signup / Login] --> B1[Verify Admin Credentials]
-        B1 -->|Valid| C1[Access Admin Page]
-        C1 --> D1[Post Job / Internship Details]
-        C1 --> E1[Delete Job Posts]
+        A1([TNP Admin Signup / Login]):::adminNode --> B1{Verify Admin Credentials}:::decisionNode
+        B1 -->|Valid| C1([Access Admin Page]):::adminNode
+        C1 --> D1([Post Job / Internship Details]):::adminNode
+        C1 --> E1([Delete Job Posts]):::adminNode
     end
 
     %% Students Flow
     subgraph Students
-        F1[Access Homepage, About, Contact, Privacy Policy, Terms] --> G1{Login / Signup?}
-        G1 -->|Yes| H1[Access Community Page & Company Page]
+        F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms]):::publicNode --> G1{Login / Signup?}:::decisionNode
+        G1 -->|Yes| H1([Access Community & Company Pages]):::studentNode
         G1 -->|No| F1
 
-        H1 --> I1[Fill Job Application Form on Company Page]
-        H1 -.-> J1[Cannot Access Admin Page]
+        H1 --> I1([Fill Job Application Form]):::studentNode
+        H1 -.-> J1([Cannot Access Admin Page]):::studentNode
 
-        %% Also show FAQ chatbot access after login
-        H1 --> K1[Ask Doubts on FAQ Page - Chatbot]
+        H1 --> K1([Ask Doubts on FAQ Page - Chatbot]):::studentNode
     end
+
 
 ```
 
