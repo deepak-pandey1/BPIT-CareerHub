@@ -17,7 +17,7 @@ graph TD
     %% Shared Public Access
     subgraph Public["🌐 Public Pages"]
         direction TB
-        P1([🏠 Homepage<br>ℹ️ About<br>📞 Contact<br>📃 Privacy Policy<br>📜 Terms & Conditions<br>🤖 FAQ Chatbot]):::publicNode
+        P1([Homepage<br>ℹAbout<br>Contact<br> Privacy Policy<br> Terms & Conditions<br> FAQ Chatbot]):::publicNode
     end
 
     %% TNP Admin Flow
