@@ -15,9 +15,9 @@ graph TD
     classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a
 
     %% Shared Public Access
-    subgraph Public["🌐 Public Pages"]
+    subgraph Public["   🌐 Public Pages"]
         direction TB
-        P1([Homepage, About,<br> Contact, Privacy Policy<br> Terms & Conditions, FAQ<br>  Chatbot]):::publicNode
+        P1([Homepage, About,<br> Contact, Privacy Policy<br> Terms & Conditions,<br>FAQ Chatbot]):::publicNode
     end
 
     %% TNP Admin Flow
