@@ -65,8 +65,6 @@ graph TD
 
 <div align="center">
 
----
-
 ### 🖥️ Frontend
 
 <br>
