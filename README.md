@@ -7,7 +7,8 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 
 ## 🎥 Live Preview
 
-[![Live Demo](https://img.shields.io/badge/Live_Site-BPIT_CareerHub-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://bpit-careerhub.onrender.com)
+🚀 **Experience the app live here:**  
+🌐 [Visit Live Site](https://bpit-careerhub.onrender.com)
 
 
 ## 🚀 Project Workflow Diagram
