@@ -3,7 +3,6 @@
 ## Description
 This project is created for BPIT (Bhagwan Parshuram Institute of Technology) college placement students to streamline and manage placement activities. Currently, students rely on third-party platforms like POD for job-related updates and placement information. This platform aims to provide a more personalized and efficient way for students and companies to engage with the placement process.
 
-ADMIN: For access admin page Username: admin & Password: admin
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
@@ -64,6 +63,16 @@ graph TD
 - 🎨 **Attractive UI**: Smooth animations using Lottie and Framer Motion.
 - 📱 **Responsive Design**: Optimized for both mobile and desktop devices.
 
+
+## 🧪 Demo Credentials
+
+You can use the following test credentials to explore the Admin Dashboard:
+
+### 👨‍💼 Admin Login
+- **Username:** `admin`  
+- **Password:** `admin`
+
+
 ## 🧰 Tech Stack
 
 <div align="center">
@@ -89,6 +98,8 @@ graph TD
 <a href="https://www.emailjs.com/" target="_blank"><img src="https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white" /></a>
 <a href="https://firebase.google.com/" target="_blank"><img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" /></a>
 <a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
+<img src="https://img.shields.io/badge/Formspree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" />
+
 <a href="https://www.chatbase.co/" target="_blank"><img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" /></a>
 <a href="https://www.npmjs.com/package/react-simple-typewriter" target="_blank">
   <img src="https://img.shields.io/badge/react--simple--typewriter-black?style=for-the-badge&logo=npm&logoColor=white" />
