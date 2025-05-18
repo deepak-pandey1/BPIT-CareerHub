@@ -83,7 +83,7 @@ graph TD
 ![React Responsive](https://img.shields.io/badge/React_Responsive-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black)
 ![Recharts](https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white)
 ![EmailJS](https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white)
-![TSParticles](https://img.shields.io/badge/TSParticles-%23000000.svg?style=for-the-badge&logo=tsParticles&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black)
 
 </div>
 
