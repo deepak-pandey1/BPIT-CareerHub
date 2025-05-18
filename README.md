@@ -67,9 +67,6 @@ graph TD
 
 ### 🖥️ Frontend
 
-<img src="https://readme-typing-svg.herokuapp.com/?lines=Frontend¢er=true&width=500&height=45&color=F7F7F7&vCenter=true&size=22" />
-<img src="https://readme-typing-svg.herokuapp.com/?lines=Frontend width=600&height=50&color=F7F7F7&vCenter=true&size=22&duration=3000" />
-
 <br>
 
 <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" /></a>
