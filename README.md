@@ -97,8 +97,7 @@ You can use the following test credentials to explore the Admin Dashboard:
 <a href="https://recharts.org/" target="_blank"><img src="https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white" /></a>
 <a href="https://www.emailjs.com/" target="_blank"><img src="https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white" /></a>
 <a href="https://firebase.google.com/" target="_blank"><img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black" /></a>
-<a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
-<img src="https://img.shields.io/badge/Formspree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" />
+<a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/Formspree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
 
 <a href="https://www.chatbase.co/" target="_blank"><img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" /></a>
 <a href="https://www.npmjs.com/package/react-simple-typewriter" target="_blank">
