@@ -125,7 +125,9 @@ graph TD
 <br>
 
 <a href="https://openai.com/chatgpt" target="_blank"><img src="https://img.shields.io/badge/ChatGPT-%2310A37F.svg?style=for-the-badge&logo=openai&logoColor=white" /></a>
-<a href="https://grok.x.ai/" target="_blank"><img src="https://img.shields.io/badge/Grok-%231E3A8A.svg?style=for-the-badge&logo=tensorflow&logoColor=white" /></a>
+<a href="https://grok.x.ai/" target="_blank">
+  <img src="https://img.shields.io/badge/Grok-000000.svg?style=for-the-badge&logoColor=white" alt="Grok Badge"/>
+</a>
 
 </div>
 
