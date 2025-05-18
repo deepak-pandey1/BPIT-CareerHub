@@ -78,7 +78,7 @@ graph TD
 <h2>Project Structure</h2>
 <pre><code>
 bpit-careerhub/
-├── backend/                    # Express.js backend
+├── backend/                   # Express.js backend
 │   ├── index.js               # Entry point
 │   ├── controller/            # Route logic (company, user, message)
 │   ├── model/                 # Mongoose schemas
@@ -99,7 +99,7 @@ bpit-careerhub/
 │       └── firebase.js        # Firebase config
 │
 ├── README.md
-└── package.json               # Project metadata and scripts
+└── .gitignore
 
 
 </code></pre>
