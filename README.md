@@ -5,7 +5,7 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
-## Project Workflow Diagram
+## 🚀 Project Workflow Diagram
 ```mermaid
 graph TD
     %% Define styles for dark theme with rounded corners and subtle shadows
@@ -15,30 +15,29 @@ graph TD
     classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a
 
     %% TNP Admin Flow
-    subgraph TNP_Admin["TNP Admin Flow"]
+    subgraph TNP_Admin["👨‍💼 TNP Admin Flow"]
         direction TB
-        A1([TNP Admin Signup / Login]):::adminNode --> B1{Verify Admin Credentials}:::decisionNode
-        B1 -->|Valid| C1([Access Admin Page]):::adminNode
-        B1 -->|Invalid| A1
-        C1 --> D1([Post Job / Internship Details]):::adminNode
-        C1 --> E1([Delete Job Posts]):::adminNode
+        A1([📝 TNP Admin Signup / Login]):::adminNode --> B1{🔐 Verify Admin Credentials}:::decisionNode
+        B1 -->|✅ Valid| C1([📂 Access Admin Page]):::adminNode
+        B1 -->|❌ Invalid| A1
+        C1 --> D1([📢 Post Job / Internship Details]):::adminNode
+        C1 --> E1([🗑️ Delete Job Posts]):::adminNode
     end
 
     %% Students Flow
-    subgraph Students["Students Flow"]
+    subgraph Students["🎓 Students Flow"]
         direction TB
-        F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms & condition, FAQ-chatbot]):::publicNode --> G1{Login / Signup?}:::decisionNode
-        G1 -->|Yes| H1([Access Company & Community Pages]):::studentNode
-        G1 -->|No| F1
+        F1([🌐 Access Public Pages:<br>🏠 Homepage, ℹ️ About, 📞 Contact,<br>📃 Privacy Policy, 📜 Terms & Conditions, ❓ FAQ-chatbot]):::publicNode --> G1{🔐 Login / Signup?}:::decisionNode
+        G1 -->|✅ Yes| H1([🏢 Access Company & Community Pages]):::studentNode
+        G1 -->|❌ No| F1
 
-        H1 --> I1([Fill Job Application Form]):::studentNode
-        H1 -.-> J1([Cannot Access Admin Page]):::studentNode
+        H1 --> I1([📝 Fill Job Application Form]):::studentNode
+        H1 -.-> J1([🚫 Cannot Access Admin Page]):::studentNode
 
         %% Communication in Community Page
-        H1 --> L1([Send/Receive Messages in Community Page]):::studentNode
+        H1 --> L1([💬 Send/Receive Messages in Community Page]):::studentNode
         C1 --> L1
     end
-
 
 
 ```
