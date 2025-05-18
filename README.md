@@ -7,7 +7,6 @@ The project is built using the MERN stack (MongoDB, Express, React, Node.js) to 
 
 ## Project Workflow Diagram
 ```mermaid
-%%{ init: {'theme': 'dark'} }%%
 graph TD
     %% Define styles for dark theme with rounded corners and subtle shadows
     classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray:4 2,round
