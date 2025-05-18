@@ -126,34 +126,34 @@ graph TD
 
 </div>
 
-<h2>Project Structure</h2>
-<pre><code>
+<h2 style="font-size: 2rem; margin-bottom: 1rem;">📁 Project Structure</h2>
+
+<pre style="background-color: #0f172a; color: #e2e8f0; padding: 1.5rem; border-radius: 0.5rem; font-family: 'Fira Code', monospace; font-size: 0.95rem; overflow-x: auto;">
 bpit-careerhub/
-├── backend/                   # Express.js backend
-│   ├── index.js               # Entry point
-│   ├── controller/            # Route logic (company, user, message)
-│   ├── model/                 # Mongoose schemas
-│   ├── routes/                # API endpoints
-│   ├── middleware/            # Auth middleware
-│   └── jwt/                   # JWT token utils
+├── 🖥️ backend/                # Express.js backend
+│   ├── index.js              # Entry point
+│   ├── controller/           # Route logic (company, user, message)
+│   ├── model/                # Mongoose schemas
+│   ├── routes/               # API endpoints
+│   ├── middleware/           # Auth middleware
+│   └── jwt/                  # JWT token utils
 │
-├── client/                    # React frontend
-│   ├── public/                # Static assets
+├── 💻 client/                 # React frontend
+│   ├── public/               # Static assets
 │   └── src/
-│       ├── Component/         # Reusable components
-│       │   ├── Charts/        # Placement stats charts
-│       │   ├── Header/        # Header, footer, scroll handling
-│       │   ├── MainComponent/ # Pages (Home, Company, Admin, etc.)
-│       │   └── ProgressBar/   # Scroll progress UI
-│       ├── App.js             # Main app component
-│       ├── index.js           # React entry point
-│       └── firebase.js        # Firebase config
+│       ├── Component/        # Reusable components
+│       │   ├── Charts/       # Placement stats charts
+│       │   ├── Header/       # Header, footer, scroll handling
+│       │   ├── MainComponent/# Pages (Home, Company, Admin, etc.)
+│       │   └── ProgressBar/  # Scroll progress UI
+│       ├── App.js            # Main app component
+│       ├── index.js          # React entry point
+│       └── firebase.js       # Firebase config
 │
-├── README.md
-└── .gitignore
+├── 📄 README.md
+└── 📁 .gitignore
+</pre>
 
-
-</code></pre>
 
 
 ## Prerequisites
