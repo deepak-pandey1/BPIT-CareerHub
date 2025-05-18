@@ -26,7 +26,7 @@ graph TD
     %% Students Flow
     subgraph Students["Students Flow"]
         direction TB
-        F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms & condition <br> FAQ(chatbot)]):::publicNode --> G1{Login / Signup?}:::decisionNode
+        F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms & condition <br> FAQ-chatbot]):::publicNode --> G1{Login / Signup?}:::decisionNode
         G1 -->|Yes| H1([Access Community & Company Pages]):::studentNode
         G1 -->|No| F1
 
