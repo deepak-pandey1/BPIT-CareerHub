@@ -89,7 +89,7 @@ graph TD
 <a href="https://formspree.io/" target="_blank"><img src="https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white" /></a>
 <a href="https://www.chatbase.co/" target="_blank"><img src="https://img.shields.io/badge/Chatbase-%23000000.svg?style=for-the-badge&logo=chatbot&logoColor=white" /></a>
 <a href="https://www.npmjs.com/package/react-simple-typewriter" target="_blank">
-  <img src="https://img.shields.io/badge/npm install react--simple--typewriter-black?style=for-the-badge&logo=npm&logoColor=white" />
+  <img src="https://img.shields.io/badge/react--simple--typewriter-black?style=for-the-badge&logo=npm&logoColor=white" />
 </a>
 
 
