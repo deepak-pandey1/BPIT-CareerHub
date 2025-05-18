@@ -67,9 +67,7 @@ graph TD
 
 ### 🖥️ Frontend
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=🖥️+Frontend;!&center=true&width=800&height=45&color=F7F7F7&background=000000&vCenter=true&size=22" alt="Typing SVG" />
-</p>
+<img src="https://readme-typing-svg.herokuapp.com/?lines=🚀+Frontend,+Backend+&+Deployment+Tech+Stack;🔥+Built+with+MERN+Stack+&+More!&center=true&width=800&height=45&color=F7F7F7&background=000000&vCenter=true&size=22" />
 
 <br>
 
