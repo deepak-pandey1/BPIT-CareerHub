@@ -5,32 +5,32 @@ This project is created for BPIT (Bhagwan Parshuram Institute of Technology) col
 
 The project is built using the MERN stack (MongoDB, Express, React, Node.js) to ensure scalability, flexibility, and a seamless user experience.
 
-## Project Workflow Diagram
-```mermaid
 graph TD
-    %% Define styles for dark theme
-    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:2px,color:#1a1a1a,rounded
-    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:2px,color:#1a1a1a,rounded
-    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:2px,color:#1a1a1a,rounded
-    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:2px,color:#1a1a1a,diamond
+    %% Define styles for dark theme with rounded corners and subtle shadows
+    classDef adminNode fill:#ff8c00,stroke:#ffb347,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
+    classDef studentNode fill:#00bfff,stroke:#87cefa,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
+    classDef publicNode fill:#32cd32,stroke:#7cfc00,stroke-width:3px,color:#1a1a1a,stroke-dasharray: 4 2,round
+    classDef decisionNode fill:#ff4c4c,stroke:#ff6e6e,stroke-width:3px,color:#1a1a1a,shape:diamond
 
     %% TNP Admin Flow
-    subgraph TNP_Admin
+    subgraph TNP_Admin["TNP Admin Flow"]
+        direction TB
         A1([TNP Admin Signup / Login]):::adminNode --> B1{Verify Admin Credentials}:::decisionNode
         B1 -->|Valid| C1([Access Admin Page]):::adminNode
+        B1 -->|Invalid| A1
         C1 --> D1([Post Job / Internship Details]):::adminNode
         C1 --> E1([Delete Job Posts]):::adminNode
     end
 
     %% Students Flow
-    subgraph Students
+    subgraph Students["Students Flow"]
+        direction TB
         F1([Access Public Pages:<br>Homepage, About, Contact,<br>Privacy Policy, Terms]):::publicNode --> G1{Login / Signup?}:::decisionNode
         G1 -->|Yes| H1([Access Community & Company Pages]):::studentNode
         G1 -->|No| F1
 
         H1 --> I1([Fill Job Application Form]):::studentNode
         H1 -.-> J1([Cannot Access Admin Page]):::studentNode
-
         H1 --> K1([Ask Doubts on FAQ Page - Chatbot]):::studentNode
 
         %% Communication in Community Page
