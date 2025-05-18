@@ -139,7 +139,7 @@ You can use the following test credentials to explore the Admin Dashboard:
 
 ---
 
-### 💬 Help & AI Tools
+### 📦 Tools That Powered This Project
 
 <br>
 
