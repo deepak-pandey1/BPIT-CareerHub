@@ -84,6 +84,7 @@ graph TD
 ![EmailJS](https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black)
 ![FormFree](https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white)
+![Chatbase](https://img.shields.io/badge/Chatbase-%2300C7B7.svg?style=for-the-badge&logo=chatbot&logoColor=white)
 
 </div>
 
