@@ -283,7 +283,7 @@ const handleLogin = (e) => {
         cursorStyle='_'
         typeSpeed={100}
         deleteSpeed={50}
-        delaySpeed={3000}
+        delaySpeed={1000}
       />
     </span>
   </motion.h2>
