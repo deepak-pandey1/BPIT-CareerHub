@@ -84,7 +84,7 @@ graph TD
 ![Recharts](https://img.shields.io/badge/Recharts-%230081CB.svg?style=for-the-badge&logo=recharts&logoColor=white)
 ![EmailJS](https://img.shields.io/badge/EmailJS-%23D4A05A.svg?style=for-the-badge&logo=email&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=for-the-badge&logo=firebase&logoColor=black)
-![FormFree](https://img.shields.io/badge/FormFree-%234A90E2.svg?style=for-the-badge&logo=formspree&logoColor=white)
+![FormFree](https://img.shields.io/badge/FormFree-%23FF0000.svg?style=for-the-badge&logo=formspree&logoColor=white)
 
 </div>
 
