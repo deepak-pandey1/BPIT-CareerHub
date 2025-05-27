@@ -134,10 +134,8 @@ You can use the following test credentials to explore the Admin Dashboard:
 <a href="https://github.com/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" /></a>
 <a href="https://render.com/" target="_blank"><img src="https://img.shields.io/badge/Render-black?style=for-the-badge&logo=render&logoColor=white" /></a>
 <a href="https://uptimerobot.com/" target="_blank">
-  <img src="https://img.shields.io/badge/🟢%20UptimeRobot- -46C646?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/🟢%20UptimeRobot%20Online-46C646?style=for-the-badge" />
 </a>
-
-
 
 
 
