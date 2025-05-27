@@ -135,7 +135,7 @@ You can use the following test credentials to explore the Admin Dashboard:
 <a href="https://render.com/" target="_blank"><img src="https://img.shields.io/badge/Render-black?style=for-the-badge&logo=render&logoColor=white" /></a>
 
 <a href="https://uptimerobot.com/" target="_blank">
-  <img src="https://img.shields.io/badge/UptimeRobot-🟢%20Online-46C646?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/🟢%UptimeRobot-46C646?style=for-the-badge" />
 </a>
 
 
