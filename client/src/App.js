@@ -47,6 +47,7 @@ function AppContent({ user, setLoginUser }) {
   const hideFooter =
   location.pathname === '/Community' ||
   location.pathname === '/Admin' ||
+  location.pathname === '/Faq' ||   // 👈 yeh add karo
   (isSmallScreen &&
     ['/Internship', '/Referral', '/Alumni', '/Gamification', '/Company'].includes(location.pathname));
 
