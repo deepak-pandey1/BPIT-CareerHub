@@ -12,22 +12,25 @@ export default function Faq() {
 
     const updateHeight = () => {
 
-      if (window.innerWidth <= 768) {
-        // mobile (header + bottom nav)
-        setChatHeight("calc(100vh - 130px)");
-      } else {
-        // desktop (navbar only)
-        setChatHeight("calc(100vh - 65px)");
-      }
+  if (window.innerWidth <= 768) {
+    const height = window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
 
-    };
+    setChatHeight(`${height - 130}px`);
+  } else {
+    setChatHeight("calc(100vh - 65px)");
+  }
 
+};
     updateHeight();
     window.addEventListener("resize", updateHeight);
+    window.visualViewport?.addEventListener("resize", updateHeight);
 
     return () => {
       clearTimeout(timer);
       window.removeEventListener("resize", updateHeight);
+      window.visualViewport?.removeEventListener("resize", updateHeight);
     };
 
   }, []);
